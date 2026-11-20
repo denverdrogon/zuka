@@ -1,0 +1,11 @@
+{
+	"id": "header-simple",
+	"title": "En-tête simple",
+	"description": "Logo, liens de navigation et bouton d'action sur une ligne. Section à insérer en haut de page (l'assignation globale nécessiterait Elementor Pro).",
+	"type": "section",
+	"category": "header",
+	"tags": ["header", "navigation", "logo"],
+	"version": "1.0.0",
+	"elementor_min": "3.25.0",
+	"variants": ["v3"]
+}

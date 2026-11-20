@@ -1,0 +1,11 @@
+{
+	"id": "page-accueil-agence",
+	"title": "Accueil — Agence",
+	"description": "Page d'accueil complète : hero, trois services et appel à l'action.",
+	"type": "page",
+	"category": "accueil",
+	"tags": ["agence", "services", "hero", "cta"],
+	"version": "1.0.0",
+	"elementor_min": "3.25.0",
+	"variants": ["v3"]
+}

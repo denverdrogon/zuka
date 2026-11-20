@@ -1,0 +1,79 @@
+{
+    "schema": 1,
+    "templates": [
+        {
+            "id": "header-simple",
+            "title": "En-tête simple",
+            "description": "Logo, liens de navigation et bouton d'action sur une ligne. Section à insérer en haut de page (l'assignation globale nécessiterait Elementor Pro).",
+            "type": "section",
+            "category": "header",
+            "tags": [
+                "header",
+                "navigation",
+                "logo"
+            ],
+            "version": "1.0.0",
+            "elementor_min": "3.25.0",
+            "variants": [
+                "v3"
+            ],
+            "widgets": [
+                "button",
+                "icon-list",
+                "image"
+            ],
+            "thumbnail": "header-simple/thumbnail.webp",
+            "hash": "1678e9669f1290c7"
+        },
+        {
+            "id": "page-accueil-agence",
+            "title": "Accueil — Agence",
+            "description": "Page d'accueil complète : hero, trois services et appel à l'action.",
+            "type": "page",
+            "category": "accueil",
+            "tags": [
+                "agence",
+                "services",
+                "hero",
+                "cta"
+            ],
+            "version": "1.0.0",
+            "elementor_min": "3.25.0",
+            "variants": [
+                "v3"
+            ],
+            "widgets": [
+                "button",
+                "heading",
+                "icon-box",
+                "image",
+                "text-editor"
+            ],
+            "thumbnail": "page-accueil-agence/thumbnail.webp",
+            "hash": "1e5026d7d60d6796"
+        },
+        {
+            "id": "section-temoignages",
+            "title": "Témoignages clients",
+            "description": "Titre et trois témoignages avec photo, nom et fonction.",
+            "type": "section",
+            "category": "témoignages",
+            "tags": [
+                "avis",
+                "clients",
+                "confiance"
+            ],
+            "version": "1.0.0",
+            "elementor_min": "3.25.0",
+            "variants": [
+                "v3"
+            ],
+            "widgets": [
+                "heading",
+                "testimonial"
+            ],
+            "thumbnail": "section-temoignages/thumbnail.webp",
+            "hash": "979cf03f0872c7b9"
+        }
+    ]
+}

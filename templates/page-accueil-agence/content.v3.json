@@ -1,0 +1,225 @@
+{
+	"version": "0.4",
+	"title": "Accueil — Agence",
+	"type": "page",
+	"page_settings": {
+		"hide_title": "yes",
+		"template": "elementor_header_footer"
+	},
+	"content": [
+		{
+			"id": "ag01h01",
+			"elType": "container",
+			"isInner": false,
+			"settings": {
+				"content_width": "boxed",
+				"flex_direction": "row",
+				"flex_direction_mobile": "column",
+				"flex_align_items": "center",
+				"flex_gap": { "unit": "px", "size": 48, "column": "48", "row": "48" },
+				"padding": { "unit": "px", "top": "96", "right": "24", "bottom": "96", "left": "24", "isLinked": false },
+				"background_background": "classic",
+				"__globals__": { "background_color": "globals/colors?id=secondary" }
+			},
+			"elements": [
+				{
+					"id": "ag01h02",
+					"elType": "container",
+					"isInner": true,
+					"settings": {
+						"content_width": "full",
+						"width": { "unit": "%", "size": 50 },
+						"width_mobile": { "unit": "%", "size": 100 },
+						"flex_gap": { "unit": "px", "size": 24, "column": "24", "row": "24" }
+					},
+					"elements": [
+						{
+							"id": "ag01h03",
+							"elType": "widget",
+							"widgetType": "heading",
+							"settings": {
+								"title": "Nous donnons vie à vos idées",
+								"header_size": "h1",
+								"__globals__": {
+									"title_color": "globals/colors?id=primary",
+									"typography_typography": "globals/typography?id=primary"
+								}
+							},
+							"elements": []
+						},
+						{
+							"id": "ag01h04",
+							"elType": "widget",
+							"widgetType": "text-editor",
+							"settings": {
+								"editor": "<p>Stratégie, design et développement : une équipe unique pour accompagner votre croissance, du premier croquis au lancement.</p>",
+								"__globals__": {
+									"text_color": "globals/colors?id=text",
+									"typography_typography": "globals/typography?id=text"
+								}
+							},
+							"elements": []
+						},
+						{
+							"id": "ag01h05",
+							"elType": "widget",
+							"widgetType": "button",
+							"settings": {
+								"text": "Démarrer un projet",
+								"link": { "url": "#contact", "is_external": "", "nofollow": "" },
+								"size": "md",
+								"__globals__": {
+									"background_color": "globals/colors?id=accent",
+									"typography_typography": "globals/typography?id=accent"
+								}
+							},
+							"elements": []
+						}
+					]
+				},
+				{
+					"id": "ag01h06",
+					"elType": "container",
+					"isInner": true,
+					"settings": {
+						"content_width": "full",
+						"width": { "unit": "%", "size": 50 },
+						"width_mobile": { "unit": "%", "size": 100 }
+					},
+					"elements": [
+						{
+							"id": "ag01h07",
+							"elType": "widget",
+							"widgetType": "image",
+							"settings": {
+								"image": { "url": "{{PLUGT_MEDIA}}/hero.webp", "id": "", "alt": "Équipe au travail", "source": "library" },
+								"image_size": "large"
+							},
+							"elements": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "ag01s01",
+			"elType": "container",
+			"isInner": false,
+			"settings": {
+				"content_width": "boxed",
+				"flex_direction": "column",
+				"flex_gap": { "unit": "px", "size": 40, "column": "40", "row": "40" },
+				"padding": { "unit": "px", "top": "80", "right": "24", "bottom": "80", "left": "24", "isLinked": false }
+			},
+			"elements": [
+				{
+					"id": "ag01s02",
+					"elType": "widget",
+					"widgetType": "heading",
+					"settings": {
+						"title": "Nos services",
+						"header_size": "h2",
+						"align": "center",
+						"__globals__": {
+							"title_color": "globals/colors?id=primary",
+							"typography_typography": "globals/typography?id=secondary"
+						}
+					},
+					"elements": []
+				},
+				{
+					"id": "ag01s03",
+					"elType": "container",
+					"isInner": true,
+					"settings": {
+						"content_width": "full",
+						"flex_direction": "row",
+						"flex_direction_mobile": "column",
+						"flex_gap": { "unit": "px", "size": 32, "column": "32", "row": "32" }
+					},
+					"elements": [
+						{
+							"id": "ag01s04",
+							"elType": "widget",
+							"widgetType": "icon-box",
+							"settings": {
+								"selected_icon": { "value": "fas fa-compass", "library": "fa-solid" },
+								"title_text": "Stratégie",
+								"description_text": "Audit, positionnement et feuille de route pour des décisions éclairées.",
+								"__globals__": { "primary_color": "globals/colors?id=accent" }
+							},
+							"elements": []
+						},
+						{
+							"id": "ag01s05",
+							"elType": "widget",
+							"widgetType": "icon-box",
+							"settings": {
+								"selected_icon": { "value": "fas fa-pen-nib", "library": "fa-solid" },
+								"title_text": "Design",
+								"description_text": "Identité visuelle et interfaces pensées pour vos utilisateurs.",
+								"__globals__": { "primary_color": "globals/colors?id=accent" }
+							},
+							"elements": []
+						},
+						{
+							"id": "ag01s06",
+							"elType": "widget",
+							"widgetType": "icon-box",
+							"settings": {
+								"selected_icon": { "value": "fas fa-code", "library": "fa-solid" },
+								"title_text": "Développement",
+								"description_text": "Sites rapides, accessibles et faciles à faire évoluer.",
+								"__globals__": { "primary_color": "globals/colors?id=accent" }
+							},
+							"elements": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "ag01c01",
+			"elType": "container",
+			"isInner": false,
+			"settings": {
+				"_element_id": "contact",
+				"content_width": "boxed",
+				"flex_direction": "column",
+				"flex_align_items": "center",
+				"flex_gap": { "unit": "px", "size": 24, "column": "24", "row": "24" },
+				"padding": { "unit": "px", "top": "80", "right": "24", "bottom": "80", "left": "24", "isLinked": false },
+				"background_background": "classic",
+				"__globals__": { "background_color": "globals/colors?id=primary" }
+			},
+			"elements": [
+				{
+					"id": "ag01c02",
+					"elType": "widget",
+					"widgetType": "heading",
+					"settings": {
+						"title": "Prêt à lancer votre projet ?",
+						"header_size": "h2",
+						"align": "center",
+						"title_color": "#FFFFFF",
+						"__globals__": { "typography_typography": "globals/typography?id=secondary" }
+					},
+					"elements": []
+				},
+				{
+					"id": "ag01c03",
+					"elType": "widget",
+					"widgetType": "button",
+					"settings": {
+						"text": "Nous contacter",
+						"link": { "url": "mailto:contact@example.com", "is_external": "", "nofollow": "" },
+						"align": "center",
+						"size": "lg",
+						"__globals__": { "background_color": "globals/colors?id=accent" }
+					},
+					"elements": []
+				}
+			]
+		}
+	]
+}

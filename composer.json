@@ -42,6 +42,12 @@
 		"lint": "phpcs",
 		"lint:fix": "phpcbf",
 		"phpstan": "phpstan analyse --memory-limit=1G",
-		"test": "phpunit"
+		"test": "phpunit",
+		"templates:validate": "@php bin/validate-templates.php",
+		"templates:build": "@php bin/build-manifest.php",
+		"templates:check": [
+			"@php bin/validate-templates.php",
+			"@php bin/build-manifest.php --check"
+		]
 	}
 }

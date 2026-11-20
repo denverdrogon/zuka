@@ -30,6 +30,9 @@ jobs:
       - name: PHPStan
         if: matrix.php == '8.3'
         run: composer phpstan
+      - name: Templates (liste blanche Free + manifest à jour)
+        if: matrix.php == '8.3'
+        run: composer templates:check
       - name: PHPUnit
         run: composer test
 

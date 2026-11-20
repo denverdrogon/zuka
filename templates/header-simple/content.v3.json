@@ -1,0 +1,72 @@
+{
+	"version": "0.4",
+	"title": "En-tête simple",
+	"type": "section",
+	"content": [
+		{
+			"id": "hd01r01",
+			"elType": "container",
+			"isInner": false,
+			"settings": {
+				"content_width": "boxed",
+				"flex_direction": "row",
+				"flex_justify_content": "space-between",
+				"flex_align_items": "center",
+				"flex_wrap_mobile": "wrap",
+				"padding": { "unit": "px", "top": "16", "right": "24", "bottom": "16", "left": "24", "isLinked": false },
+				"background_background": "classic",
+				"__globals__": { "background_color": "globals/colors?id=secondary" }
+			},
+			"elements": [
+				{
+					"id": "hd01r02",
+					"elType": "widget",
+					"widgetType": "image",
+					"settings": {
+						"image": { "url": "{{PLUGT_MEDIA}}/logo.webp", "id": "", "alt": "Logo", "source": "library" },
+						"width": { "unit": "px", "size": 160 },
+						"link_to": "custom",
+						"link": { "url": "/", "is_external": "", "nofollow": "" }
+					},
+					"elements": []
+				},
+				{
+					"id": "hd01r03",
+					"elType": "widget",
+					"widgetType": "icon-list",
+					"settings": {
+						"view": "inline",
+						"icon_list": [
+							{ "_id": "hd01l01", "text": "Accueil", "selected_icon": { "value": "", "library": "" }, "link": { "url": "/" } },
+							{ "_id": "hd01l02", "text": "Services", "selected_icon": { "value": "", "library": "" }, "link": { "url": "#services" } },
+							{ "_id": "hd01l03", "text": "À propos", "selected_icon": { "value": "", "library": "" }, "link": { "url": "#a-propos" } },
+							{ "_id": "hd01l04", "text": "Contact", "selected_icon": { "value": "", "library": "" }, "link": { "url": "#contact" } }
+						],
+						"space_between": { "unit": "px", "size": 32 },
+						"hide_mobile": "hidden-mobile",
+						"__globals__": {
+							"text_color": "globals/colors?id=text",
+							"icon_typography_typography": "globals/typography?id=text"
+						}
+					},
+					"elements": []
+				},
+				{
+					"id": "hd01r04",
+					"elType": "widget",
+					"widgetType": "button",
+					"settings": {
+						"text": "Devis gratuit",
+						"link": { "url": "#contact", "is_external": "", "nofollow": "" },
+						"size": "sm",
+						"__globals__": {
+							"background_color": "globals/colors?id=accent",
+							"typography_typography": "globals/typography?id=accent"
+						}
+					},
+					"elements": []
+				}
+			]
+		}
+	]
+}

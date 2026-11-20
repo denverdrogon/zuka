@@ -1,0 +1,11 @@
+{
+	"id": "section-temoignages",
+	"title": "Témoignages clients",
+	"description": "Titre et trois témoignages avec photo, nom et fonction.",
+	"type": "section",
+	"category": "témoignages",
+	"tags": ["avis", "clients", "confiance"],
+	"version": "1.0.0",
+	"elementor_min": "3.25.0",
+	"variants": ["v3"]
+}
