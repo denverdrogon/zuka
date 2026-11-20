@@ -14,6 +14,9 @@ class Plugin {
 	/** @var Plugin|null */
 	public static $instance;
 
-	/** @var object|null Experiments manager (Elementor\Core\Experiments\Manager). */
+	/** @var mixed Experiments manager (Elementor\Core\Experiments\Manager). */
 	public $experiments;
+
+	/** @var mixed Documents manager (Elementor\Core\Documents_Manager). */
+	public $documents;
 }

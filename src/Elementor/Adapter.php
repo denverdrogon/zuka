@@ -10,10 +10,19 @@
 
 namespace PlugTemplates\Elementor;
 
+use WP_Error;
+
 /**
- * Elementor adapter.
+ * Elementor adapter. Not final so tests can substitute it.
  */
-final class Adapter {
+class Adapter {
+
+	/** Elementor document type of a regular WordPress page. */
+	private const PAGE_DOCUMENT = 'wp-page';
+
+	/** Elementor library post type and its type taxonomy. */
+	private const LIBRARY_POST_TYPE = 'elementor_library';
+	private const LIBRARY_TAXONOMY  = 'elementor_library_type';
 
 	/**
 	 * Whether Elementor has finished loading.
@@ -40,7 +49,7 @@ final class Adapter {
 			return false;
 		}
 		$plugin = \Elementor\Plugin::$instance;
-		if ( ! isset( $plugin->experiments ) || ! method_exists( $plugin->experiments, 'is_feature_active' ) ) {
+		if ( null === $plugin || ! isset( $plugin->experiments ) || ! is_object( $plugin->experiments ) || ! method_exists( $plugin->experiments, 'is_feature_active' ) ) {
 			return false;
 		}
 		foreach ( array( 'e_atomic_elements', 'atomic_widgets' ) as $feature ) {
@@ -58,5 +67,140 @@ final class Adapter {
 	 */
 	public function on_init( callable $callback ): void {
 		add_action( 'elementor/init', $callback );
+	}
+
+	/**
+	 * Creates a draft WordPress page built with Elementor.
+	 *
+	 * @param string       $title    Page title.
+	 * @param array<mixed> $elements Elementor elements.
+	 * @param array<mixed> $settings Page settings.
+	 * @return int|WP_Error Post id.
+	 */
+	public function create_page( string $title, array $elements, array $settings ) {
+		return $this->create_document(
+			self::PAGE_DOCUMENT,
+			array(
+				'post_title'  => $title,
+				'post_status' => 'draft',
+				'post_type'   => 'page',
+			),
+			$elements,
+			$settings
+		);
+	}
+
+	/**
+	 * Creates a template in Elementor > Templates (« Mes modèles »).
+	 *
+	 * @param string       $title    Template title.
+	 * @param string       $type     Library type: page or section.
+	 * @param array<mixed> $elements Elementor elements.
+	 * @param array<mixed> $settings Page settings.
+	 * @return int|WP_Error Post id.
+	 */
+	public function create_library_template( string $title, string $type, array $elements, array $settings ) {
+		return $this->create_document(
+			$type,
+			array(
+				'post_title'  => $title,
+				'post_status' => 'publish',
+				'post_type'   => self::LIBRARY_POST_TYPE,
+			),
+			$elements,
+			$settings
+		);
+	}
+
+	/**
+	 * URL opening a post in the Elementor editor.
+	 *
+	 * @param int $post_id Post id.
+	 */
+	public function edit_url( int $post_id ): string {
+		return add_query_arg(
+			array(
+				'post'   => $post_id,
+				'action' => 'elementor',
+			),
+			admin_url( 'post.php' )
+		);
+	}
+
+	/**
+	 * Creates an Elementor document through Elementor's documents manager
+	 * (handles meta, CSS and version), with a raw-meta fallback.
+	 *
+	 * @param string               $type      Elementor document type.
+	 * @param array<string, mixed> $post_data wp_insert_post() data.
+	 * @param array<mixed>         $elements  Elementor elements.
+	 * @param array<mixed>         $settings  Page settings.
+	 * @return int|WP_Error Post id.
+	 */
+	private function create_document( string $type, array $post_data, array $elements, array $settings ) {
+		$documents = $this->documents_manager();
+		if ( null !== $documents ) {
+			$document = $documents->create( $type, $post_data );
+			if ( $document instanceof WP_Error ) {
+				return $document;
+			}
+			if ( is_object( $document ) && method_exists( $document, 'save' ) && method_exists( $document, 'get_main_id' ) ) {
+				$document->save(
+					array(
+						'elements' => $elements,
+						'settings' => $settings,
+					)
+				);
+				return (int) $document->get_main_id();
+			}
+		}
+
+		return $this->create_document_fallback( $type, $post_data, $elements, $settings );
+	}
+
+	/**
+	 * Elementor documents manager, when available.
+	 */
+	private function documents_manager(): ?object {
+		if ( ! $this->is_loaded() || ! class_exists( '\Elementor\Plugin' ) ) {
+			return null;
+		}
+		$plugin = \Elementor\Plugin::$instance;
+		if ( null === $plugin || ! isset( $plugin->documents ) || ! is_object( $plugin->documents ) || ! method_exists( $plugin->documents, 'create' ) ) {
+			return null;
+		}
+		return $plugin->documents;
+	}
+
+	/**
+	 * Writes Elementor's post meta directly, when the documents manager is unavailable.
+	 *
+	 * @param string               $type      Elementor document type.
+	 * @param array<string, mixed> $post_data wp_insert_post() data.
+	 * @param array<mixed>         $elements  Elementor elements.
+	 * @param array<mixed>         $settings  Page settings.
+	 * @return int|WP_Error Post id.
+	 */
+	private function create_document_fallback( string $type, array $post_data, array $elements, array $settings ) {
+		$post_id = wp_insert_post( wp_slash( $post_data ), true );
+		if ( $post_id instanceof WP_Error ) {
+			return $post_id;
+		}
+
+		update_post_meta( $post_id, '_elementor_edit_mode', 'builder' );
+		update_post_meta( $post_id, '_elementor_template_type', $type );
+		update_post_meta( $post_id, '_elementor_version', (string) $this->version() );
+		update_post_meta( $post_id, '_elementor_data', wp_slash( (string) wp_json_encode( $elements ) ) );
+		if ( array() !== $settings ) {
+			update_post_meta( $post_id, '_elementor_page_settings', $settings );
+		}
+		if ( isset( $settings['template'] ) && is_string( $settings['template'] ) ) {
+			update_post_meta( $post_id, '_wp_page_template', $settings['template'] );
+		}
+		if ( self::LIBRARY_POST_TYPE === ( $post_data['post_type'] ?? '' ) ) {
+			wp_set_object_terms( $post_id, $type, self::LIBRARY_TAXONOMY );
+		}
+
+		return $post_id;
 	}
 }

@@ -8,6 +8,11 @@
 namespace PlugTemplates;
 
 use PlugTemplates\Elementor\Adapter;
+use PlugTemplates\Library\ContentTransformer;
+use PlugTemplates\Library\Importer;
+use PlugTemplates\Library\MediaImporter;
+use PlugTemplates\Library\Repository;
+use PlugTemplates\Rest\TemplatesController;
 
 /**
  * Main plugin class: checks requirements then wires services.
@@ -27,6 +32,20 @@ final class Plugin {
 	 * @var Adapter
 	 */
 	private Adapter $elementor;
+
+	/**
+	 * Template repository (null until requirements are met).
+	 *
+	 * @var Repository|null
+	 */
+	private ?Repository $repository = null;
+
+	/**
+	 * Template importer (null until requirements are met).
+	 *
+	 * @var Importer|null
+	 */
+	private ?Importer $importer = null;
 
 	/**
 	 * Unmet requirements found at boot.
@@ -68,6 +87,20 @@ final class Plugin {
 	}
 
 	/**
+	 * Template repository, null when requirements are not met.
+	 */
+	public function repository(): ?Repository {
+		return $this->repository;
+	}
+
+	/**
+	 * Template importer, null when requirements are not met.
+	 */
+	public function importer(): ?Importer {
+		return $this->importer;
+	}
+
+	/**
 	 * Loads translations, checks requirements and registers services when they are met.
 	 */
 	private function init(): void {
@@ -101,6 +134,11 @@ final class Plugin {
 	 * Wires feature services. Filled in by later phases.
 	 */
 	private function register_services(): void {
+		$this->repository = new Repository( PLUGT_PATH . 'templates', PLUGT_URL . 'templates' );
+		$this->importer   = new Importer( $this->repository, $this->elementor, new MediaImporter(), new ContentTransformer() );
+
+		( new TemplatesController( $this->repository, $this->importer ) )->register();
+
 		/**
 		 * Fires once requirements are met and core services are registered.
 		 *
