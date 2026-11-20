@@ -7,6 +7,7 @@
 
 namespace PlugTemplates;
 
+use PlugTemplates\Admin\LibraryPage;
 use PlugTemplates\Elementor\Adapter;
 use PlugTemplates\Frontend\MotionAssets;
 use PlugTemplates\Library\ContentTransformer;
@@ -140,6 +141,10 @@ final class Plugin {
 
 		( new TemplatesController( $this->repository, $this->importer ) )->register();
 		( new MotionAssets( $this->elementor, PLUGT_PATH . 'assets/build', PLUGT_URL . 'assets/build' ) )->register();
+
+		if ( is_admin() ) {
+			( new LibraryPage( $this->elementor, PLUGT_PATH . 'assets/build', PLUGT_URL . 'assets/build' ) )->register();
+		}
 
 		/**
 		 * Fires once requirements are met and core services are registered.

@@ -45,6 +45,11 @@ final class RepositoryTest extends TestCase {
 		);
 	}
 
+	public function test_preview_url_is_null_without_clip(): void {
+		$this->assertNull( $this->repository()->preview_url( 'header-simple' ) );
+		$this->assertNull( $this->repository()->preview_url( 'inexistant' ) );
+	}
+
 	public function test_missing_manifest_gives_empty_library(): void {
 		$repository = new Repository( sys_get_temp_dir() . '/plugt-nowhere', 'https://site.test' );
 		$this->assertSame( array(), $repository->all() );

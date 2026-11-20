@@ -66,7 +66,7 @@ final class ManifestBuilderTest extends TestCase {
 		mkdir( $to, 0777, true );
 		$it = new \RecursiveIteratorIterator( new \RecursiveDirectoryIterator( $from, \FilesystemIterator::SKIP_DOTS ), \RecursiveIteratorIterator::SELF_FIRST );
 		foreach ( $it as $file ) {
-			$target = $to . '/' . substr( str_replace( '\', '/', $file->getPathname() ), strlen( str_replace( '\', '/', $from ) ) + 1 );
+			$target = $to . '/' . $it->getSubPathname();
 			$file->isDir() ? @mkdir( $target, 0777, true ) : copy( $file->getPathname(), $target );
 		}
 	}

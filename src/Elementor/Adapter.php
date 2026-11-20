@@ -163,6 +163,13 @@ class Adapter {
 	}
 
 	/**
+	 * Admin URL of Elementor > Templates (« Mes modèles »).
+	 */
+	public function library_admin_url(): string {
+		return add_query_arg( 'post_type', self::LIBRARY_POST_TYPE, admin_url( 'edit.php' ) );
+	}
+
+	/**
 	 * URL opening a post in the Elementor editor.
 	 *
 	 * @param int $post_id Post id.

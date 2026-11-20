@@ -35,3 +35,34 @@ if ( ! class_exists( 'WP_Error' ) ) {
 		}
 	}
 }
+
+if ( ! class_exists( 'WP_REST_Response' ) ) {
+	/**
+	 * Minimal WP_REST_Response stub.
+	 */
+	class WP_REST_Response {
+		/** @var mixed */
+		private $data;
+
+		/** @var int */
+		private $status;
+
+		/**
+		 * @param mixed $data   Data.
+		 * @param int   $status Status.
+		 */
+		public function __construct( $data = null, $status = 200 ) {
+			$this->data   = $data;
+			$this->status = (int) $status;
+		}
+
+		/** @return mixed */
+		public function get_data() {
+			return $this->data;
+		}
+
+		public function get_status(): int {
+			return $this->status;
+		}
+	}
+}
