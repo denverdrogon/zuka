@@ -1,0 +1,24 @@
+# Force LF line endings in the repository and working copy, on every OS.
+* text=auto eol=lf
+
+# Binary assets.
+*.webp binary
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.ico  binary
+*.zip  binary
+*.woff binary
+*.woff2 binary
+
+# Excluded from `git archive` exports.
+/.github        export-ignore
+/tests          export-ignore
+/.gitattributes export-ignore
+/.distignore    export-ignore
+/.editorconfig  export-ignore
+/.wp-env.json   export-ignore
+/phpcs.xml.dist export-ignore
+/phpstan.neon.dist export-ignore
+/phpunit.xml.dist  export-ignore
