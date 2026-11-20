@@ -24,7 +24,8 @@ Plugin WordPress privé fournissant des templates personnalisés importables dan
 - Templates basés sur les Global Colors/Fonts (`__globals__`).
 - Import des médias dans la médiathèque avec déduplication.
 - Aucun compte, aucun appel externe.
-- Aucun asset front inutile.
+- Aucun asset front inutile (couche motion chargée seulement sur les pages qui utilisent des classes `plugt-m-*`).
+- Motion design repris du prototype Gemini (`other sources/`) via la couche motion : conteneurs et widgets Free + classes CSS, voir CLAUDE.md.
 
 ## 3. Contraintes (novembre 2026)
 

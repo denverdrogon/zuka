@@ -1,0 +1,23 @@
+{
+    "id": "budget-transparency",
+    "title": "Transparence Budgétaire & Open Data",
+    "description": "Répartition du budget par année : sélecteur d'année, total compté et barres animées.",
+    "type": "section",
+    "category": "public-sector",
+    "code": "TPL-01",
+    "sector": "Collectivités & finances",
+    "motion": "Barres scaleX + sélecteur annuel",
+    "accent": "#1E3A8A",
+    "tags": [
+        "budget",
+        "open data",
+        "collectivité",
+        "barres",
+        "animation"
+    ],
+    "version": "1.0.0",
+    "elementor_min": "3.25.0",
+    "variants": [
+        "v3"
+    ]
+}

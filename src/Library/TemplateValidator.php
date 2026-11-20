@@ -85,6 +85,7 @@ final class TemplateValidator {
 		}
 
 		$this->check_media_files( $dir );
+		$this->check_preview( $dir );
 
 		$widgets = array_keys( $this->widgets );
 		sort( $widgets );
@@ -134,6 +135,24 @@ final class TemplateValidator {
 		}
 		if ( isset( $meta['tags'] ) && ( ! is_array( $meta['tags'] ) || array() !== array_filter( $meta['tags'], static fn( $tag ) => ! is_string( $tag ) ) ) ) {
 			$this->errors[] = 'meta.json : « tags » doit être une liste de chaînes.';
+		}
+		if ( isset( $meta['category'] ) && is_string( $meta['category'] ) && '' !== trim( $meta['category'] ) && ! in_array( $meta['category'], Schema::CATEGORIES, true ) ) {
+			$this->errors[] = sprintf( 'meta.json : catégorie « %s » inconnue (autorisées : %s).', $meta['category'], implode( ', ', Schema::CATEGORIES ) );
+		}
+		if ( isset( $meta['code'] ) && ( ! is_string( $meta['code'] ) || ! preg_match( Schema::CODE_PATTERN, $meta['code'] ) ) ) {
+			$this->errors[] = 'meta.json : « code » doit suivre le format TPL-00.';
+		}
+		if ( isset( $meta['accent'] ) && ( ! is_string( $meta['accent'] ) || ! preg_match( Schema::ACCENT_PATTERN, $meta['accent'] ) ) ) {
+			$this->errors[] = 'meta.json : « accent » doit être une couleur #RRGGBB.';
+		}
+		$labels = array(
+			'sector' => Schema::SECTOR_MAX_LENGTH,
+			'motion' => Schema::MOTION_MAX_LENGTH,
+		);
+		foreach ( $labels as $key => $max ) {
+			if ( isset( $meta[ $key ] ) && ( ! is_string( $meta[ $key ] ) || '' === trim( $meta[ $key ] ) || $this->length( $meta[ $key ] ) > $max ) ) {
+				$this->errors[] = sprintf( 'meta.json : « %s » doit être une chaîne non vide de %d caractères au plus.', $key, $max );
+			}
 		}
 
 		$variants = array();
@@ -222,6 +241,15 @@ final class TemplateValidator {
 				$this->errors[] = sprintf( '%s : « settings » doit être un objet.', $path );
 			} else {
 				$this->check_settings( $element['settings'], $path );
+				$this->check_classes( $element['settings'], $path );
+				$expected = 'widget' === $el_type ? '_css_classes' : 'css_classes';
+				$wrong    = 'widget' === $el_type ? 'css_classes' : '_css_classes';
+				if ( isset( $element['settings'][ $wrong ] ) ) {
+					$this->errors[] = sprintf( '%s : classes CSS dans « %s », Elementor attend « %s » pour un %s.', $path, $wrong, $expected, (string) $el_type );
+				}
+				if ( 'html' === $widget_type ) {
+					$this->check_html( $element['settings']['html'] ?? '', $path );
+				}
 			}
 		}
 
@@ -317,6 +345,57 @@ final class TemplateValidator {
 	}
 
 	/**
+	 * Checks `plugt-*` classes against the motion layer (modules and utilities).
+	 *
+	 * @param array<mixed> $settings Element settings.
+	 * @param string       $path     Location used in messages.
+	 */
+	private function check_classes( array $settings, string $path ): void {
+		$modules = implode( '|', array_map( 'preg_quote', Schema::MOTION_MODULES ) );
+		$pattern = '/^' . preg_quote( Schema::MOTION_PREFIX, '/' ) . '(?:' . $modules . ')(?:__[a-z0-9]+(?:-[a-z0-9]+)*)?(?:--[a-z0-9]+(?:-[a-z0-9]+)*)?$/';
+
+		foreach ( Schema::CLASS_SETTINGS as $key ) {
+			if ( ! isset( $settings[ $key ] ) ) {
+				continue;
+			}
+			if ( ! is_string( $settings[ $key ] ) ) {
+				$this->errors[] = sprintf( '%s : « %s » doit être une chaîne.', $path, $key );
+				continue;
+			}
+			foreach ( preg_split( '/\s+/', trim( $settings[ $key ] ) ) as $class ) {
+				if ( '' === $class || 0 !== strpos( $class, 'plugt-' ) ) {
+					continue;
+				}
+				if ( ! in_array( $class, Schema::MOTION_UTILITIES, true ) && ! preg_match( $pattern, $class ) ) {
+					$this->errors[] = sprintf( '%s : classe « %s » inconnue de la couche motion.', $path, $class );
+				}
+			}
+		}
+	}
+
+	/**
+	 * Keeps the HTML widget static: no script, no inline handler, no external resource.
+	 *
+	 * @param mixed  $html HTML widget content.
+	 * @param string $path Location used in messages.
+	 */
+	private function check_html( $html, string $path ): void {
+		if ( ! is_string( $html ) ) {
+			return;
+		}
+		if ( preg_match( '/<\s*(?:script|iframe|link|style)\b/i', $html ) ) {
+			$this->errors[] = sprintf( '%s : widget HTML : balises script/iframe/link/style interdites (le motion passe par la couche plugt-m-*).', $path );
+		}
+		if ( preg_match( '/\son[a-z]+\s*=/i', $html ) ) {
+			$this->errors[] = sprintf( '%s : widget HTML : attributs on* interdits.', $path );
+		}
+		$without_ns = str_replace( array( 'http://www.w3.org/2000/svg', 'http://www.w3.org/1999/xlink' ), '', $html );
+		if ( preg_match( '#(?:https?:)?//[a-z0-9.-]+\.[a-z]{2,}#i', $without_ns ) ) {
+			$this->errors[] = sprintf( '%s : widget HTML : ressource externe interdite.', $path );
+		}
+	}
+
+	/**
 	 * Checks that referenced media exist and flags unused files.
 	 *
 	 * @param string $dir Template folder.
@@ -341,6 +420,32 @@ final class TemplateValidator {
 				$this->warnings[] = sprintf( 'Média inutilisé : media/%s.', $relative );
 			}
 		}
+	}
+
+	/**
+	 * Checks the optional preview clip.
+	 *
+	 * @param string $dir Template folder.
+	 */
+	private function check_preview( string $dir ): void {
+		$file = $dir . '/' . Schema::PREVIEW_FILE;
+		if ( is_file( $file ) && filesize( $file ) > Schema::PREVIEW_MAX_BYTES ) {
+			$this->errors[] = sprintf( '%s trop lourd (%d Mo au plus).', Schema::PREVIEW_FILE, (int) ( Schema::PREVIEW_MAX_BYTES / 1048576 ) );
+		}
+		foreach ( array( 'preview.mp4', 'preview.gif', 'preview.webp' ) as $other ) {
+			if ( is_file( $dir . '/' . $other ) ) {
+				$this->warnings[] = sprintf( '%s ignoré : seul %s est lu.', $other, Schema::PREVIEW_FILE );
+			}
+		}
+	}
+
+	/**
+	 * String length in characters (mbstring when available).
+	 *
+	 * @param string $value Value.
+	 */
+	private function length( string $value ): int {
+		return function_exists( 'mb_strlen' ) ? mb_strlen( $value, 'UTF-8' ) : strlen( $value );
 	}
 
 	/**

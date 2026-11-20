@@ -1,0 +1,1634 @@
+{
+    "version": "0.4",
+    "title": "Transparence Budgétaire & Open Data",
+    "type": "section",
+    "content": [
+        {
+            "id": "bt0001x",
+            "elType": "container",
+            "isInner": false,
+            "settings": {
+                "content_width": "boxed",
+                "flex_direction": "column",
+                "flex_gap": {
+                    "unit": "px",
+                    "size": 16,
+                    "column": "16",
+                    "row": "16"
+                },
+                "padding": {
+                    "unit": "px",
+                    "top": "24",
+                    "right": "24",
+                    "bottom": "24",
+                    "left": "24",
+                    "isLinked": false
+                },
+                "background_background": "classic",
+                "background_color": "#faf9f6",
+                "border_border": "solid",
+                "border_width": {
+                    "unit": "px",
+                    "top": "1",
+                    "right": "1",
+                    "bottom": "1",
+                    "left": "1",
+                    "isLinked": false
+                },
+                "border_color": "#e5e3dc",
+                "border_radius": {
+                    "unit": "px",
+                    "top": "12",
+                    "right": "12",
+                    "bottom": "12",
+                    "left": "12",
+                    "isLinked": false
+                },
+                "css_classes": "plugt-m-tabs"
+            },
+            "elements": [
+                {
+                    "id": "bt00008",
+                    "elType": "container",
+                    "isInner": true,
+                    "settings": {
+                        "content_width": "full",
+                        "flex_direction": "row",
+                        "flex_direction_mobile": "column",
+                        "flex_justify_content": "space-between",
+                        "flex_align_items": "flex-end",
+                        "flex_gap": {
+                            "unit": "px",
+                            "size": 16,
+                            "column": "16",
+                            "row": "16"
+                        }
+                    },
+                    "elements": [
+                        {
+                            "id": "bt00007",
+                            "elType": "container",
+                            "isInner": true,
+                            "settings": {
+                                "content_width": "full",
+                                "flex_direction": "column",
+                                "flex_gap": {
+                                    "unit": "px",
+                                    "size": 8,
+                                    "column": "8",
+                                    "row": "8"
+                                }
+                            },
+                            "elements": [
+                                {
+                                    "id": "bt00005",
+                                    "elType": "widget",
+                                    "widgetType": "heading",
+                                    "settings": {
+                                        "title": "OPEN DATA · FINANCES PUBLIQUES",
+                                        "header_size": "h6",
+                                        "__globals__": {
+                                            "title_color": "globals/colors?id=accent"
+                                        }
+                                    },
+                                    "elements": []
+                                },
+                                {
+                                    "id": "bt00006",
+                                    "elType": "widget",
+                                    "widgetType": "heading",
+                                    "settings": {
+                                        "title": "Répartition du budget régional voté et exécuté",
+                                        "header_size": "h2",
+                                        "__globals__": {
+                                            "title_color": "globals/colors?id=primary",
+                                            "typography_typography": "globals/typography?id=primary"
+                                        }
+                                    },
+                                    "elements": []
+                                }
+                            ]
+                        },
+                        {
+                            "id": "bt00004",
+                            "elType": "container",
+                            "isInner": true,
+                            "settings": {
+                                "content_width": "full",
+                                "flex_direction": "row",
+                                "flex_gap": {
+                                    "unit": "px",
+                                    "size": 4,
+                                    "column": "4",
+                                    "row": "4"
+                                },
+                                "flex_wrap": "nowrap",
+                                "padding": {
+                                    "unit": "px",
+                                    "top": "4",
+                                    "right": "4",
+                                    "bottom": "4",
+                                    "left": "4",
+                                    "isLinked": false
+                                },
+                                "background_background": "classic",
+                                "background_color": "#eceae3",
+                                "border_radius": {
+                                    "unit": "px",
+                                    "top": "8",
+                                    "right": "8",
+                                    "bottom": "8",
+                                    "left": "8",
+                                    "isLinked": false
+                                },
+                                "flex_justify_content": "flex-start",
+                                "width": {
+                                    "unit": "px",
+                                    "size": 260
+                                }
+                            },
+                            "elements": [
+                                {
+                                    "id": "bt00001",
+                                    "elType": "widget",
+                                    "widgetType": "button",
+                                    "settings": {
+                                        "text": "2024",
+                                        "link": {
+                                            "url": "#",
+                                            "is_external": "",
+                                            "nofollow": ""
+                                        },
+                                        "size": "xs",
+                                        "_css_classes": "plugt-m-tabs__tab plugt-m-bars__year",
+                                        "background_color": "#00000000",
+                                        "button_text_color": "#3b3a37",
+                                        "border_radius": {
+                                            "unit": "px",
+                                            "top": "6",
+                                            "right": "6",
+                                            "bottom": "6",
+                                            "left": "6",
+                                            "isLinked": false
+                                        },
+                                        "__globals__": {
+                                            "typography_typography": "globals/typography?id=accent"
+                                        }
+                                    },
+                                    "elements": []
+                                },
+                                {
+                                    "id": "bt00002",
+                                    "elType": "widget",
+                                    "widgetType": "button",
+                                    "settings": {
+                                        "text": "2025",
+                                        "link": {
+                                            "url": "#",
+                                            "is_external": "",
+                                            "nofollow": ""
+                                        },
+                                        "size": "xs",
+                                        "_css_classes": "plugt-m-tabs__tab plugt-m-bars__year",
+                                        "background_color": "#00000000",
+                                        "button_text_color": "#3b3a37",
+                                        "border_radius": {
+                                            "unit": "px",
+                                            "top": "6",
+                                            "right": "6",
+                                            "bottom": "6",
+                                            "left": "6",
+                                            "isLinked": false
+                                        },
+                                        "__globals__": {
+                                            "typography_typography": "globals/typography?id=accent"
+                                        }
+                                    },
+                                    "elements": []
+                                },
+                                {
+                                    "id": "bt00003",
+                                    "elType": "widget",
+                                    "widgetType": "button",
+                                    "settings": {
+                                        "text": "2026",
+                                        "link": {
+                                            "url": "#",
+                                            "is_external": "",
+                                            "nofollow": ""
+                                        },
+                                        "size": "xs",
+                                        "_css_classes": "plugt-m-tabs__tab plugt-m-bars__year is-active",
+                                        "background_color": "#00000000",
+                                        "button_text_color": "#3b3a37",
+                                        "border_radius": {
+                                            "unit": "px",
+                                            "top": "6",
+                                            "right": "6",
+                                            "bottom": "6",
+                                            "left": "6",
+                                            "isLinked": false
+                                        },
+                                        "__globals__": {
+                                            "typography_typography": "globals/typography?id=accent"
+                                        }
+                                    },
+                                    "elements": []
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "bt0000s",
+                    "elType": "container",
+                    "isInner": true,
+                    "settings": {
+                        "content_width": "full",
+                        "flex_direction": "column",
+                        "flex_gap": {
+                            "unit": "px",
+                            "size": 12,
+                            "column": "12",
+                            "row": "12"
+                        },
+                        "padding": {
+                            "unit": "px",
+                            "top": "16",
+                            "right": "16",
+                            "bottom": "16",
+                            "left": "16",
+                            "isLinked": false
+                        },
+                        "background_background": "classic",
+                        "background_color": "#ffffff",
+                        "border_border": "solid",
+                        "border_width": {
+                            "unit": "px",
+                            "top": "1",
+                            "right": "1",
+                            "bottom": "1",
+                            "left": "1",
+                            "isLinked": false
+                        },
+                        "border_color": "#e5e3dc",
+                        "border_radius": {
+                            "unit": "px",
+                            "top": "12",
+                            "right": "12",
+                            "bottom": "12",
+                            "left": "12",
+                            "isLinked": false
+                        },
+                        "css_classes": "plugt-m-tabs__panel plugt-m-bars"
+                    },
+                    "elements": [
+                        {
+                            "id": "bt0000r",
+                            "elType": "container",
+                            "isInner": true,
+                            "settings": {
+                                "content_width": "full",
+                                "flex_direction": "row",
+                                "flex_justify_content": "space-between",
+                                "flex_align_items": "baseline",
+                                "padding": {
+                                    "unit": "px",
+                                    "top": "0",
+                                    "right": "0",
+                                    "bottom": "10",
+                                    "left": "0",
+                                    "isLinked": false
+                                },
+                                "border_border": "solid",
+                                "border_width": {
+                                    "unit": "px",
+                                    "top": "0",
+                                    "right": "0",
+                                    "bottom": "1",
+                                    "left": "0",
+                                    "isLinked": false
+                                },
+                                "border_color": "#f0eee8"
+                            },
+                            "elements": [
+                                {
+                                    "id": "bt0000p",
+                                    "elType": "widget",
+                                    "widgetType": "heading",
+                                    "settings": {
+                                        "title": "Budget consolidé 2024",
+                                        "header_size": "span",
+                                        "title_color": "#3b3a37"
+                                    },
+                                    "elements": []
+                                },
+                                {
+                                    "id": "bt0000q",
+                                    "elType": "widget",
+                                    "widgetType": "heading",
+                                    "settings": {
+                                        "title": "4,28 Md €",
+                                        "header_size": "strong",
+                                        "_css_classes": "plugt-m-bars__total",
+                                        "__globals__": {
+                                            "title_color": "globals/colors?id=primary",
+                                            "typography_typography": "globals/typography?id=primary"
+                                        }
+                                    },
+                                    "elements": []
+                                }
+                            ]
+                        },
+                        {
+                            "id": "bt0000c",
+                            "elType": "container",
+                            "isInner": true,
+                            "settings": {
+                                "content_width": "full",
+                                "flex_direction": "column",
+                                "flex_gap": {
+                                    "unit": "px",
+                                    "size": 4,
+                                    "column": "4",
+                                    "row": "4"
+                                },
+                                "css_classes": "plugt-m-bars__row"
+                            },
+                            "elements": [
+                                {
+                                    "id": "bt00009",
+                                    "elType": "widget",
+                                    "widgetType": "heading",
+                                    "settings": {
+                                        "title": "Éducation, lycées & formation",
+                                        "header_size": "span",
+                                        "title_color": "#3b3a37",
+                                        "__globals__": {
+                                            "typography_typography": "globals/typography?id=text"
+                                        }
+                                    },
+                                    "elements": []
+                                },
+                                {
+                                    "id": "bt0000b",
+                                    "elType": "container",
+                                    "isInner": true,
+                                    "settings": {
+                                        "content_width": "full",
+                                        "flex_direction": "row",
+                                        "flex_align_items": "stretch",
+                                        "overflow": "hidden",
+                                        "min_height": {
+                                            "unit": "px",
+                                            "size": 7
+                                        },
+                                        "background_background": "classic",
+                                        "background_color": "#efece5",
+                                        "border_radius": {
+                                            "unit": "px",
+                                            "top": "99",
+                                            "right": "99",
+                                            "bottom": "99",
+                                            "left": "99",
+                                            "isLinked": false
+                                        },
+                                        "css_classes": "plugt-m-bars__track"
+                                    },
+                                    "elements": [
+                                        {
+                                            "id": "bt0000a",
+                                            "elType": "container",
+                                            "isInner": true,
+                                            "settings": {
+                                                "content_width": "full",
+                                                "width": {
+                                                    "unit": "%",
+                                                    "size": 88
+                                                },
+                                                "min_height": {
+                                                    "unit": "px",
+                                                    "size": 7
+                                                },
+                                                "background_background": "classic",
+                                                "border_radius": {
+                                                    "unit": "px",
+                                                    "top": "99",
+                                                    "right": "99",
+                                                    "bottom": "99",
+                                                    "left": "99",
+                                                    "isLinked": false
+                                                },
+                                                "__globals__": {
+                                                    "background_color": "globals/colors?id=accent"
+                                                },
+                                                "css_classes": "plugt-m-bars__fill"
+                                            },
+                                            "elements": []
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": "bt0000g",
+                            "elType": "container",
+                            "isInner": true,
+                            "settings": {
+                                "content_width": "full",
+                                "flex_direction": "column",
+                                "flex_gap": {
+                                    "unit": "px",
+                                    "size": 4,
+                                    "column": "4",
+                                    "row": "4"
+                                },
+                                "css_classes": "plugt-m-bars__row"
+                            },
+                            "elements": [
+                                {
+                                    "id": "bt0000d",
+                                    "elType": "widget",
+                                    "widgetType": "heading",
+                                    "settings": {
+                                        "title": "Mobilités & transports régionaux",
+                                        "header_size": "span",
+                                        "title_color": "#3b3a37",
+                                        "__globals__": {
+                                            "typography_typography": "globals/typography?id=text"
+                                        }
+                                    },
+                                    "elements": []
+                                },
+                                {
+                                    "id": "bt0000f",
+                                    "elType": "container",
+                                    "isInner": true,
+                                    "settings": {
+                                        "content_width": "full",
+                                        "flex_direction": "row",
+                                        "flex_align_items": "stretch",
+                                        "overflow": "hidden",
+                                        "min_height": {
+                                            "unit": "px",
+                                            "size": 7
+                                        },
+                                        "background_background": "classic",
+                                        "background_color": "#efece5",
+                                        "border_radius": {
+                                            "unit": "px",
+                                            "top": "99",
+                                            "right": "99",
+                                            "bottom": "99",
+                                            "left": "99",
+                                            "isLinked": false
+                                        },
+                                        "css_classes": "plugt-m-bars__track"
+                                    },
+                                    "elements": [
+                                        {
+                                            "id": "bt0000e",
+                                            "elType": "container",
+                                            "isInner": true,
+                                            "settings": {
+                                                "content_width": "full",
+                                                "width": {
+                                                    "unit": "%",
+                                                    "size": 74
+                                                },
+                                                "min_height": {
+                                                    "unit": "px",
+                                                    "size": 7
+                                                },
+                                                "background_background": "classic",
+                                                "border_radius": {
+                                                    "unit": "px",
+                                                    "top": "99",
+                                                    "right": "99",
+                                                    "bottom": "99",
+                                                    "left": "99",
+                                                    "isLinked": false
+                                                },
+                                                "__globals__": {
+                                                    "background_color": "globals/colors?id=accent"
+                                                },
+                                                "css_classes": "plugt-m-bars__fill"
+                                            },
+                                            "elements": []
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": "bt0000k",
+                            "elType": "container",
+                            "isInner": true,
+                            "settings": {
+                                "content_width": "full",
+                                "flex_direction": "column",
+                                "flex_gap": {
+                                    "unit": "px",
+                                    "size": 4,
+                                    "column": "4",
+                                    "row": "4"
+                                },
+                                "css_classes": "plugt-m-bars__row"
+                            },
+                            "elements": [
+                                {
+                                    "id": "bt0000h",
+                                    "elType": "widget",
+                                    "widgetType": "heading",
+                                    "settings": {
+                                        "title": "Transition écologique & eau",
+                                        "header_size": "span",
+                                        "title_color": "#3b3a37",
+                                        "__globals__": {
+                                            "typography_typography": "globals/typography?id=text"
+                                        }
+                                    },
+                                    "elements": []
+                                },
+                                {
+                                    "id": "bt0000j",
+                                    "elType": "container",
+                                    "isInner": true,
+                                    "settings": {
+                                        "content_width": "full",
+                                        "flex_direction": "row",
+                                        "flex_align_items": "stretch",
+                                        "overflow": "hidden",
+                                        "min_height": {
+                                            "unit": "px",
+                                            "size": 7
+                                        },
+                                        "background_background": "classic",
+                                        "background_color": "#efece5",
+                                        "border_radius": {
+                                            "unit": "px",
+                                            "top": "99",
+                                            "right": "99",
+                                            "bottom": "99",
+                                            "left": "99",
+                                            "isLinked": false
+                                        },
+                                        "css_classes": "plugt-m-bars__track"
+                                    },
+                                    "elements": [
+                                        {
+                                            "id": "bt0000i",
+                                            "elType": "container",
+                                            "isInner": true,
+                                            "settings": {
+                                                "content_width": "full",
+                                                "width": {
+                                                    "unit": "%",
+                                                    "size": 58
+                                                },
+                                                "min_height": {
+                                                    "unit": "px",
+                                                    "size": 7
+                                                },
+                                                "background_background": "classic",
+                                                "border_radius": {
+                                                    "unit": "px",
+                                                    "top": "99",
+                                                    "right": "99",
+                                                    "bottom": "99",
+                                                    "left": "99",
+                                                    "isLinked": false
+                                                },
+                                                "__globals__": {
+                                                    "background_color": "globals/colors?id=accent"
+                                                },
+                                                "css_classes": "plugt-m-bars__fill"
+                                            },
+                                            "elements": []
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": "bt0000o",
+                            "elType": "container",
+                            "isInner": true,
+                            "settings": {
+                                "content_width": "full",
+                                "flex_direction": "column",
+                                "flex_gap": {
+                                    "unit": "px",
+                                    "size": 4,
+                                    "column": "4",
+                                    "row": "4"
+                                },
+                                "css_classes": "plugt-m-bars__row"
+                            },
+                            "elements": [
+                                {
+                                    "id": "bt0000l",
+                                    "elType": "widget",
+                                    "widgetType": "heading",
+                                    "settings": {
+                                        "title": "Santé publique & cohésion",
+                                        "header_size": "span",
+                                        "title_color": "#3b3a37",
+                                        "__globals__": {
+                                            "typography_typography": "globals/typography?id=text"
+                                        }
+                                    },
+                                    "elements": []
+                                },
+                                {
+                                    "id": "bt0000n",
+                                    "elType": "container",
+                                    "isInner": true,
+                                    "settings": {
+                                        "content_width": "full",
+                                        "flex_direction": "row",
+                                        "flex_align_items": "stretch",
+                                        "overflow": "hidden",
+                                        "min_height": {
+                                            "unit": "px",
+                                            "size": 7
+                                        },
+                                        "background_background": "classic",
+                                        "background_color": "#efece5",
+                                        "border_radius": {
+                                            "unit": "px",
+                                            "top": "99",
+                                            "right": "99",
+                                            "bottom": "99",
+                                            "left": "99",
+                                            "isLinked": false
+                                        },
+                                        "css_classes": "plugt-m-bars__track"
+                                    },
+                                    "elements": [
+                                        {
+                                            "id": "bt0000m",
+                                            "elType": "container",
+                                            "isInner": true,
+                                            "settings": {
+                                                "content_width": "full",
+                                                "width": {
+                                                    "unit": "%",
+                                                    "size": 48
+                                                },
+                                                "min_height": {
+                                                    "unit": "px",
+                                                    "size": 7
+                                                },
+                                                "background_background": "classic",
+                                                "border_radius": {
+                                                    "unit": "px",
+                                                    "top": "99",
+                                                    "right": "99",
+                                                    "bottom": "99",
+                                                    "left": "99",
+                                                    "isLinked": false
+                                                },
+                                                "__globals__": {
+                                                    "background_color": "globals/colors?id=accent"
+                                                },
+                                                "css_classes": "plugt-m-bars__fill"
+                                            },
+                                            "elements": []
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "bt0001c",
+                    "elType": "container",
+                    "isInner": true,
+                    "settings": {
+                        "content_width": "full",
+                        "flex_direction": "column",
+                        "flex_gap": {
+                            "unit": "px",
+                            "size": 12,
+                            "column": "12",
+                            "row": "12"
+                        },
+                        "padding": {
+                            "unit": "px",
+                            "top": "16",
+                            "right": "16",
+                            "bottom": "16",
+                            "left": "16",
+                            "isLinked": false
+                        },
+                        "background_background": "classic",
+                        "background_color": "#ffffff",
+                        "border_border": "solid",
+                        "border_width": {
+                            "unit": "px",
+                            "top": "1",
+                            "right": "1",
+                            "bottom": "1",
+                            "left": "1",
+                            "isLinked": false
+                        },
+                        "border_color": "#e5e3dc",
+                        "border_radius": {
+                            "unit": "px",
+                            "top": "12",
+                            "right": "12",
+                            "bottom": "12",
+                            "left": "12",
+                            "isLinked": false
+                        },
+                        "css_classes": "plugt-m-tabs__panel plugt-m-bars"
+                    },
+                    "elements": [
+                        {
+                            "id": "bt0001b",
+                            "elType": "container",
+                            "isInner": true,
+                            "settings": {
+                                "content_width": "full",
+                                "flex_direction": "row",
+                                "flex_justify_content": "space-between",
+                                "flex_align_items": "baseline",
+                                "padding": {
+                                    "unit": "px",
+                                    "top": "0",
+                                    "right": "0",
+                                    "bottom": "10",
+                                    "left": "0",
+                                    "isLinked": false
+                                },
+                                "border_border": "solid",
+                                "border_width": {
+                                    "unit": "px",
+                                    "top": "0",
+                                    "right": "0",
+                                    "bottom": "1",
+                                    "left": "0",
+                                    "isLinked": false
+                                },
+                                "border_color": "#f0eee8"
+                            },
+                            "elements": [
+                                {
+                                    "id": "bt00019",
+                                    "elType": "widget",
+                                    "widgetType": "heading",
+                                    "settings": {
+                                        "title": "Budget consolidé 2025",
+                                        "header_size": "span",
+                                        "title_color": "#3b3a37"
+                                    },
+                                    "elements": []
+                                },
+                                {
+                                    "id": "bt0001a",
+                                    "elType": "widget",
+                                    "widgetType": "heading",
+                                    "settings": {
+                                        "title": "4,54 Md €",
+                                        "header_size": "strong",
+                                        "_css_classes": "plugt-m-bars__total",
+                                        "__globals__": {
+                                            "title_color": "globals/colors?id=primary",
+                                            "typography_typography": "globals/typography?id=primary"
+                                        }
+                                    },
+                                    "elements": []
+                                }
+                            ]
+                        },
+                        {
+                            "id": "bt0000w",
+                            "elType": "container",
+                            "isInner": true,
+                            "settings": {
+                                "content_width": "full",
+                                "flex_direction": "column",
+                                "flex_gap": {
+                                    "unit": "px",
+                                    "size": 4,
+                                    "column": "4",
+                                    "row": "4"
+                                },
+                                "css_classes": "plugt-m-bars__row"
+                            },
+                            "elements": [
+                                {
+                                    "id": "bt0000t",
+                                    "elType": "widget",
+                                    "widgetType": "heading",
+                                    "settings": {
+                                        "title": "Éducation, lycées & formation",
+                                        "header_size": "span",
+                                        "title_color": "#3b3a37",
+                                        "__globals__": {
+                                            "typography_typography": "globals/typography?id=text"
+                                        }
+                                    },
+                                    "elements": []
+                                },
+                                {
+                                    "id": "bt0000v",
+                                    "elType": "container",
+                                    "isInner": true,
+                                    "settings": {
+                                        "content_width": "full",
+                                        "flex_direction": "row",
+                                        "flex_align_items": "stretch",
+                                        "overflow": "hidden",
+                                        "min_height": {
+                                            "unit": "px",
+                                            "size": 7
+                                        },
+                                        "background_background": "classic",
+                                        "background_color": "#efece5",
+                                        "border_radius": {
+                                            "unit": "px",
+                                            "top": "99",
+                                            "right": "99",
+                                            "bottom": "99",
+                                            "left": "99",
+                                            "isLinked": false
+                                        },
+                                        "css_classes": "plugt-m-bars__track"
+                                    },
+                                    "elements": [
+                                        {
+                                            "id": "bt0000u",
+                                            "elType": "container",
+                                            "isInner": true,
+                                            "settings": {
+                                                "content_width": "full",
+                                                "width": {
+                                                    "unit": "%",
+                                                    "size": 90
+                                                },
+                                                "min_height": {
+                                                    "unit": "px",
+                                                    "size": 7
+                                                },
+                                                "background_background": "classic",
+                                                "border_radius": {
+                                                    "unit": "px",
+                                                    "top": "99",
+                                                    "right": "99",
+                                                    "bottom": "99",
+                                                    "left": "99",
+                                                    "isLinked": false
+                                                },
+                                                "__globals__": {
+                                                    "background_color": "globals/colors?id=accent"
+                                                },
+                                                "css_classes": "plugt-m-bars__fill"
+                                            },
+                                            "elements": []
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": "bt00010",
+                            "elType": "container",
+                            "isInner": true,
+                            "settings": {
+                                "content_width": "full",
+                                "flex_direction": "column",
+                                "flex_gap": {
+                                    "unit": "px",
+                                    "size": 4,
+                                    "column": "4",
+                                    "row": "4"
+                                },
+                                "css_classes": "plugt-m-bars__row"
+                            },
+                            "elements": [
+                                {
+                                    "id": "bt0000x",
+                                    "elType": "widget",
+                                    "widgetType": "heading",
+                                    "settings": {
+                                        "title": "Mobilités & transports régionaux",
+                                        "header_size": "span",
+                                        "title_color": "#3b3a37",
+                                        "__globals__": {
+                                            "typography_typography": "globals/typography?id=text"
+                                        }
+                                    },
+                                    "elements": []
+                                },
+                                {
+                                    "id": "bt0000z",
+                                    "elType": "container",
+                                    "isInner": true,
+                                    "settings": {
+                                        "content_width": "full",
+                                        "flex_direction": "row",
+                                        "flex_align_items": "stretch",
+                                        "overflow": "hidden",
+                                        "min_height": {
+                                            "unit": "px",
+                                            "size": 7
+                                        },
+                                        "background_background": "classic",
+                                        "background_color": "#efece5",
+                                        "border_radius": {
+                                            "unit": "px",
+                                            "top": "99",
+                                            "right": "99",
+                                            "bottom": "99",
+                                            "left": "99",
+                                            "isLinked": false
+                                        },
+                                        "css_classes": "plugt-m-bars__track"
+                                    },
+                                    "elements": [
+                                        {
+                                            "id": "bt0000y",
+                                            "elType": "container",
+                                            "isInner": true,
+                                            "settings": {
+                                                "content_width": "full",
+                                                "width": {
+                                                    "unit": "%",
+                                                    "size": 77
+                                                },
+                                                "min_height": {
+                                                    "unit": "px",
+                                                    "size": 7
+                                                },
+                                                "background_background": "classic",
+                                                "border_radius": {
+                                                    "unit": "px",
+                                                    "top": "99",
+                                                    "right": "99",
+                                                    "bottom": "99",
+                                                    "left": "99",
+                                                    "isLinked": false
+                                                },
+                                                "__globals__": {
+                                                    "background_color": "globals/colors?id=accent"
+                                                },
+                                                "css_classes": "plugt-m-bars__fill"
+                                            },
+                                            "elements": []
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": "bt00014",
+                            "elType": "container",
+                            "isInner": true,
+                            "settings": {
+                                "content_width": "full",
+                                "flex_direction": "column",
+                                "flex_gap": {
+                                    "unit": "px",
+                                    "size": 4,
+                                    "column": "4",
+                                    "row": "4"
+                                },
+                                "css_classes": "plugt-m-bars__row"
+                            },
+                            "elements": [
+                                {
+                                    "id": "bt00011",
+                                    "elType": "widget",
+                                    "widgetType": "heading",
+                                    "settings": {
+                                        "title": "Transition écologique & eau",
+                                        "header_size": "span",
+                                        "title_color": "#3b3a37",
+                                        "__globals__": {
+                                            "typography_typography": "globals/typography?id=text"
+                                        }
+                                    },
+                                    "elements": []
+                                },
+                                {
+                                    "id": "bt00013",
+                                    "elType": "container",
+                                    "isInner": true,
+                                    "settings": {
+                                        "content_width": "full",
+                                        "flex_direction": "row",
+                                        "flex_align_items": "stretch",
+                                        "overflow": "hidden",
+                                        "min_height": {
+                                            "unit": "px",
+                                            "size": 7
+                                        },
+                                        "background_background": "classic",
+                                        "background_color": "#efece5",
+                                        "border_radius": {
+                                            "unit": "px",
+                                            "top": "99",
+                                            "right": "99",
+                                            "bottom": "99",
+                                            "left": "99",
+                                            "isLinked": false
+                                        },
+                                        "css_classes": "plugt-m-bars__track"
+                                    },
+                                    "elements": [
+                                        {
+                                            "id": "bt00012",
+                                            "elType": "container",
+                                            "isInner": true,
+                                            "settings": {
+                                                "content_width": "full",
+                                                "width": {
+                                                    "unit": "%",
+                                                    "size": 64
+                                                },
+                                                "min_height": {
+                                                    "unit": "px",
+                                                    "size": 7
+                                                },
+                                                "background_background": "classic",
+                                                "border_radius": {
+                                                    "unit": "px",
+                                                    "top": "99",
+                                                    "right": "99",
+                                                    "bottom": "99",
+                                                    "left": "99",
+                                                    "isLinked": false
+                                                },
+                                                "__globals__": {
+                                                    "background_color": "globals/colors?id=accent"
+                                                },
+                                                "css_classes": "plugt-m-bars__fill"
+                                            },
+                                            "elements": []
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": "bt00018",
+                            "elType": "container",
+                            "isInner": true,
+                            "settings": {
+                                "content_width": "full",
+                                "flex_direction": "column",
+                                "flex_gap": {
+                                    "unit": "px",
+                                    "size": 4,
+                                    "column": "4",
+                                    "row": "4"
+                                },
+                                "css_classes": "plugt-m-bars__row"
+                            },
+                            "elements": [
+                                {
+                                    "id": "bt00015",
+                                    "elType": "widget",
+                                    "widgetType": "heading",
+                                    "settings": {
+                                        "title": "Santé publique & cohésion",
+                                        "header_size": "span",
+                                        "title_color": "#3b3a37",
+                                        "__globals__": {
+                                            "typography_typography": "globals/typography?id=text"
+                                        }
+                                    },
+                                    "elements": []
+                                },
+                                {
+                                    "id": "bt00017",
+                                    "elType": "container",
+                                    "isInner": true,
+                                    "settings": {
+                                        "content_width": "full",
+                                        "flex_direction": "row",
+                                        "flex_align_items": "stretch",
+                                        "overflow": "hidden",
+                                        "min_height": {
+                                            "unit": "px",
+                                            "size": 7
+                                        },
+                                        "background_background": "classic",
+                                        "background_color": "#efece5",
+                                        "border_radius": {
+                                            "unit": "px",
+                                            "top": "99",
+                                            "right": "99",
+                                            "bottom": "99",
+                                            "left": "99",
+                                            "isLinked": false
+                                        },
+                                        "css_classes": "plugt-m-bars__track"
+                                    },
+                                    "elements": [
+                                        {
+                                            "id": "bt00016",
+                                            "elType": "container",
+                                            "isInner": true,
+                                            "settings": {
+                                                "content_width": "full",
+                                                "width": {
+                                                    "unit": "%",
+                                                    "size": 47
+                                                },
+                                                "min_height": {
+                                                    "unit": "px",
+                                                    "size": 7
+                                                },
+                                                "background_background": "classic",
+                                                "border_radius": {
+                                                    "unit": "px",
+                                                    "top": "99",
+                                                    "right": "99",
+                                                    "bottom": "99",
+                                                    "left": "99",
+                                                    "isLinked": false
+                                                },
+                                                "__globals__": {
+                                                    "background_color": "globals/colors?id=accent"
+                                                },
+                                                "css_classes": "plugt-m-bars__fill"
+                                            },
+                                            "elements": []
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "bt0001w",
+                    "elType": "container",
+                    "isInner": true,
+                    "settings": {
+                        "content_width": "full",
+                        "flex_direction": "column",
+                        "flex_gap": {
+                            "unit": "px",
+                            "size": 12,
+                            "column": "12",
+                            "row": "12"
+                        },
+                        "padding": {
+                            "unit": "px",
+                            "top": "16",
+                            "right": "16",
+                            "bottom": "16",
+                            "left": "16",
+                            "isLinked": false
+                        },
+                        "background_background": "classic",
+                        "background_color": "#ffffff",
+                        "border_border": "solid",
+                        "border_width": {
+                            "unit": "px",
+                            "top": "1",
+                            "right": "1",
+                            "bottom": "1",
+                            "left": "1",
+                            "isLinked": false
+                        },
+                        "border_color": "#e5e3dc",
+                        "border_radius": {
+                            "unit": "px",
+                            "top": "12",
+                            "right": "12",
+                            "bottom": "12",
+                            "left": "12",
+                            "isLinked": false
+                        },
+                        "css_classes": "plugt-m-tabs__panel plugt-m-bars is-active"
+                    },
+                    "elements": [
+                        {
+                            "id": "bt0001v",
+                            "elType": "container",
+                            "isInner": true,
+                            "settings": {
+                                "content_width": "full",
+                                "flex_direction": "row",
+                                "flex_justify_content": "space-between",
+                                "flex_align_items": "baseline",
+                                "padding": {
+                                    "unit": "px",
+                                    "top": "0",
+                                    "right": "0",
+                                    "bottom": "10",
+                                    "left": "0",
+                                    "isLinked": false
+                                },
+                                "border_border": "solid",
+                                "border_width": {
+                                    "unit": "px",
+                                    "top": "0",
+                                    "right": "0",
+                                    "bottom": "1",
+                                    "left": "0",
+                                    "isLinked": false
+                                },
+                                "border_color": "#f0eee8"
+                            },
+                            "elements": [
+                                {
+                                    "id": "bt0001t",
+                                    "elType": "widget",
+                                    "widgetType": "heading",
+                                    "settings": {
+                                        "title": "Budget consolidé 2026",
+                                        "header_size": "span",
+                                        "title_color": "#3b3a37"
+                                    },
+                                    "elements": []
+                                },
+                                {
+                                    "id": "bt0001u",
+                                    "elType": "widget",
+                                    "widgetType": "heading",
+                                    "settings": {
+                                        "title": "4,79 Md €",
+                                        "header_size": "strong",
+                                        "_css_classes": "plugt-m-bars__total",
+                                        "__globals__": {
+                                            "title_color": "globals/colors?id=primary",
+                                            "typography_typography": "globals/typography?id=primary"
+                                        }
+                                    },
+                                    "elements": []
+                                }
+                            ]
+                        },
+                        {
+                            "id": "bt0001g",
+                            "elType": "container",
+                            "isInner": true,
+                            "settings": {
+                                "content_width": "full",
+                                "flex_direction": "column",
+                                "flex_gap": {
+                                    "unit": "px",
+                                    "size": 4,
+                                    "column": "4",
+                                    "row": "4"
+                                },
+                                "css_classes": "plugt-m-bars__row"
+                            },
+                            "elements": [
+                                {
+                                    "id": "bt0001d",
+                                    "elType": "widget",
+                                    "widgetType": "heading",
+                                    "settings": {
+                                        "title": "Éducation, lycées & formation",
+                                        "header_size": "span",
+                                        "title_color": "#3b3a37",
+                                        "__globals__": {
+                                            "typography_typography": "globals/typography?id=text"
+                                        }
+                                    },
+                                    "elements": []
+                                },
+                                {
+                                    "id": "bt0001f",
+                                    "elType": "container",
+                                    "isInner": true,
+                                    "settings": {
+                                        "content_width": "full",
+                                        "flex_direction": "row",
+                                        "flex_align_items": "stretch",
+                                        "overflow": "hidden",
+                                        "min_height": {
+                                            "unit": "px",
+                                            "size": 7
+                                        },
+                                        "background_background": "classic",
+                                        "background_color": "#efece5",
+                                        "border_radius": {
+                                            "unit": "px",
+                                            "top": "99",
+                                            "right": "99",
+                                            "bottom": "99",
+                                            "left": "99",
+                                            "isLinked": false
+                                        },
+                                        "css_classes": "plugt-m-bars__track"
+                                    },
+                                    "elements": [
+                                        {
+                                            "id": "bt0001e",
+                                            "elType": "container",
+                                            "isInner": true,
+                                            "settings": {
+                                                "content_width": "full",
+                                                "width": {
+                                                    "unit": "%",
+                                                    "size": 92
+                                                },
+                                                "min_height": {
+                                                    "unit": "px",
+                                                    "size": 7
+                                                },
+                                                "background_background": "classic",
+                                                "border_radius": {
+                                                    "unit": "px",
+                                                    "top": "99",
+                                                    "right": "99",
+                                                    "bottom": "99",
+                                                    "left": "99",
+                                                    "isLinked": false
+                                                },
+                                                "__globals__": {
+                                                    "background_color": "globals/colors?id=accent"
+                                                },
+                                                "css_classes": "plugt-m-bars__fill"
+                                            },
+                                            "elements": []
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": "bt0001k",
+                            "elType": "container",
+                            "isInner": true,
+                            "settings": {
+                                "content_width": "full",
+                                "flex_direction": "column",
+                                "flex_gap": {
+                                    "unit": "px",
+                                    "size": 4,
+                                    "column": "4",
+                                    "row": "4"
+                                },
+                                "css_classes": "plugt-m-bars__row"
+                            },
+                            "elements": [
+                                {
+                                    "id": "bt0001h",
+                                    "elType": "widget",
+                                    "widgetType": "heading",
+                                    "settings": {
+                                        "title": "Mobilités & transports régionaux",
+                                        "header_size": "span",
+                                        "title_color": "#3b3a37",
+                                        "__globals__": {
+                                            "typography_typography": "globals/typography?id=text"
+                                        }
+                                    },
+                                    "elements": []
+                                },
+                                {
+                                    "id": "bt0001j",
+                                    "elType": "container",
+                                    "isInner": true,
+                                    "settings": {
+                                        "content_width": "full",
+                                        "flex_direction": "row",
+                                        "flex_align_items": "stretch",
+                                        "overflow": "hidden",
+                                        "min_height": {
+                                            "unit": "px",
+                                            "size": 7
+                                        },
+                                        "background_background": "classic",
+                                        "background_color": "#efece5",
+                                        "border_radius": {
+                                            "unit": "px",
+                                            "top": "99",
+                                            "right": "99",
+                                            "bottom": "99",
+                                            "left": "99",
+                                            "isLinked": false
+                                        },
+                                        "css_classes": "plugt-m-bars__track"
+                                    },
+                                    "elements": [
+                                        {
+                                            "id": "bt0001i",
+                                            "elType": "container",
+                                            "isInner": true,
+                                            "settings": {
+                                                "content_width": "full",
+                                                "width": {
+                                                    "unit": "%",
+                                                    "size": 81
+                                                },
+                                                "min_height": {
+                                                    "unit": "px",
+                                                    "size": 7
+                                                },
+                                                "background_background": "classic",
+                                                "border_radius": {
+                                                    "unit": "px",
+                                                    "top": "99",
+                                                    "right": "99",
+                                                    "bottom": "99",
+                                                    "left": "99",
+                                                    "isLinked": false
+                                                },
+                                                "__globals__": {
+                                                    "background_color": "globals/colors?id=accent"
+                                                },
+                                                "css_classes": "plugt-m-bars__fill"
+                                            },
+                                            "elements": []
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": "bt0001o",
+                            "elType": "container",
+                            "isInner": true,
+                            "settings": {
+                                "content_width": "full",
+                                "flex_direction": "column",
+                                "flex_gap": {
+                                    "unit": "px",
+                                    "size": 4,
+                                    "column": "4",
+                                    "row": "4"
+                                },
+                                "css_classes": "plugt-m-bars__row"
+                            },
+                            "elements": [
+                                {
+                                    "id": "bt0001l",
+                                    "elType": "widget",
+                                    "widgetType": "heading",
+                                    "settings": {
+                                        "title": "Transition écologique & eau",
+                                        "header_size": "span",
+                                        "title_color": "#3b3a37",
+                                        "__globals__": {
+                                            "typography_typography": "globals/typography?id=text"
+                                        }
+                                    },
+                                    "elements": []
+                                },
+                                {
+                                    "id": "bt0001n",
+                                    "elType": "container",
+                                    "isInner": true,
+                                    "settings": {
+                                        "content_width": "full",
+                                        "flex_direction": "row",
+                                        "flex_align_items": "stretch",
+                                        "overflow": "hidden",
+                                        "min_height": {
+                                            "unit": "px",
+                                            "size": 7
+                                        },
+                                        "background_background": "classic",
+                                        "background_color": "#efece5",
+                                        "border_radius": {
+                                            "unit": "px",
+                                            "top": "99",
+                                            "right": "99",
+                                            "bottom": "99",
+                                            "left": "99",
+                                            "isLinked": false
+                                        },
+                                        "css_classes": "plugt-m-bars__track"
+                                    },
+                                    "elements": [
+                                        {
+                                            "id": "bt0001m",
+                                            "elType": "container",
+                                            "isInner": true,
+                                            "settings": {
+                                                "content_width": "full",
+                                                "width": {
+                                                    "unit": "%",
+                                                    "size": 70
+                                                },
+                                                "min_height": {
+                                                    "unit": "px",
+                                                    "size": 7
+                                                },
+                                                "background_background": "classic",
+                                                "border_radius": {
+                                                    "unit": "px",
+                                                    "top": "99",
+                                                    "right": "99",
+                                                    "bottom": "99",
+                                                    "left": "99",
+                                                    "isLinked": false
+                                                },
+                                                "__globals__": {
+                                                    "background_color": "globals/colors?id=accent"
+                                                },
+                                                "css_classes": "plugt-m-bars__fill"
+                                            },
+                                            "elements": []
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": "bt0001s",
+                            "elType": "container",
+                            "isInner": true,
+                            "settings": {
+                                "content_width": "full",
+                                "flex_direction": "column",
+                                "flex_gap": {
+                                    "unit": "px",
+                                    "size": 4,
+                                    "column": "4",
+                                    "row": "4"
+                                },
+                                "css_classes": "plugt-m-bars__row"
+                            },
+                            "elements": [
+                                {
+                                    "id": "bt0001p",
+                                    "elType": "widget",
+                                    "widgetType": "heading",
+                                    "settings": {
+                                        "title": "Santé publique & cohésion",
+                                        "header_size": "span",
+                                        "title_color": "#3b3a37",
+                                        "__globals__": {
+                                            "typography_typography": "globals/typography?id=text"
+                                        }
+                                    },
+                                    "elements": []
+                                },
+                                {
+                                    "id": "bt0001r",
+                                    "elType": "container",
+                                    "isInner": true,
+                                    "settings": {
+                                        "content_width": "full",
+                                        "flex_direction": "row",
+                                        "flex_align_items": "stretch",
+                                        "overflow": "hidden",
+                                        "min_height": {
+                                            "unit": "px",
+                                            "size": 7
+                                        },
+                                        "background_background": "classic",
+                                        "background_color": "#efece5",
+                                        "border_radius": {
+                                            "unit": "px",
+                                            "top": "99",
+                                            "right": "99",
+                                            "bottom": "99",
+                                            "left": "99",
+                                            "isLinked": false
+                                        },
+                                        "css_classes": "plugt-m-bars__track"
+                                    },
+                                    "elements": [
+                                        {
+                                            "id": "bt0001q",
+                                            "elType": "container",
+                                            "isInner": true,
+                                            "settings": {
+                                                "content_width": "full",
+                                                "width": {
+                                                    "unit": "%",
+                                                    "size": 46
+                                                },
+                                                "min_height": {
+                                                    "unit": "px",
+                                                    "size": 7
+                                                },
+                                                "background_background": "classic",
+                                                "border_radius": {
+                                                    "unit": "px",
+                                                    "top": "99",
+                                                    "right": "99",
+                                                    "bottom": "99",
+                                                    "left": "99",
+                                                    "isLinked": false
+                                                },
+                                                "__globals__": {
+                                                    "background_color": "globals/colors?id=accent"
+                                                },
+                                                "css_classes": "plugt-m-bars__fill"
+                                            },
+                                            "elements": []
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -68,6 +68,47 @@ final class TemplateValidatorTest extends TestCase {
 		$this->assertErrorContains( 'média externe', $result['errors'] );
 	}
 
+	public function test_motion_classes_are_checked(): void {
+		$ok                                   = $this->widget( 'abc0001', 'heading' );
+		$ok['settings']['_css_classes']       = 'ma-classe plugt-m-tabs__tab plugt-glass plugt-m-reveal--stagger';
+		$container                            = array(
+			'id'       => 'abc0002',
+			'elType'   => 'container',
+			'settings' => array( 'css_classes' => 'plugt-m-accordion plugt-m-inconnu plugt-m-tabs__Bad' ),
+			'elements' => array( $ok ),
+		);
+		$result = ( new TemplateValidator() )->validate( $this->make_template( array( 'content' => array( $container ) ) ) );
+		$this->assertCount( 2, $result['errors'] );
+		$this->assertErrorContains( 'classe « plugt-m-inconnu » inconnue', $result['errors'] );
+		$this->assertErrorContains( 'classe « plugt-m-tabs__Bad » inconnue', $result['errors'] );
+	}
+
+	public function test_class_setting_key_matches_element_type(): void {
+		$widget                            = $this->widget( 'abc0001', 'heading' );
+		$widget['settings']['css_classes'] = 'plugt-m-tabs__tab';
+		$container                         = array(
+			'id'       => 'abc0002',
+			'elType'   => 'container',
+			'settings' => array( '_css_classes' => 'plugt-m-tabs' ),
+			'elements' => array( $widget ),
+		);
+		$errors = ( new TemplateValidator() )->validate( $this->make_template( array( 'content' => array( $container ) ) ) )['errors'];
+		$this->assertErrorContains( 'attend « css_classes » pour un container', $errors );
+		$this->assertErrorContains( 'attend « _css_classes » pour un widget', $errors );
+	}
+
+	public function test_html_widget_stays_static(): void {
+		$svg                      = $this->widget( 'abc0001', 'html' );
+		$svg['settings']['html']  = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"><path d="M0 0"/></svg>';
+		$bad                      = $this->widget( 'abc0002', 'html' );
+		$bad['settings']['html']  = '<script>alert(1)</script><img src="https://cdn.example.com/x" onerror="x()">';
+		$result = ( new TemplateValidator() )->validate( $this->make_template( array( 'content' => array( $svg, $bad ) ) ) );
+		$this->assertCount( 3, $result['errors'] );
+		$this->assertErrorContains( 'balises script', $result['errors'] );
+		$this->assertErrorContains( 'attributs on*', $result['errors'] );
+		$this->assertErrorContains( 'ressource externe', $result['errors'] );
+	}
+
 	public function test_missing_and_unused_media(): void {
 		$dir = $this->make_template();
 		unlink( $dir . '/media/photo.webp' );
@@ -107,6 +148,42 @@ final class TemplateValidatorTest extends TestCase {
 		$this->assertErrorContains( 'type « popup » invalide', $errors );
 		$this->assertErrorContains( 'SemVer', $errors );
 		$this->assertErrorContains( 'variante « v9 » inconnue', $errors );
+	}
+
+	public function test_display_meta_is_checked(): void {
+		$dir    = $this->make_template(
+			null,
+			array(
+				'category' => 'divers',
+				'code'     => 'T-1',
+				'accent'   => 'red',
+				'sector'   => '',
+				'motion'   => str_repeat( 'x', 81 ),
+			)
+		);
+		$errors = ( new TemplateValidator() )->validate( $dir )['errors'];
+		$this->assertErrorContains( 'catégorie « divers » inconnue', $errors );
+		$this->assertErrorContains( '« code »', $errors );
+		$this->assertErrorContains( '« accent »', $errors );
+		$this->assertErrorContains( '« sector »', $errors );
+		$this->assertErrorContains( '« motion »', $errors );
+	}
+
+	public function test_valid_display_meta_and_preview(): void {
+		$dir = $this->make_template(
+			null,
+			array(
+				'code'   => 'TPL-07',
+				'accent' => '#0A2E5C',
+				'sector' => 'Collectivités',
+				'motion' => 'Barres animées',
+			)
+		);
+		file_put_contents( $dir . '/preview.webm', 'x' );
+		$this->assertSame( array(), ( new TemplateValidator() )->validate( $dir )['errors'] );
+
+		file_put_contents( $dir . '/preview.webm', str_repeat( 'x', \PlugTemplates\Library\Schema::PREVIEW_MAX_BYTES + 1 ) );
+		$this->assertErrorContains( 'preview.webm trop lourd', ( new TemplateValidator() )->validate( $dir )['errors'] );
 	}
 
 	public function test_invalid_json_and_missing_thumbnail(): void {
@@ -162,7 +239,7 @@ final class TemplateValidatorTest extends TestCase {
 				'id'       => 'mon-template',
 				'title'    => 'Mon template',
 				'type'     => 'section',
-				'category' => 'test',
+				'category' => 'hero',
 				'version'  => '1.0.0',
 				'variants' => array( 'v3' ),
 			),

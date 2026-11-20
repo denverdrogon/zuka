@@ -44,6 +44,7 @@ final class ManifestBuilder {
 		$templates_dir = rtrim( str_replace( '\\', '/', $templates_dir ), '/' );
 		$entries       = array();
 		$reports       = array();
+		$codes         = array();
 
 		foreach ( $this->template_dirs( $templates_dir ) as $slug => $dir ) {
 			$result           = $this->validator->validate( $dir );
@@ -55,7 +56,16 @@ final class ManifestBuilder {
 				continue;
 			}
 
-			$meta      = $result['meta'];
+			$meta = $result['meta'];
+			$code = isset( $meta['code'] ) ? (string) $meta['code'] : null;
+			if ( null !== $code && isset( $codes[ $code ] ) ) {
+				$reports[ $slug ]['errors'][] = sprintf( 'meta.json : code « %s » déjà utilisé par « %s ».', $code, $codes[ $code ] );
+				continue;
+			}
+			if ( null !== $code ) {
+				$codes[ $code ] = $slug;
+			}
+
 			$entries[] = array(
 				'id'            => $slug,
 				'title'         => (string) $meta['title'],
@@ -68,6 +78,11 @@ final class ManifestBuilder {
 				'variants'      => $result['variants'],
 				'widgets'       => $result['widgets'],
 				'thumbnail'     => $slug . '/thumbnail.webp',
+				'code'          => $code,
+				'sector'        => isset( $meta['sector'] ) ? (string) $meta['sector'] : null,
+				'motion'        => isset( $meta['motion'] ) ? (string) $meta['motion'] : null,
+				'accent'        => isset( $meta['accent'] ) ? strtolower( (string) $meta['accent'] ) : null,
+				'preview'       => is_file( $dir . '/' . Schema::PREVIEW_FILE ) ? $slug . '/' . Schema::PREVIEW_FILE : null,
 				'hash'          => $this->hash( $dir, $result['variants'] ),
 			);
 		}

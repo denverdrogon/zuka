@@ -19,6 +19,23 @@ Tout appel interne à Elementor (classes, hooks, documents, API v3/v4) passe par
 - Par template : `templates/<slug>/` avec `meta.json`, `content.v3.json` et/ou `content.v4.json` (optionnels), `media/`, `thumbnail.webp`. Index : `templates/manifest.json` (généré par `bin/build-manifest.php`).
 - Utiliser les Global Colors/Fonts (`__globals__`) plutôt que des valeurs en dur.
 
+## Couche motion
+- Le motion design passe par des classes CSS, jamais par des widgets maison ni des data-* (`_attributes` est Pro) :
+  - `plugt-m-<module>` marque la racine d'un module ;
+  - `plugt-m-<module>__<part>` marque une partie ;
+  - `--<modifier>` marque une variante ;
+  - utilitaires : `plugt-glass`.
+- Clé de réglage : `css_classes` sur un conteneur, `_css_classes` sur un widget (vérifié par le validateur).
+- Modules autorisés : `Schema::MOTION_MODULES`. Code dans `assets/src/motion/modules/<module>.{js,css}`, inclus automatiquement par le bundle.
+- Contrat JS dans `assets/src/motion/core.js` :
+  - `registerModule`, `parts`, `setActive` (émet `plugt:activate`), `onVisible`, `pressable` ;
+  - ne masquer que sous `.plugt-motion-ready` ;
+  - tout laisser visible sous `.elementor-editor-active` ;
+  - respecter `prefers-reduced-motion`.
+- Le widget `html` reste statique : pas de script, pas de on*, pas d'URL externe.
+- Assets chargés uniquement sur les pages qui utilisent une classe `plugt-` (`src/Frontend/MotionAssets.php`).
+- Source d'inspiration : `other sources/atelier-wp-templates (3).zip` (prototype Gemini, 21 sections).
+
 ## Sécurité
 - Nonces sur toute action d'admin ; `permission_callback` explicite sur chaque route REST.
 - Sanitation des entrées, échappement des sorties, requêtes préparées.

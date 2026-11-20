@@ -1,0 +1,22 @@
+{
+    "id": "diagnostics-accordion",
+    "title": "Accordéon de diagnostics",
+    "description": "Quatre panneaux dégradés dont l'actif s'élargit, avec description, carte de verre et jauge animée.",
+    "type": "section",
+    "category": "carousel",
+    "code": "TPL-02",
+    "sector": "Santé & bien-être",
+    "motion": "Flex-grow expo + jauge SVG",
+    "accent": "#4A5E3A",
+    "tags": [
+        "accordéon",
+        "animation",
+        "jauge",
+        "santé"
+    ],
+    "version": "1.0.0",
+    "elementor_min": "3.25.0",
+    "variants": [
+        "v3"
+    ]
+}

@@ -1,0 +1,48 @@
+/* Module bars — scaleX growth of `.plugt-m-bars__fill`; hidden only once JS is ready. */
+.plugt-m-bars__track {
+	overflow: hidden;
+}
+
+.plugt-m-bars__fill {
+	transform-origin: left center;
+}
+
+.plugt-motion-ready .plugt-m-bars:not(.is-in) .plugt-m-bars__fill {
+	transform: scaleX(0);
+}
+
+.plugt-motion-ready .plugt-m-bars.is-in .plugt-m-bars__fill {
+	transform: scaleX(1);
+	transition: transform 0.6s var(--plugt-ease);
+}
+
+.plugt-motion-ready .plugt-m-bars.is-reset .plugt-m-bars__fill {
+	transition: none !important;
+}
+
+/* Year selector buttons (used with module tabs). */
+.plugt-m-bars__year {
+	cursor: pointer;
+}
+
+.plugt-m-bars__year .elementor-button {
+	transition: background-color var(--plugt-dur-fast) ease, color var(--plugt-dur-fast) ease;
+}
+
+.plugt-m-bars__year.is-active .elementor-button {
+	background-color: var(--plugt-accent) !important;
+	color: #fff !important;
+}
+
+/* In the editor everything stays visible and editable. */
+.elementor-editor-active .plugt-m-bars__fill {
+	transform: none !important;
+	transition: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.plugt-motion-ready .plugt-m-bars .plugt-m-bars__fill {
+		transform: none !important;
+		transition: none !important;
+	}
+}

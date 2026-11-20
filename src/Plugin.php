@@ -8,6 +8,7 @@
 namespace PlugTemplates;
 
 use PlugTemplates\Elementor\Adapter;
+use PlugTemplates\Frontend\MotionAssets;
 use PlugTemplates\Library\ContentTransformer;
 use PlugTemplates\Library\Importer;
 use PlugTemplates\Library\MediaImporter;
@@ -138,6 +139,7 @@ final class Plugin {
 		$this->importer   = new Importer( $this->repository, $this->elementor, new MediaImporter(), new ContentTransformer() );
 
 		( new TemplatesController( $this->repository, $this->importer ) )->register();
+		( new MotionAssets( $this->elementor, PLUGT_PATH . 'assets/build', PLUGT_URL . 'assets/build' ) )->register();
 
 		/**
 		 * Fires once requirements are met and core services are registered.

@@ -1,0 +1,814 @@
+{
+	"version": "0.4",
+	"title": "Accordéon de diagnostics",
+	"type": "section",
+	"content": [
+		{
+			"id": "da0046x",
+			"elType": "container",
+			"isInner": false,
+			"settings": {
+				"content_width": "boxed",
+				"flex_direction": "column",
+				"flex_gap": {
+					"unit": "px",
+					"size": 24,
+					"column": "24",
+					"row": "24"
+				},
+				"padding": {
+					"unit": "px",
+					"top": "80",
+					"right": "24",
+					"bottom": "80",
+					"left": "24",
+					"isLinked": false
+				},
+				"css_classes": "plugt-m-accordion"
+			},
+			"elements": [
+				{
+					"id": "da0044x",
+					"elType": "container",
+					"isInner": true,
+					"settings": {
+						"content_width": "full",
+						"flex_direction": "row",
+						"flex_direction_mobile": "column",
+						"flex_justify_content": "space-between",
+						"flex_align_items": "flex-end",
+						"flex_align_items_mobile": "flex-start",
+						"flex_gap": {
+							"unit": "px",
+							"size": 20,
+							"column": "20",
+							"row": "20"
+						}
+					},
+					"elements": [
+						{
+							"id": "da0039x",
+							"elType": "container",
+							"isInner": true,
+							"settings": {
+								"content_width": "full",
+								"flex_direction": "column",
+								"flex_gap": {
+									"unit": "px",
+									"size": 8,
+									"column": "8",
+									"row": "8"
+								},
+								"width": {
+									"unit": "px",
+									"size": 720
+								}
+							},
+							"elements": [
+								{
+									"id": "da0037x",
+									"elType": "widget",
+									"widgetType": "heading",
+									"settings": {
+										"title": "· Bilan de santé",
+										"header_size": "div",
+										"__globals__": {
+											"title_color": "globals/colors?id=text"
+										}
+									},
+									"elements": []
+								},
+								{
+									"id": "da0038x",
+									"elType": "widget",
+									"widgetType": "heading",
+									"settings": {
+										"title": "Une lecture complète de la santé de votre animal, de la tête à la queue",
+										"header_size": "h2",
+										"__globals__": {
+											"title_color": "globals/colors?id=primary",
+											"typography_typography": "globals/typography?id=secondary"
+										}
+									},
+									"elements": []
+								}
+							]
+						},
+						{
+							"id": "da0043x",
+							"elType": "container",
+							"isInner": true,
+							"settings": {
+								"content_width": "full",
+								"flex_direction": "row",
+								"flex_align_items": "center",
+								"flex_gap": {
+									"unit": "px",
+									"size": 8,
+									"column": "8",
+									"row": "8"
+								}
+							},
+							"elements": [
+								{
+									"id": "da0040x",
+									"elType": "widget",
+									"widgetType": "heading",
+									"settings": {
+										"title": "01 / 04",
+										"header_size": "div",
+										"_css_classes": "plugt-m-accordion__counter"
+									},
+									"elements": []
+								},
+								{
+									"id": "da0041x",
+									"elType": "widget",
+									"widgetType": "button",
+									"settings": {
+										"text": "←",
+										"_css_classes": "plugt-m-accordion__prev"
+									},
+									"elements": []
+								},
+								{
+									"id": "da0042x",
+									"elType": "widget",
+									"widgetType": "button",
+									"settings": {
+										"text": "→",
+										"_css_classes": "plugt-m-accordion__next"
+									},
+									"elements": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"id": "da0045x",
+					"elType": "container",
+					"isInner": true,
+					"settings": {
+						"content_width": "full",
+						"flex_direction": "row",
+						"flex_direction_mobile": "column",
+						"flex_gap": {
+							"unit": "px",
+							"size": 12,
+							"column": "12",
+							"row": "12"
+						},
+						"min_height": {
+							"unit": "px",
+							"size": 460
+						},
+						"css_classes": "plugt-m-accordion__track"
+					},
+					"elements": [
+						{
+							"id": "da0009x",
+							"elType": "container",
+							"isInner": true,
+							"settings": {
+								"content_width": "full",
+								"flex_direction": "column",
+								"flex_gap": {
+									"unit": "px",
+									"size": 0,
+									"column": "0",
+									"row": "0"
+								},
+								"overflow": "hidden",
+								"border_radius": {
+									"unit": "px",
+									"top": "12",
+									"right": "12",
+									"bottom": "12",
+									"left": "12",
+									"isLinked": true
+								},
+								"css_classes": "plugt-m-accordion__panel is-active"
+							},
+							"elements": [
+								{
+									"id": "da0001x",
+									"elType": "container",
+									"isInner": true,
+									"settings": {
+										"content_width": "full",
+										"background_background": "gradient",
+										"background_color": "#6d7a55",
+										"background_color_b": "#344423",
+										"background_gradient_type": "linear",
+										"background_gradient_angle": {
+											"unit": "deg",
+											"size": 175
+										},
+										"css_classes": "plugt-m-accordion__bg",
+										"__globals__": {
+											"background_color": "globals/colors?id=primary",
+											"background_color_b": "globals/colors?id=secondary"
+										}
+									},
+									"elements": []
+								},
+								{
+									"id": "da0008x",
+									"elType": "container",
+									"isInner": true,
+									"settings": {
+										"content_width": "full",
+										"flex_direction": "row",
+										"flex_justify_content": "space-between",
+										"flex_align_items": "flex-end",
+										"flex_gap": {
+											"unit": "px",
+											"size": 16,
+											"column": "16",
+											"row": "16"
+										},
+										"padding": {
+											"unit": "px",
+											"top": "22",
+											"right": "22",
+											"bottom": "22",
+											"left": "22",
+											"isLinked": false
+										},
+										"css_classes": "plugt-m-accordion__inner"
+									},
+									"elements": [
+										{
+											"id": "da0004x",
+											"elType": "container",
+											"isInner": true,
+											"settings": {
+												"content_width": "full",
+												"flex_direction": "column",
+												"css_classes": "plugt-m-accordion__copy"
+											},
+											"elements": [
+												{
+													"id": "da0002x",
+													"elType": "widget",
+													"widgetType": "heading",
+													"settings": {
+														"title": "Diagnostic de la tête à la queue",
+														"header_size": "h3",
+														"_css_classes": "plugt-m-accordion__title"
+													},
+													"elements": []
+												},
+												{
+													"id": "da0003x",
+													"elType": "widget",
+													"widgetType": "text-editor",
+													"settings": {
+														"editor": "<p>Cartographiez la santé de votre compagnon grâce à des analyses complètes à domicile, et repérez les maladies bien avant les premiers symptômes.</p>",
+														"_css_classes": "plugt-m-accordion__desc"
+													},
+													"elements": []
+												}
+											]
+										},
+										{
+											"id": "da0007x",
+											"elType": "container",
+											"isInner": true,
+											"settings": {
+												"content_width": "full",
+												"flex_direction": "column",
+												"flex_gap": {
+													"unit": "px",
+													"size": 0,
+													"column": "0",
+													"row": "0"
+												},
+												"width": {
+													"unit": "px",
+													"size": 204
+												},
+												"padding": {
+													"unit": "px",
+													"top": "14",
+													"right": "14",
+													"bottom": "14",
+													"left": "14",
+													"isLinked": false
+												},
+												"css_classes": "plugt-glass plugt-m-accordion__hud"
+											},
+											"elements": [
+												{
+													"id": "da0005x",
+													"elType": "widget",
+													"widgetType": "heading",
+													"settings": {
+														"title": "Indice de santé",
+														"header_size": "div"
+													},
+													"elements": []
+												},
+												{
+													"id": "da0006x",
+													"elType": "widget",
+													"widgetType": "html",
+													"settings": {
+														"html": "<svg viewBox=\"0 0 140 84\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Indice de santé : 57 sur 100\" data-value=\"57\" style=\"--plugt-gauge:57\"><path class=\"plugt-m-gauge__track\" d=\"M 18 68 A 52 52 0 1 1 122 68\" pathLength=\"100\"/><path class=\"plugt-m-gauge__arc\" d=\"M 18 68 A 52 52 0 1 1 122 68\" pathLength=\"100\"/><text class=\"plugt-m-gauge__value\" x=\"70\" y=\"62\">57</text><text class=\"plugt-m-gauge__unit\" x=\"70\" y=\"78\">sur 100</text></svg>",
+														"_css_classes": "plugt-m-gauge"
+													},
+													"elements": []
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"id": "da0018x",
+							"elType": "container",
+							"isInner": true,
+							"settings": {
+								"content_width": "full",
+								"flex_direction": "column",
+								"flex_gap": {
+									"unit": "px",
+									"size": 0,
+									"column": "0",
+									"row": "0"
+								},
+								"overflow": "hidden",
+								"border_radius": {
+									"unit": "px",
+									"top": "12",
+									"right": "12",
+									"bottom": "12",
+									"left": "12",
+									"isLinked": true
+								},
+								"css_classes": "plugt-m-accordion__panel"
+							},
+							"elements": [
+								{
+									"id": "da0010x",
+									"elType": "container",
+									"isInner": true,
+									"settings": {
+										"content_width": "full",
+										"background_background": "gradient",
+										"background_color": "#4e5b49",
+										"background_color_b": "#1d261a",
+										"background_gradient_type": "linear",
+										"background_gradient_angle": {
+											"unit": "deg",
+											"size": 165
+										},
+										"css_classes": "plugt-m-accordion__bg",
+										"__globals__": {
+											"background_color": "globals/colors?id=secondary",
+											"background_color_b": "globals/colors?id=accent"
+										}
+									},
+									"elements": []
+								},
+								{
+									"id": "da0017x",
+									"elType": "container",
+									"isInner": true,
+									"settings": {
+										"content_width": "full",
+										"flex_direction": "row",
+										"flex_justify_content": "space-between",
+										"flex_align_items": "flex-end",
+										"flex_gap": {
+											"unit": "px",
+											"size": 16,
+											"column": "16",
+											"row": "16"
+										},
+										"padding": {
+											"unit": "px",
+											"top": "22",
+											"right": "22",
+											"bottom": "22",
+											"left": "22",
+											"isLinked": false
+										},
+										"css_classes": "plugt-m-accordion__inner"
+									},
+									"elements": [
+										{
+											"id": "da0013x",
+											"elType": "container",
+											"isInner": true,
+											"settings": {
+												"content_width": "full",
+												"flex_direction": "column",
+												"css_classes": "plugt-m-accordion__copy"
+											},
+											"elements": [
+												{
+													"id": "da0011x",
+													"elType": "widget",
+													"widgetType": "heading",
+													"settings": {
+														"title": "Plans de prévention personnalisés",
+														"header_size": "h3",
+														"_css_classes": "plugt-m-accordion__title"
+													},
+													"elements": []
+												},
+												{
+													"id": "da0012x",
+													"elType": "widget",
+													"widgetType": "text-editor",
+													"settings": {
+														"editor": "<p>Recevez une nutrition sur mesure, des compléments ciblés et des protocoles de soins saisonniers conçus par nos cliniciens seniors.</p>",
+														"_css_classes": "plugt-m-accordion__desc"
+													},
+													"elements": []
+												}
+											]
+										},
+										{
+											"id": "da0016x",
+											"elType": "container",
+											"isInner": true,
+											"settings": {
+												"content_width": "full",
+												"flex_direction": "column",
+												"flex_gap": {
+													"unit": "px",
+													"size": 0,
+													"column": "0",
+													"row": "0"
+												},
+												"width": {
+													"unit": "px",
+													"size": 204
+												},
+												"padding": {
+													"unit": "px",
+													"top": "14",
+													"right": "14",
+													"bottom": "14",
+													"left": "14",
+													"isLinked": false
+												},
+												"css_classes": "plugt-glass plugt-m-accordion__hud"
+											},
+											"elements": [
+												{
+													"id": "da0014x",
+													"elType": "widget",
+													"widgetType": "heading",
+													"settings": {
+														"title": "Protocole longévité",
+														"header_size": "div"
+													},
+													"elements": []
+												},
+												{
+													"id": "da0015x",
+													"elType": "widget",
+													"widgetType": "html",
+													"settings": {
+														"html": "<svg viewBox=\"0 0 140 84\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Protocole longévité : 94 % d'adhésion\" data-value=\"94\" style=\"--plugt-gauge:94\"><path class=\"plugt-m-gauge__track\" d=\"M 18 68 A 52 52 0 1 1 122 68\" pathLength=\"100\"/><path class=\"plugt-m-gauge__arc\" d=\"M 18 68 A 52 52 0 1 1 122 68\" pathLength=\"100\"/><text class=\"plugt-m-gauge__value\" x=\"70\" y=\"62\">94</text><text class=\"plugt-m-gauge__unit\" x=\"70\" y=\"78\">% d'adhésion</text></svg>",
+														"_css_classes": "plugt-m-gauge"
+													},
+													"elements": []
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"id": "da0027x",
+							"elType": "container",
+							"isInner": true,
+							"settings": {
+								"content_width": "full",
+								"flex_direction": "column",
+								"flex_gap": {
+									"unit": "px",
+									"size": 0,
+									"column": "0",
+									"row": "0"
+								},
+								"overflow": "hidden",
+								"border_radius": {
+									"unit": "px",
+									"top": "12",
+									"right": "12",
+									"bottom": "12",
+									"left": "12",
+									"isLinked": true
+								},
+								"css_classes": "plugt-m-accordion__panel"
+							},
+							"elements": [
+								{
+									"id": "da0019x",
+									"elType": "container",
+									"isInner": true,
+									"settings": {
+										"content_width": "full",
+										"background_background": "gradient",
+										"background_color": "#8a6f52",
+										"background_color_b": "#2e231c",
+										"background_gradient_type": "linear",
+										"background_gradient_angle": {
+											"unit": "deg",
+											"size": 160
+										},
+										"css_classes": "plugt-m-accordion__bg",
+										"__globals__": {
+											"background_color": "globals/colors?id=accent",
+											"background_color_b": "globals/colors?id=text"
+										}
+									},
+									"elements": []
+								},
+								{
+									"id": "da0026x",
+									"elType": "container",
+									"isInner": true,
+									"settings": {
+										"content_width": "full",
+										"flex_direction": "row",
+										"flex_justify_content": "space-between",
+										"flex_align_items": "flex-end",
+										"flex_gap": {
+											"unit": "px",
+											"size": 16,
+											"column": "16",
+											"row": "16"
+										},
+										"padding": {
+											"unit": "px",
+											"top": "22",
+											"right": "22",
+											"bottom": "22",
+											"left": "22",
+											"isLinked": false
+										},
+										"css_classes": "plugt-m-accordion__inner"
+									},
+									"elements": [
+										{
+											"id": "da0022x",
+											"elType": "container",
+											"isInner": true,
+											"settings": {
+												"content_width": "full",
+												"flex_direction": "column",
+												"css_classes": "plugt-m-accordion__copy"
+											},
+											"elements": [
+												{
+													"id": "da0020x",
+													"elType": "widget",
+													"widgetType": "heading",
+													"settings": {
+														"title": "Vétérinaires spécialistes à domicile",
+														"header_size": "h3",
+														"_css_classes": "plugt-m-accordion__title"
+													},
+													"elements": []
+												},
+												{
+													"id": "da0021x",
+													"elType": "widget",
+													"widgetType": "text-editor",
+													"settings": {
+														"editor": "<p>Évitez les salles d'attente stressantes : les prélèvements sont réalisés en douceur, sans peur, directement dans votre salon.</p>",
+														"_css_classes": "plugt-m-accordion__desc"
+													},
+													"elements": []
+												}
+											]
+										},
+										{
+											"id": "da0025x",
+											"elType": "container",
+											"isInner": true,
+											"settings": {
+												"content_width": "full",
+												"flex_direction": "column",
+												"flex_gap": {
+													"unit": "px",
+													"size": 0,
+													"column": "0",
+													"row": "0"
+												},
+												"width": {
+													"unit": "px",
+													"size": 204
+												},
+												"padding": {
+													"unit": "px",
+													"top": "14",
+													"right": "14",
+													"bottom": "14",
+													"left": "14",
+													"isLinked": false
+												},
+												"css_classes": "plugt-glass plugt-m-accordion__hud"
+											},
+											"elements": [
+												{
+													"id": "da0023x",
+													"elType": "widget",
+													"widgetType": "heading",
+													"settings": {
+														"title": "Délai d'analyse",
+														"header_size": "div"
+													},
+													"elements": []
+												},
+												{
+													"id": "da0024x",
+													"elType": "widget",
+													"widgetType": "html",
+													"settings": {
+														"html": "<svg viewBox=\"0 0 140 84\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Délai d'analyse : 48 heures en moyenne\" data-value=\"48\" style=\"--plugt-gauge:48\"><path class=\"plugt-m-gauge__track\" d=\"M 18 68 A 52 52 0 1 1 122 68\" pathLength=\"100\"/><path class=\"plugt-m-gauge__arc\" d=\"M 18 68 A 52 52 0 1 1 122 68\" pathLength=\"100\"/><text class=\"plugt-m-gauge__value\" x=\"70\" y=\"62\">48</text><text class=\"plugt-m-gauge__unit\" x=\"70\" y=\"78\">heures en moyenne</text></svg>",
+														"_css_classes": "plugt-m-gauge"
+													},
+													"elements": []
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"id": "da0036x",
+							"elType": "container",
+							"isInner": true,
+							"settings": {
+								"content_width": "full",
+								"flex_direction": "column",
+								"flex_gap": {
+									"unit": "px",
+									"size": 0,
+									"column": "0",
+									"row": "0"
+								},
+								"overflow": "hidden",
+								"border_radius": {
+									"unit": "px",
+									"top": "12",
+									"right": "12",
+									"bottom": "12",
+									"left": "12",
+									"isLinked": true
+								},
+								"css_classes": "plugt-m-accordion__panel"
+							},
+							"elements": [
+								{
+									"id": "da0028x",
+									"elType": "container",
+									"isInner": true,
+									"settings": {
+										"content_width": "full",
+										"background_background": "gradient",
+										"background_color": "#8e5e54",
+										"background_color_b": "#241616",
+										"background_gradient_type": "linear",
+										"background_gradient_angle": {
+											"unit": "deg",
+											"size": 155
+										},
+										"css_classes": "plugt-m-accordion__bg",
+										"__globals__": {
+											"background_color": "globals/colors?id=text",
+											"background_color_b": "globals/colors?id=primary"
+										}
+									},
+									"elements": []
+								},
+								{
+									"id": "da0035x",
+									"elType": "container",
+									"isInner": true,
+									"settings": {
+										"content_width": "full",
+										"flex_direction": "row",
+										"flex_justify_content": "space-between",
+										"flex_align_items": "flex-end",
+										"flex_gap": {
+											"unit": "px",
+											"size": 16,
+											"column": "16",
+											"row": "16"
+										},
+										"padding": {
+											"unit": "px",
+											"top": "22",
+											"right": "22",
+											"bottom": "22",
+											"left": "22",
+											"isLinked": false
+										},
+										"css_classes": "plugt-m-accordion__inner"
+									},
+									"elements": [
+										{
+											"id": "da0031x",
+											"elType": "container",
+											"isInner": true,
+											"settings": {
+												"content_width": "full",
+												"flex_direction": "column",
+												"css_classes": "plugt-m-accordion__copy"
+											},
+											"elements": [
+												{
+													"id": "da0029x",
+													"elType": "widget",
+													"widgetType": "heading",
+													"settings": {
+														"title": "Un suivi année après année",
+														"header_size": "h3",
+														"_css_classes": "plugt-m-accordion__title"
+													},
+													"elements": []
+												},
+												{
+													"id": "da0030x",
+													"elType": "widget",
+													"widgetType": "text-editor",
+													"settings": {
+														"editor": "<p>Comparez plus de 50 marqueurs cellulaires, organiques et métaboliques pour mesurer le vieillissement de votre animal au fil du temps.</p>",
+														"_css_classes": "plugt-m-accordion__desc"
+													},
+													"elements": []
+												}
+											]
+										},
+										{
+											"id": "da0034x",
+											"elType": "container",
+											"isInner": true,
+											"settings": {
+												"content_width": "full",
+												"flex_direction": "column",
+												"flex_gap": {
+													"unit": "px",
+													"size": 0,
+													"column": "0",
+													"row": "0"
+												},
+												"width": {
+													"unit": "px",
+													"size": 204
+												},
+												"padding": {
+													"unit": "px",
+													"top": "14",
+													"right": "14",
+													"bottom": "14",
+													"left": "14",
+													"isLinked": false
+												},
+												"css_classes": "plugt-glass plugt-m-accordion__hud"
+											},
+											"elements": [
+												{
+													"id": "da0032x",
+													"elType": "widget",
+													"widgetType": "heading",
+													"settings": {
+														"title": "Indice de vitalité",
+														"header_size": "div"
+													},
+													"elements": []
+												},
+												{
+													"id": "da0033x",
+													"elType": "widget",
+													"widgetType": "html",
+													"settings": {
+														"html": "<svg viewBox=\"0 0 140 84\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Indice de vitalité : 86 sur 100\" data-value=\"86\" style=\"--plugt-gauge:86\"><path class=\"plugt-m-gauge__track\" d=\"M 18 68 A 52 52 0 1 1 122 68\" pathLength=\"100\"/><path class=\"plugt-m-gauge__arc\" d=\"M 18 68 A 52 52 0 1 1 122 68\" pathLength=\"100\"/><text class=\"plugt-m-gauge__value\" x=\"70\" y=\"62\">86</text><text class=\"plugt-m-gauge__unit\" x=\"70\" y=\"78\">sur 100</text></svg>",
+														"_css_classes": "plugt-m-gauge"
+													},
+													"elements": []
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}

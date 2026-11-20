@@ -1,0 +1,124 @@
+/* Module tabs — base behaviour. Visual refinements belong to this file too. */
+.plugt-m-tabs__tab {
+	position: relative;
+	overflow: hidden;
+	border-radius: 10px;
+	cursor: pointer;
+	transition: background-color var(--plugt-dur-fast) ease, border-color var(--plugt-dur-fast) ease, opacity var(--plugt-dur-fast) ease, transform var(--plugt-dur) var(--plugt-ease), box-shadow var(--plugt-dur) var(--plugt-ease);
+}
+
+.plugt-m-tabs__tab:hover {
+	transform: translateY(-2px);
+	border-color: rgba(255, 255, 255, 0.45);
+}
+
+.plugt-m-tabs__tab:focus-visible {
+	outline: 2px solid #fff;
+	outline-offset: 2px;
+}
+
+/* Active tab: brighter glass + soft glow (beats .plugt-glass specificity). */
+.plugt-m-tabs__tab.is-active {
+	background: rgba(255, 255, 255, 0.3) !important;
+	border-color: rgba(255, 255, 255, 0.6);
+	box-shadow: 0 10px 28px -10px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+.plugt-m-tabs__tab:not(.is-active) {
+	opacity: 0.82;
+}
+
+/* Elevated card. */
+.plugt-m-tabs__panel {
+	transform-origin: 50% 100%;
+}
+
+.plugt-motion-ready .plugt-m-tabs__panel:not(.is-active) {
+	display: none !important;
+}
+
+.plugt-motion-ready .plugt-m-tabs__panel.is-active {
+	animation: plugt-tabs-in var(--plugt-dur-slow) var(--plugt-ease) both;
+}
+
+.plugt-motion-ready .plugt-m-tabs__panel.is-active > * {
+	animation: plugt-tabs-child var(--plugt-dur-slow) var(--plugt-ease) both;
+}
+
+.plugt-motion-ready .plugt-m-tabs__panel.is-active > :nth-child(2) {
+	animation-delay: 0.07s;
+}
+
+.plugt-motion-ready .plugt-m-tabs__panel.is-active > :nth-child(3) {
+	animation-delay: 0.14s;
+}
+
+/* Autoplay: progress bar under the active tab (restarts on every change). */
+.plugt-m-tabs--autoplay .plugt-m-tabs__tab.is-active::after {
+	content: "";
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	height: 3px;
+	width: 100%;
+	background: rgba(255, 255, 255, 0.85);
+	transform-origin: 0 50%;
+	animation: plugt-tabs-progress 6s linear both;
+}
+
+.plugt-m-tabs--autoplay.is-paused .plugt-m-tabs__tab.is-active::after {
+	animation: none;
+	opacity: 0;
+}
+
+/* In the editor every panel stays visible and editable. */
+.elementor-editor-active .plugt-m-tabs__panel {
+	display: flex !important;
+	animation: none !important;
+}
+
+.elementor-editor-active .plugt-m-tabs__panel > *,
+.elementor-editor-active .plugt-m-tabs__tab::after {
+	animation: none !important;
+}
+
+@keyframes plugt-tabs-in {
+	from {
+		opacity: 0;
+		transform: translateY(18px) scale(0.98);
+	}
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+@keyframes plugt-tabs-child {
+	from {
+		opacity: 0;
+		transform: translateY(8px);
+	}
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+@keyframes plugt-tabs-progress {
+	from {
+		transform: scaleX(0);
+	}
+	to {
+		transform: scaleX(1);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.plugt-m-tabs__tab:hover {
+		transform: none;
+	}
+
+	.plugt-m-tabs--autoplay .plugt-m-tabs__tab.is-active::after {
+		animation: none;
+	}
+}

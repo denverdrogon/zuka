@@ -29,6 +29,36 @@ final class Schema {
 	public const REQUIRED_META = array( 'id', 'title', 'type', 'category', 'version', 'variants' );
 
 	/**
+	 * Category keys (closed list). Labels are translated in Admin\LibraryPage.
+	 */
+	public const CATEGORIES = array(
+		'hero',
+		'carousel',
+		'bento',
+		'split',
+		'tabs',
+		'public-sector',
+		'header',
+		'footer',
+		'testimonials',
+		'landing',
+	);
+
+	/** Optional `code` (library reference, unique). */
+	public const CODE_PATTERN = '/^TPL-\d{2,3}$/';
+
+	/** Optional `accent` (admin display only, never used in content). */
+	public const ACCENT_PATTERN = '/^#[0-9A-Fa-f]{6}$/';
+
+	/** Max length of the optional `sector` and `motion` labels. */
+	public const SECTOR_MAX_LENGTH = 60;
+	public const MOTION_MAX_LENGTH = 80;
+
+	/** Optional looping preview clip shown in the admin library. */
+	public const PREVIEW_FILE      = 'preview.webm';
+	public const PREVIEW_MAX_BYTES = 3145728;
+
+	/**
 	 * Structural element types of the v3 editor.
 	 */
 	public const V3_ELEMENT_TYPES = array( 'container', 'section', 'column', 'widget' );
@@ -87,6 +117,26 @@ final class Schema {
 		'e-svg',
 		'e-youtube',
 	);
+
+	/**
+	 * Motion layer: CSS classes (Free `css_classes` / `_css_classes` settings)
+	 * read by assets/src/motion. A class `plugt-m-<module>` marks a module root;
+	 * `plugt-m-<module>__<part>` marks one of its parts and `--<modifier>` a variant.
+	 * Each module has its own assets/src/motion/modules/<module>.{js,css}.
+	 */
+	public const MOTION_PREFIX = 'plugt-m-';
+
+	public const MOTION_MODULES = array( 'accordion', 'bars', 'gauge', 'reveal', 'tabs' );
+
+	/**
+	 * Purely visual helper classes of the motion stylesheet.
+	 */
+	public const MOTION_UTILITIES = array( 'plugt-glass', 'plugt-glass--dark' );
+
+	/**
+	 * Settings holding CSS classes (containers / widgets).
+	 */
+	public const CLASS_SETTINGS = array( 'css_classes', '_css_classes' );
 
 	/**
 	 * Setting keys (or key prefixes) that only Elementor Pro understands.

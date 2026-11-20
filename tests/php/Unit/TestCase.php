@@ -18,6 +18,10 @@ abstract class TestCase extends PolyfillTestCase {
 	}
 
 	protected function tear_down(): void {
+		$container = \Mockery::getContainer();
+		if ( null !== $container ) {
+			$this->addToAssertionCount( $container->mockery_getExpectationCount() );
+		}
 		Monkey\tearDown();
 		parent::tear_down();
 	}

@@ -1,0 +1,24 @@
+/* Hidden state only once JS is ready, so content stays visible without the plugin. */
+.plugt-motion-ready .plugt-m-reveal:not(.plugt-m-reveal--stagger),
+.plugt-motion-ready .plugt-m-reveal--stagger > * {
+	opacity: 0;
+	transform: translateY(18px);
+	transition: opacity var(--plugt-dur) ease, transform var(--plugt-dur-slow) var(--plugt-ease);
+}
+
+.plugt-motion-ready .plugt-m-reveal--stagger > * {
+	transition-delay: calc(var(--plugt-i, 0) * 80ms);
+}
+
+.plugt-motion-ready .plugt-m-reveal.is-visible:not(.plugt-m-reveal--stagger),
+.plugt-motion-ready .plugt-m-reveal--stagger.is-visible > * {
+	opacity: 1;
+	transform: none;
+}
+
+/* Never hide content inside the editor. */
+.elementor-editor-active .plugt-m-reveal,
+.elementor-editor-active .plugt-m-reveal > * {
+	opacity: 1 !important;
+	transform: none !important;
+}

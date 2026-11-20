@@ -1,0 +1,36 @@
+/*
+ * Plug Templates — motion layer, shared tokens and utilities.
+ * Timings and easing come from the Atelier designs (expo-out, 60fps transforms).
+ * Colours always fall back to Elementor's Global Colors.
+ */
+:root {
+	--plugt-ease: cubic-bezier(0.22, 1, 0.36, 1);
+	--plugt-ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+	--plugt-dur-fast: 0.2s;
+	--plugt-dur: 0.45s;
+	--plugt-dur-slow: 0.72s;
+	--plugt-accent: var(--e-global-color-accent, var(--e-global-color-primary, #4a5e3a));
+}
+
+/* Frosted glass card (works on any container). */
+.plugt-glass {
+	background: rgba(255, 255, 255, 0.14) !important;
+	border: 1px solid rgba(255, 255, 255, 0.28);
+	-webkit-backdrop-filter: blur(16px);
+	backdrop-filter: blur(16px);
+}
+
+.plugt-glass--dark {
+	background: rgba(20, 20, 19, 0.32) !important;
+	border-color: rgba(255, 255, 255, 0.16);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	[class*="plugt-m-"],
+	[class*="plugt-m-"] * {
+		transition-duration: 0.01ms !important;
+		transition-delay: 0ms !important;
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+	}
+}

@@ -1,0 +1,59 @@
+/* Module gauge — arc collapsed only under .plugt-motion-ready. */
+.plugt-m-gauge svg {
+	display: block;
+	width: 132px;
+	max-width: 100%;
+	height: auto;
+	margin: 6px auto 0;
+	overflow: visible;
+	color: inherit;
+}
+
+.plugt-m-gauge__track,
+.plugt-m-gauge__arc {
+	fill: none;
+	stroke-linecap: round;
+}
+
+.plugt-m-gauge__track {
+	stroke: rgba(255, 255, 255, 0.22);
+	stroke-width: 3.2;
+}
+
+.plugt-m-gauge__arc {
+	stroke: currentColor;
+	stroke-width: 3.4;
+	stroke-dasharray: 100;
+	stroke-dashoffset: calc(100 - var(--plugt-gauge, 0));
+}
+
+.plugt-m-gauge__value,
+.plugt-m-gauge__unit {
+	fill: currentColor;
+	font-family: inherit;
+	text-anchor: middle;
+}
+
+.plugt-m-gauge__value {
+	font-size: 26px;
+	font-weight: 400;
+	font-variant-numeric: tabular-nums;
+}
+
+.plugt-m-gauge__unit {
+	font-size: 9.5px;
+	opacity: 0.75;
+}
+
+.plugt-motion-ready .plugt-m-gauge__arc {
+	stroke-dashoffset: 100;
+	transition: stroke-dashoffset 0.95s var(--plugt-ease) 0.22s;
+}
+
+.plugt-motion-ready .plugt-m-gauge.is-on .plugt-m-gauge__arc {
+	stroke-dashoffset: calc(100 - var(--plugt-gauge, 0));
+}
+
+.elementor-editor-active .plugt-m-gauge__arc {
+	stroke-dashoffset: calc(100 - var(--plugt-gauge, 0)) !important;
+}

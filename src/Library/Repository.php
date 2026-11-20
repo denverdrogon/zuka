@@ -115,6 +115,19 @@ class Repository {
 	}
 
 	/**
+	 * Public URL of the optional preview clip, null when the template has none.
+	 *
+	 * @param string $id Template id.
+	 */
+	public function preview_url( string $id ): ?string {
+		$entry = $this->get( $id );
+		if ( null === $entry || ! is_string( $entry['preview'] ?? null ) || '' === $entry['preview'] ) {
+			return null;
+		}
+		return $this->url . '/' . rawurlencode( $id ) . '/' . Schema::PREVIEW_FILE;
+	}
+
+	/**
 	 * Loads the manifest once per request.
 	 *
 	 * @return array<string, array<string, mixed>>

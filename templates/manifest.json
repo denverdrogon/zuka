@@ -2,6 +2,67 @@
     "schema": 1,
     "templates": [
         {
+            "id": "budget-transparency",
+            "title": "Transparence Budgétaire & Open Data",
+            "description": "Répartition du budget par année : sélecteur d'année, total compté et barres animées.",
+            "type": "section",
+            "category": "public-sector",
+            "tags": [
+                "budget",
+                "open data",
+                "collectivité",
+                "barres",
+                "animation"
+            ],
+            "version": "1.0.0",
+            "elementor_min": "3.25.0",
+            "variants": [
+                "v3"
+            ],
+            "widgets": [
+                "button",
+                "heading"
+            ],
+            "thumbnail": "budget-transparency/thumbnail.webp",
+            "code": "TPL-01",
+            "sector": "Collectivités & finances",
+            "motion": "Barres scaleX + sélecteur annuel",
+            "accent": "#1e3a8a",
+            "preview": null,
+            "hash": "2a50be695bd54136"
+        },
+        {
+            "id": "diagnostics-accordion",
+            "title": "Accordéon de diagnostics",
+            "description": "Quatre panneaux dégradés dont l'actif s'élargit, avec description, carte de verre et jauge animée.",
+            "type": "section",
+            "category": "carousel",
+            "tags": [
+                "accordéon",
+                "animation",
+                "jauge",
+                "santé"
+            ],
+            "version": "1.0.0",
+            "elementor_min": "3.25.0",
+            "variants": [
+                "v3"
+            ],
+            "widgets": [
+                "button",
+                "heading",
+                "html",
+                "text-editor"
+            ],
+            "thumbnail": "diagnostics-accordion/thumbnail.webp",
+            "code": "TPL-02",
+            "sector": "Santé & bien-être",
+            "motion": "Flex-grow expo + jauge SVG",
+            "accent": "#4a5e3a",
+            "preview": null,
+            "hash": "7c56d5564c7cc0de"
+        },
+        {
             "id": "header-simple",
             "title": "En-tête simple",
             "description": "Logo, liens de navigation et bouton d'action sur une ligne. Section à insérer en haut de page (l'assignation globale nécessiterait Elementor Pro).",
@@ -23,14 +84,48 @@
                 "image"
             ],
             "thumbnail": "header-simple/thumbnail.webp",
-            "hash": "1678e9669f1290c7"
+            "code": "TPL-04",
+            "sector": "Tous secteurs",
+            "motion": null,
+            "accent": "#141413",
+            "preview": null,
+            "hash": "1c8118755580b028"
+        },
+        {
+            "id": "institutional-tabs",
+            "title": "Slider institutionnel à onglets",
+            "description": "Fond sombre, quatre onglets en verre dépoli et une carte blanche qui change à chaque onglet (animation d'entrée, lecture automatique optionnelle).",
+            "type": "section",
+            "category": "tabs",
+            "tags": [
+                "onglets",
+                "verre",
+                "institutionnel",
+                "animation"
+            ],
+            "version": "1.0.0",
+            "elementor_min": "3.25.0",
+            "variants": [
+                "v3"
+            ],
+            "widgets": [
+                "heading",
+                "text-editor"
+            ],
+            "thumbnail": "institutional-tabs/thumbnail.webp",
+            "code": "TPL-03",
+            "sector": "Finance & immobilier",
+            "motion": "Carte élevée + onglets verre dépoli",
+            "accent": "#1f1e1b",
+            "preview": null,
+            "hash": "caa1f12a6e8d7a7d"
         },
         {
             "id": "page-accueil-agence",
             "title": "Accueil — Agence",
             "description": "Page d'accueil complète : hero, trois services et appel à l'action.",
             "type": "page",
-            "category": "accueil",
+            "category": "landing",
             "tags": [
                 "agence",
                 "services",
@@ -50,14 +145,19 @@
                 "text-editor"
             ],
             "thumbnail": "page-accueil-agence/thumbnail.webp",
-            "hash": "1e5026d7d60d6796"
+            "code": "TPL-05",
+            "sector": "Agences & services",
+            "motion": null,
+            "accent": "#0f766e",
+            "preview": null,
+            "hash": "4f15dcb75cc7d9fd"
         },
         {
             "id": "section-temoignages",
             "title": "Témoignages clients",
             "description": "Titre et trois témoignages avec photo, nom et fonction.",
             "type": "section",
-            "category": "témoignages",
+            "category": "testimonials",
             "tags": [
                 "avis",
                 "clients",
@@ -73,7 +173,12 @@
                 "testimonial"
             ],
             "thumbnail": "section-temoignages/thumbnail.webp",
-            "hash": "979cf03f0872c7b9"
+            "code": "TPL-06",
+            "sector": "Tous secteurs",
+            "motion": null,
+            "accent": "#6d88c4",
+            "preview": null,
+            "hash": "95ca2c2467d3ec2d"
         }
     ]
 }

@@ -1,0 +1,840 @@
+{
+    "version": "0.4",
+    "title": "Slider institutionnel",
+    "type": "section",
+    "content": [
+        {
+            "id": "it30x30q",
+            "elType": "container",
+            "isInner": false,
+            "settings": {
+                "content_width": "boxed",
+                "flex_direction": "column",
+                "flex_gap": {
+                    "unit": "px",
+                    "size": 24,
+                    "column": "24",
+                    "row": "24"
+                },
+                "background_background": "gradient",
+                "background_color": "#2d2a24",
+                "background_color_b": "#1c1b18",
+                "background_gradient_type": "linear",
+                "background_gradient_angle": {
+                    "unit": "deg",
+                    "size": 145,
+                    "sizes": []
+                },
+                "border_radius": {
+                    "unit": "px",
+                    "top": "24",
+                    "right": "24",
+                    "bottom": "24",
+                    "left": "24",
+                    "isLinked": false
+                },
+                "padding": {
+                    "unit": "px",
+                    "top": "56",
+                    "right": "40",
+                    "bottom": "48",
+                    "left": "40",
+                    "isLinked": false
+                },
+                "padding_mobile": {
+                    "unit": "px",
+                    "top": "32",
+                    "right": "20",
+                    "bottom": "28",
+                    "left": "20",
+                    "isLinked": false
+                },
+                "css_classes": "plugt-m-tabs"
+            },
+            "elements": [
+                {
+                    "id": "it27x9q",
+                    "elType": "container",
+                    "isInner": true,
+                    "settings": {
+                        "content_width": "full",
+                        "flex_direction": "column",
+                        "flex_gap": {
+                            "unit": "px",
+                            "size": 10,
+                            "column": "10",
+                            "row": "10"
+                        }
+                    },
+                    "elements": [
+                        {
+                            "id": "it25x31q",
+                            "elType": "widget",
+                            "widgetType": "heading",
+                            "settings": {
+                                "title": "NOTRE SOCLE DE CONFIANCE",
+                                "header_size": "p",
+                                "typography_typography": "custom",
+                                "typography_font_size": {
+                                    "unit": "px",
+                                    "size": 12,
+                                    "sizes": []
+                                },
+                                "typography_letter_spacing": {
+                                    "unit": "px",
+                                    "size": 2,
+                                    "sizes": []
+                                },
+                                "title_color": "#d9cfbd"
+                            },
+                            "elements": []
+                        },
+                        {
+                            "id": "it26x2q",
+                            "elType": "widget",
+                            "widgetType": "heading",
+                            "settings": {
+                                "title": "Des fondations institutionnelles, une transparence totale",
+                                "header_size": "h2",
+                                "title_color": "#ffffff"
+                            },
+                            "elements": []
+                        }
+                    ]
+                },
+                {
+                    "id": "it28x16q",
+                    "elType": "container",
+                    "isInner": true,
+                    "settings": {
+                        "content_width": "full",
+                        "flex_direction": "column",
+                        "flex_gap": {
+                            "unit": "px",
+                            "size": 0,
+                            "column": "0",
+                            "row": "0"
+                        }
+                    },
+                    "elements": [
+                        {
+                            "id": "it09x27q",
+                            "elType": "container",
+                            "isInner": true,
+                            "settings": {
+                                "content_width": "full",
+                                "flex_direction": "column",
+                                "flex_gap": {
+                                    "unit": "px",
+                                    "size": 10,
+                                    "column": "10",
+                                    "row": "10"
+                                },
+                                "background_background": "classic",
+                                "background_color": "#ffffff",
+                                "border_radius": {
+                                    "unit": "px",
+                                    "top": "14",
+                                    "right": "14",
+                                    "bottom": "14",
+                                    "left": "14",
+                                    "isLinked": false
+                                },
+                                "box_shadow_box_shadow_type": "yes",
+                                "box_shadow_box_shadow": {
+                                    "horizontal": 0,
+                                    "vertical": 24,
+                                    "blur": 48,
+                                    "spread": -12,
+                                    "color": "rgba(0,0,0,0.45)"
+                                },
+                                "padding": {
+                                    "unit": "px",
+                                    "top": "28",
+                                    "right": "28",
+                                    "bottom": "24",
+                                    "left": "28",
+                                    "isLinked": false
+                                },
+                                "width": {
+                                    "unit": "%",
+                                    "size": 60
+                                },
+                                "width_tablet": {
+                                    "unit": "%",
+                                    "size": 80
+                                },
+                                "width_mobile": {
+                                    "unit": "%",
+                                    "size": 100
+                                },
+                                "css_classes": "plugt-m-tabs__panel"
+                            },
+                            "elements": [
+                                {
+                                    "id": "it05x35q",
+                                    "elType": "widget",
+                                    "widgetType": "heading",
+                                    "settings": {
+                                        "title": "Actifs de qualité et gérants agréés",
+                                        "header_size": "h3",
+                                        "__globals__": {
+                                            "title_color": "globals/colors?id=primary",
+                                            "typography_typography": "globals/typography?id=primary"
+                                        }
+                                    },
+                                    "elements": []
+                                },
+                                {
+                                    "id": "it06x6q",
+                                    "elType": "widget",
+                                    "widgetType": "text-editor",
+                                    "settings": {
+                                        "editor": "<p>Un accès direct à des conservateurs audités et à des sociétés de gestion régulées, pour des placements sereins.</p>",
+                                        "__globals__": {
+                                            "text_color": "globals/colors?id=text",
+                                            "typography_typography": "globals/typography?id=text"
+                                        }
+                                    },
+                                    "elements": []
+                                },
+                                {
+                                    "id": "it08x20q",
+                                    "elType": "container",
+                                    "isInner": true,
+                                    "settings": {
+                                        "content_width": "full",
+                                        "flex_direction": "column",
+                                        "border_border": "solid",
+                                        "border_width": {
+                                            "unit": "px",
+                                            "top": "1",
+                                            "right": "0",
+                                            "bottom": "0",
+                                            "left": "0",
+                                            "isLinked": false
+                                        },
+                                        "border_color": "#eceae3",
+                                        "padding": {
+                                            "unit": "px",
+                                            "top": "12",
+                                            "right": "0",
+                                            "bottom": "0",
+                                            "left": "0",
+                                            "isLinked": false
+                                        }
+                                    },
+                                    "elements": [
+                                        {
+                                            "id": "it07x13q",
+                                            "elType": "widget",
+                                            "widgetType": "text-editor",
+                                            "settings": {
+                                                "editor": "<p><strong>Banque Nordale · Gestion Aurèle · Fonds Mercator</strong></p>",
+                                                "__globals__": {
+                                                    "text_color": "globals/colors?id=secondary"
+                                                }
+                                            },
+                                            "elements": []
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": "it14x26q",
+                            "elType": "container",
+                            "isInner": true,
+                            "settings": {
+                                "content_width": "full",
+                                "flex_direction": "column",
+                                "flex_gap": {
+                                    "unit": "px",
+                                    "size": 10,
+                                    "column": "10",
+                                    "row": "10"
+                                },
+                                "background_background": "classic",
+                                "background_color": "#ffffff",
+                                "border_radius": {
+                                    "unit": "px",
+                                    "top": "14",
+                                    "right": "14",
+                                    "bottom": "14",
+                                    "left": "14",
+                                    "isLinked": false
+                                },
+                                "box_shadow_box_shadow_type": "yes",
+                                "box_shadow_box_shadow": {
+                                    "horizontal": 0,
+                                    "vertical": 24,
+                                    "blur": 48,
+                                    "spread": -12,
+                                    "color": "rgba(0,0,0,0.45)"
+                                },
+                                "padding": {
+                                    "unit": "px",
+                                    "top": "28",
+                                    "right": "28",
+                                    "bottom": "24",
+                                    "left": "28",
+                                    "isLinked": false
+                                },
+                                "width": {
+                                    "unit": "%",
+                                    "size": 60
+                                },
+                                "width_tablet": {
+                                    "unit": "%",
+                                    "size": 80
+                                },
+                                "width_mobile": {
+                                    "unit": "%",
+                                    "size": 100
+                                },
+                                "css_classes": "plugt-m-tabs__panel"
+                            },
+                            "elements": [
+                                {
+                                    "id": "it10x34q",
+                                    "elType": "widget",
+                                    "widgetType": "heading",
+                                    "settings": {
+                                        "title": "Prestataires régulés",
+                                        "header_size": "h3",
+                                        "__globals__": {
+                                            "title_color": "globals/colors?id=primary",
+                                            "typography_typography": "globals/typography?id=primary"
+                                        }
+                                    },
+                                    "elements": []
+                                },
+                                {
+                                    "id": "it11x5q",
+                                    "elType": "widget",
+                                    "widgetType": "text-editor",
+                                    "settings": {
+                                        "editor": "<p>Tous les actifs sont détenus chez des conservateurs tiers qualifiés, avec une comptabilité tenue chaque jour.</p>",
+                                        "__globals__": {
+                                            "text_color": "globals/colors?id=text",
+                                            "typography_typography": "globals/typography?id=text"
+                                        }
+                                    },
+                                    "elements": []
+                                },
+                                {
+                                    "id": "it13x19q",
+                                    "elType": "container",
+                                    "isInner": true,
+                                    "settings": {
+                                        "content_width": "full",
+                                        "flex_direction": "column",
+                                        "border_border": "solid",
+                                        "border_width": {
+                                            "unit": "px",
+                                            "top": "1",
+                                            "right": "0",
+                                            "bottom": "0",
+                                            "left": "0",
+                                            "isLinked": false
+                                        },
+                                        "border_color": "#eceae3",
+                                        "padding": {
+                                            "unit": "px",
+                                            "top": "12",
+                                            "right": "0",
+                                            "bottom": "0",
+                                            "left": "0",
+                                            "isLinked": false
+                                        }
+                                    },
+                                    "elements": [
+                                        {
+                                            "id": "it12x12q",
+                                            "elType": "widget",
+                                            "widgetType": "text-editor",
+                                            "settings": {
+                                                "editor": "<p><strong>Banque Nordale · Caisse Lumière · Courtage Boréal</strong></p>",
+                                                "__globals__": {
+                                                    "text_color": "globals/colors?id=secondary"
+                                                }
+                                            },
+                                            "elements": []
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": "it19x25q",
+                            "elType": "container",
+                            "isInner": true,
+                            "settings": {
+                                "content_width": "full",
+                                "flex_direction": "column",
+                                "flex_gap": {
+                                    "unit": "px",
+                                    "size": 10,
+                                    "column": "10",
+                                    "row": "10"
+                                },
+                                "background_background": "classic",
+                                "background_color": "#ffffff",
+                                "border_radius": {
+                                    "unit": "px",
+                                    "top": "14",
+                                    "right": "14",
+                                    "bottom": "14",
+                                    "left": "14",
+                                    "isLinked": false
+                                },
+                                "box_shadow_box_shadow_type": "yes",
+                                "box_shadow_box_shadow": {
+                                    "horizontal": 0,
+                                    "vertical": 24,
+                                    "blur": 48,
+                                    "spread": -12,
+                                    "color": "rgba(0,0,0,0.45)"
+                                },
+                                "padding": {
+                                    "unit": "px",
+                                    "top": "28",
+                                    "right": "28",
+                                    "bottom": "24",
+                                    "left": "28",
+                                    "isLinked": false
+                                },
+                                "width": {
+                                    "unit": "%",
+                                    "size": 60
+                                },
+                                "width_tablet": {
+                                    "unit": "%",
+                                    "size": 80
+                                },
+                                "width_mobile": {
+                                    "unit": "%",
+                                    "size": 100
+                                },
+                                "css_classes": "plugt-m-tabs__panel"
+                            },
+                            "elements": [
+                                {
+                                    "id": "it15x33q",
+                                    "elType": "widget",
+                                    "widgetType": "heading",
+                                    "settings": {
+                                        "title": "Sécurité auditée par des tiers",
+                                        "header_size": "h3",
+                                        "__globals__": {
+                                            "title_color": "globals/colors?id=primary",
+                                            "typography_typography": "globals/typography?id=primary"
+                                        }
+                                    },
+                                    "elements": []
+                                },
+                                {
+                                    "id": "it16x4q",
+                                    "elType": "widget",
+                                    "widgetType": "text-editor",
+                                    "settings": {
+                                        "editor": "<p>Des preuves de réserves vérifiées en continu par des cabinets d'audit indépendants.</p>",
+                                        "__globals__": {
+                                            "text_color": "globals/colors?id=text",
+                                            "typography_typography": "globals/typography?id=text"
+                                        }
+                                    },
+                                    "elements": []
+                                },
+                                {
+                                    "id": "it18x18q",
+                                    "elType": "container",
+                                    "isInner": true,
+                                    "settings": {
+                                        "content_width": "full",
+                                        "flex_direction": "column",
+                                        "border_border": "solid",
+                                        "border_width": {
+                                            "unit": "px",
+                                            "top": "1",
+                                            "right": "0",
+                                            "bottom": "0",
+                                            "left": "0",
+                                            "isLinked": false
+                                        },
+                                        "border_color": "#eceae3",
+                                        "padding": {
+                                            "unit": "px",
+                                            "top": "12",
+                                            "right": "0",
+                                            "bottom": "0",
+                                            "left": "0",
+                                            "isLinked": false
+                                        }
+                                    },
+                                    "elements": [
+                                        {
+                                            "id": "it17x11q",
+                                            "elType": "widget",
+                                            "widgetType": "text-editor",
+                                            "settings": {
+                                                "editor": "<p><strong>Cabinet Delmas · Coffre-Fort Ardent · Norme SOC</strong></p>",
+                                                "__globals__": {
+                                                    "text_color": "globals/colors?id=secondary"
+                                                }
+                                            },
+                                            "elements": []
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": "it24x24q",
+                            "elType": "container",
+                            "isInner": true,
+                            "settings": {
+                                "content_width": "full",
+                                "flex_direction": "column",
+                                "flex_gap": {
+                                    "unit": "px",
+                                    "size": 10,
+                                    "column": "10",
+                                    "row": "10"
+                                },
+                                "background_background": "classic",
+                                "background_color": "#ffffff",
+                                "border_radius": {
+                                    "unit": "px",
+                                    "top": "14",
+                                    "right": "14",
+                                    "bottom": "14",
+                                    "left": "14",
+                                    "isLinked": false
+                                },
+                                "box_shadow_box_shadow_type": "yes",
+                                "box_shadow_box_shadow": {
+                                    "horizontal": 0,
+                                    "vertical": 24,
+                                    "blur": 48,
+                                    "spread": -12,
+                                    "color": "rgba(0,0,0,0.45)"
+                                },
+                                "padding": {
+                                    "unit": "px",
+                                    "top": "28",
+                                    "right": "28",
+                                    "bottom": "24",
+                                    "left": "28",
+                                    "isLinked": false
+                                },
+                                "width": {
+                                    "unit": "%",
+                                    "size": 60
+                                },
+                                "width_tablet": {
+                                    "unit": "%",
+                                    "size": 80
+                                },
+                                "width_mobile": {
+                                    "unit": "%",
+                                    "size": 100
+                                },
+                                "css_classes": "plugt-m-tabs__panel"
+                            },
+                            "elements": [
+                                {
+                                    "id": "it20x32q",
+                                    "elType": "widget",
+                                    "widgetType": "heading",
+                                    "settings": {
+                                        "title": "Conformité avant tout",
+                                        "header_size": "h3",
+                                        "__globals__": {
+                                            "title_color": "globals/colors?id=primary",
+                                            "typography_typography": "globals/typography?id=primary"
+                                        }
+                                    },
+                                    "elements": []
+                                },
+                                {
+                                    "id": "it21x3q",
+                                    "elType": "widget",
+                                    "widgetType": "text-editor",
+                                    "settings": {
+                                        "editor": "<p>Un reporting réglementaire intégré pour la France, l'Union européenne et l'international.</p>",
+                                        "__globals__": {
+                                            "text_color": "globals/colors?id=text",
+                                            "typography_typography": "globals/typography?id=text"
+                                        }
+                                    },
+                                    "elements": []
+                                },
+                                {
+                                    "id": "it23x17q",
+                                    "elType": "container",
+                                    "isInner": true,
+                                    "settings": {
+                                        "content_width": "full",
+                                        "flex_direction": "column",
+                                        "border_border": "solid",
+                                        "border_width": {
+                                            "unit": "px",
+                                            "top": "1",
+                                            "right": "0",
+                                            "bottom": "0",
+                                            "left": "0",
+                                            "isLinked": false
+                                        },
+                                        "border_color": "#eceae3",
+                                        "padding": {
+                                            "unit": "px",
+                                            "top": "12",
+                                            "right": "0",
+                                            "bottom": "0",
+                                            "left": "0",
+                                            "isLinked": false
+                                        }
+                                    },
+                                    "elements": [
+                                        {
+                                            "id": "it22x10q",
+                                            "elType": "widget",
+                                            "widgetType": "text-editor",
+                                            "settings": {
+                                                "editor": "<p><strong>Autorité des Marchés · Bureau Européen · Régulateur Asie</strong></p>",
+                                                "__globals__": {
+                                                    "text_color": "globals/colors?id=secondary"
+                                                }
+                                            },
+                                            "elements": []
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "it29x23q",
+                    "elType": "container",
+                    "isInner": true,
+                    "settings": {
+                        "content_width": "full",
+                        "flex_direction": "row",
+                        "flex_direction_mobile": "column",
+                        "flex_gap": {
+                            "unit": "px",
+                            "size": 10,
+                            "column": "10",
+                            "row": "10"
+                        },
+                        "flex_wrap": "nowrap"
+                    },
+                    "elements": [
+                        {
+                            "id": "it01x7q",
+                            "elType": "widget",
+                            "widgetType": "heading",
+                            "settings": {
+                                "title": "Actifs de qualité et gérants agréés",
+                                "header_size": "div",
+                                "align": "left",
+                                "_css_classes": "plugt-m-tabs__tab plugt-glass",
+                                "_padding": {
+                                    "unit": "px",
+                                    "top": "14",
+                                    "right": "16",
+                                    "bottom": "14",
+                                    "left": "16",
+                                    "isLinked": false
+                                },
+                                "_padding_mobile": {
+                                    "unit": "px",
+                                    "top": "12",
+                                    "right": "14",
+                                    "bottom": "12",
+                                    "left": "14",
+                                    "isLinked": false
+                                },
+                                "title_color": "#ffffff",
+                                "typography_typography": "custom",
+                                "typography_font_size": {
+                                    "unit": "px",
+                                    "size": 14,
+                                    "sizes": []
+                                },
+                                "typography_font_weight": "600",
+                                "typography_line_height": {
+                                    "unit": "em",
+                                    "size": 1.3,
+                                    "sizes": []
+                                },
+                                "_element_width": "initial",
+                                "_element_custom_width": {
+                                    "unit": "%",
+                                    "size": 25
+                                },
+                                "_element_custom_width_mobile": {
+                                    "unit": "%",
+                                    "size": 100
+                                }
+                            },
+                            "elements": []
+                        },
+                        {
+                            "id": "it02x14q",
+                            "elType": "widget",
+                            "widgetType": "heading",
+                            "settings": {
+                                "title": "Prestataires régulés",
+                                "header_size": "div",
+                                "align": "left",
+                                "_css_classes": "plugt-m-tabs__tab plugt-glass is-active",
+                                "_padding": {
+                                    "unit": "px",
+                                    "top": "14",
+                                    "right": "16",
+                                    "bottom": "14",
+                                    "left": "16",
+                                    "isLinked": false
+                                },
+                                "_padding_mobile": {
+                                    "unit": "px",
+                                    "top": "12",
+                                    "right": "14",
+                                    "bottom": "12",
+                                    "left": "14",
+                                    "isLinked": false
+                                },
+                                "title_color": "#ffffff",
+                                "typography_typography": "custom",
+                                "typography_font_size": {
+                                    "unit": "px",
+                                    "size": 14,
+                                    "sizes": []
+                                },
+                                "typography_font_weight": "600",
+                                "typography_line_height": {
+                                    "unit": "em",
+                                    "size": 1.3,
+                                    "sizes": []
+                                },
+                                "_element_width": "initial",
+                                "_element_custom_width": {
+                                    "unit": "%",
+                                    "size": 25
+                                },
+                                "_element_custom_width_mobile": {
+                                    "unit": "%",
+                                    "size": 100
+                                }
+                            },
+                            "elements": []
+                        },
+                        {
+                            "id": "it03x21q",
+                            "elType": "widget",
+                            "widgetType": "heading",
+                            "settings": {
+                                "title": "Sécurité auditée par des tiers",
+                                "header_size": "div",
+                                "align": "left",
+                                "_css_classes": "plugt-m-tabs__tab plugt-glass",
+                                "_padding": {
+                                    "unit": "px",
+                                    "top": "14",
+                                    "right": "16",
+                                    "bottom": "14",
+                                    "left": "16",
+                                    "isLinked": false
+                                },
+                                "_padding_mobile": {
+                                    "unit": "px",
+                                    "top": "12",
+                                    "right": "14",
+                                    "bottom": "12",
+                                    "left": "14",
+                                    "isLinked": false
+                                },
+                                "title_color": "#ffffff",
+                                "typography_typography": "custom",
+                                "typography_font_size": {
+                                    "unit": "px",
+                                    "size": 14,
+                                    "sizes": []
+                                },
+                                "typography_font_weight": "600",
+                                "typography_line_height": {
+                                    "unit": "em",
+                                    "size": 1.3,
+                                    "sizes": []
+                                },
+                                "_element_width": "initial",
+                                "_element_custom_width": {
+                                    "unit": "%",
+                                    "size": 25
+                                },
+                                "_element_custom_width_mobile": {
+                                    "unit": "%",
+                                    "size": 100
+                                }
+                            },
+                            "elements": []
+                        },
+                        {
+                            "id": "it04x28q",
+                            "elType": "widget",
+                            "widgetType": "heading",
+                            "settings": {
+                                "title": "Conformité avant tout",
+                                "header_size": "div",
+                                "align": "left",
+                                "_css_classes": "plugt-m-tabs__tab plugt-glass",
+                                "_padding": {
+                                    "unit": "px",
+                                    "top": "14",
+                                    "right": "16",
+                                    "bottom": "14",
+                                    "left": "16",
+                                    "isLinked": false
+                                },
+                                "_padding_mobile": {
+                                    "unit": "px",
+                                    "top": "12",
+                                    "right": "14",
+                                    "bottom": "12",
+                                    "left": "14",
+                                    "isLinked": false
+                                },
+                                "title_color": "#ffffff",
+                                "typography_typography": "custom",
+                                "typography_font_size": {
+                                    "unit": "px",
+                                    "size": 14,
+                                    "sizes": []
+                                },
+                                "typography_font_weight": "600",
+                                "typography_line_height": {
+                                    "unit": "em",
+                                    "size": 1.3,
+                                    "sizes": []
+                                },
+                                "_element_width": "initial",
+                                "_element_custom_width": {
+                                    "unit": "%",
+                                    "size": 25
+                                },
+                                "_element_custom_width_mobile": {
+                                    "unit": "%",
+                                    "size": 100
+                                }
+                            },
+                            "elements": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

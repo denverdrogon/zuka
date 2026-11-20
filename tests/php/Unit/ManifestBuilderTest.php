@@ -30,6 +30,47 @@ final class ManifestBuilderTest extends TestCase {
 		}
 	}
 
+	public function test_display_fields_are_emitted(): void {
+		$result = ( new ManifestBuilder() )->build( $this->templates_dir() );
+		foreach ( $result['manifest']['templates'] as $entry ) {
+			foreach ( array( 'code', 'sector', 'motion', 'accent', 'preview' ) as $key ) {
+				$this->assertArrayHasKey( $key, $entry );
+			}
+			$this->assertContains( $entry['category'], \PlugTemplates\Library\Schema::CATEGORIES );
+		}
+	}
+
+	public function test_duplicate_code_is_reported(): void {
+		$root = sys_get_temp_dir() . '/plugt-dup-' . bin2hex( random_bytes( 4 ) );
+		foreach ( array( 'section-temoignages', 'header-simple' ) as $slug ) {
+			$this->copy_dir( $this->templates_dir() . '/' . $slug, $root . '/' . $slug );
+			$meta         = json_decode( (string) file_get_contents( $root . '/' . $slug . '/meta.json' ), true );
+			$meta['code'] = 'TPL-99';
+			file_put_contents( $root . '/' . $slug . '/meta.json', json_encode( $meta ) );
+		}
+		$result = ( new ManifestBuilder() )->build( $root );
+		$this->assertCount( 1, $result['manifest']['templates'] );
+		$this->assertStringContainsString( 'TPL-99', implode( ' ', $result['reports']['section-temoignages']['errors'] ) );
+		$this->copy_dir( '', $root, true );
+	}
+
+	private function copy_dir( string $from, string $to, bool $remove = false ): void {
+		if ( $remove ) {
+			$it = new \RecursiveIteratorIterator( new \RecursiveDirectoryIterator( $to, \FilesystemIterator::SKIP_DOTS ), \RecursiveIteratorIterator::CHILD_FIRST );
+			foreach ( $it as $file ) {
+				$file->isDir() ? rmdir( $file->getPathname() ) : unlink( $file->getPathname() );
+			}
+			rmdir( $to );
+			return;
+		}
+		mkdir( $to, 0777, true );
+		$it = new \RecursiveIteratorIterator( new \RecursiveDirectoryIterator( $from, \FilesystemIterator::SKIP_DOTS ), \RecursiveIteratorIterator::SELF_FIRST );
+		foreach ( $it as $file ) {
+			$target = $to . '/' . substr( str_replace( '\', '/', $file->getPathname() ), strlen( str_replace( '\', '/', $from ) ) + 1 );
+			$file->isDir() ? @mkdir( $target, 0777, true ) : copy( $file->getPathname(), $target );
+		}
+	}
+
 	public function test_output_is_deterministic(): void {
 		$builder = new ManifestBuilder();
 		$first   = ManifestBuilder::encode( $builder->build( $this->templates_dir() )['manifest'] );

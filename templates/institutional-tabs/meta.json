@@ -1,0 +1,22 @@
+{
+    "id": "institutional-tabs",
+    "title": "Slider institutionnel à onglets",
+    "description": "Fond sombre, quatre onglets en verre dépoli et une carte blanche qui change à chaque onglet (animation d'entrée, lecture automatique optionnelle).",
+    "type": "section",
+    "category": "tabs",
+    "code": "TPL-03",
+    "sector": "Finance & immobilier",
+    "motion": "Carte élevée + onglets verre dépoli",
+    "accent": "#1F1E1B",
+    "tags": [
+        "onglets",
+        "verre",
+        "institutionnel",
+        "animation"
+    ],
+    "version": "1.0.0",
+    "elementor_min": "3.25.0",
+    "variants": [
+        "v3"
+    ]
+}

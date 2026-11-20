@@ -1,0 +1,219 @@
+/* Module accordion — hidden/collapsed states only under .plugt-motion-ready. */
+.plugt-m-accordion__track {
+	gap: 12px;
+}
+
+.plugt-m-accordion .plugt-m-accordion__track > .plugt-m-accordion__panel {
+	position: relative;
+	flex: 1 1 0% !important;
+	width: auto !important;
+	min-width: 96px;
+	overflow: hidden;
+	cursor: pointer;
+	border-radius: 12px;
+	justify-content: flex-end;
+}
+
+.plugt-motion-ready .plugt-m-accordion .plugt-m-accordion__track > .plugt-m-accordion__panel {
+	transition: flex-grow 0.72s var(--plugt-ease);
+}
+
+.plugt-m-accordion .plugt-m-accordion__track > .plugt-m-accordion__panel.is-active {
+	flex-grow: 4.3 !important;
+	cursor: default;
+}
+
+/* Background (gradient container) + scrim. */
+.plugt-m-accordion__bg {
+	position: absolute !important;
+	inset: 0;
+	width: 100% !important;
+	height: 100%;
+	min-height: 0;
+	z-index: 0;
+}
+
+.plugt-m-accordion__bg::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(180deg, rgba(16, 18, 14, 0.06) 0%, rgba(12, 14, 10, 0.78) 100%);
+}
+
+.plugt-motion-ready .plugt-m-accordion__bg {
+	transform: scale(1.07);
+	filter: brightness(0.88);
+	transition: transform 0.78s var(--plugt-ease), filter 0.78s var(--plugt-ease);
+}
+
+.plugt-motion-ready .plugt-m-accordion__panel.is-active .plugt-m-accordion__bg {
+	transform: scale(1);
+	filter: brightness(1);
+}
+
+/* Content layer. */
+.plugt-m-accordion__inner {
+	position: relative;
+	z-index: 2;
+	flex: 1 1 auto;
+	align-items: flex-end;
+	justify-content: space-between;
+	color: #fff;
+}
+
+.plugt-m-accordion__copy {
+	min-width: 0;
+}
+
+.plugt-m-accordion__title .elementor-heading-title {
+	margin: 0;
+	color: #fff;
+	font-size: 14px !important;
+	font-weight: 500;
+	line-height: 1.3;
+	transition: font-size var(--plugt-dur-fast) ease;
+}
+
+.plugt-m-accordion__panel.is-active .plugt-m-accordion__title .elementor-heading-title {
+	font-size: 17px !important;
+}
+
+.plugt-m-accordion__desc {
+	width: 310px;
+	max-width: 100%;
+	margin-top: 8px;
+}
+
+.plugt-m-accordion__desc,
+.plugt-m-accordion__desc p {
+	margin-bottom: 0;
+	font-size: 12.5px;
+	line-height: 1.5;
+	color: rgba(255, 255, 255, 0.86);
+}
+
+.plugt-motion-ready .plugt-m-accordion__desc {
+	opacity: 0;
+	max-height: 0;
+	overflow: hidden;
+	transform: translateY(8px);
+	transition: opacity 0.36s ease 0.14s, transform 0.45s var(--plugt-ease) 0.12s, max-height 0.45s var(--plugt-ease);
+}
+
+.plugt-motion-ready .plugt-m-accordion__panel.is-active .plugt-m-accordion__desc {
+	opacity: 1;
+	max-height: 90px;
+	transform: none;
+}
+
+/* Glass HUD. */
+.plugt-m-accordion__hud {
+	flex: 0 0 auto;
+	width: 204px !important;
+	padding: 14px;
+	border-radius: 12px;
+	color: #fff;
+}
+
+.plugt-m-accordion__hud .elementor-heading-title {
+	margin: 0;
+	color: rgba(255, 255, 255, 0.82);
+	font-size: 10px !important;
+	font-weight: 400;
+}
+
+.plugt-motion-ready .plugt-m-accordion__hud {
+	opacity: 0;
+	transform: translateY(12px) scale(0.95);
+	pointer-events: none;
+	transition: opacity 0.22s ease, transform 0.22s var(--plugt-ease);
+}
+
+.plugt-motion-ready .plugt-m-accordion__panel.is-active .plugt-m-accordion__hud {
+	opacity: 1;
+	transform: none;
+	transition: opacity 0.44s ease 0.16s, transform 0.48s var(--plugt-ease) 0.16s;
+}
+
+/* Header navigation. */
+.plugt-m-accordion__counter .elementor-heading-title {
+	margin: 0 4px 0 0;
+	font-size: 11.5px !important;
+	font-weight: 400;
+	font-variant-numeric: tabular-nums;
+	color: var(--e-global-color-text, inherit);
+	opacity: 0.7;
+}
+
+.plugt-m-accordion__prev .elementor-button,
+.plugt-m-accordion__next .elementor-button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 38px;
+	height: 38px;
+	padding: 0;
+	border-radius: 8px;
+	background: rgba(20, 20, 19, 0.06);
+	color: var(--e-global-color-text, inherit);
+	transition: background var(--plugt-dur-fast) ease, transform 0.14s ease;
+}
+
+.plugt-m-accordion__prev .elementor-button:hover,
+.plugt-m-accordion__next .elementor-button:hover {
+	background: rgba(20, 20, 19, 0.12);
+}
+
+.plugt-m-accordion__prev .elementor-button:active,
+.plugt-m-accordion__next .elementor-button:active {
+	transform: scale(0.92);
+}
+
+.plugt-m-accordion__panel:focus-visible,
+.plugt-m-accordion__prev .elementor-button:focus-visible,
+.plugt-m-accordion__next .elementor-button:focus-visible {
+	outline: 2px solid var(--plugt-accent);
+	outline-offset: 2px;
+}
+
+/* Mobile: vertical stack, HUD hidden. */
+@media (max-width: 767px) {
+	.plugt-m-accordion .plugt-m-accordion__track {
+		flex-direction: column;
+		height: auto;
+		min-height: 0;
+	}
+
+	.plugt-m-accordion .plugt-m-accordion__track > .plugt-m-accordion__panel {
+		flex: 0 0 auto !important;
+		min-height: 150px;
+		min-width: 0;
+	}
+
+	.plugt-m-accordion .plugt-m-accordion__track > .plugt-m-accordion__panel.is-active {
+		min-height: 300px;
+	}
+
+	.plugt-m-accordion__hud {
+		display: none !important;
+	}
+
+	.plugt-m-accordion__desc {
+		width: 100%;
+	}
+}
+
+/* In the editor every panel stays open, visible and editable. */
+.elementor-editor-active .plugt-m-accordion__track > .plugt-m-accordion__panel {
+	min-height: 300px;
+}
+
+.elementor-editor-active .plugt-m-accordion__bg,
+.elementor-editor-active .plugt-m-accordion__desc,
+.elementor-editor-active .plugt-m-accordion__hud {
+	opacity: 1 !important;
+	max-height: none !important;
+	transform: none !important;
+	filter: none !important;
+	pointer-events: auto;
+}

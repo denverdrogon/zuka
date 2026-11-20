@@ -70,6 +70,56 @@ class Adapter {
 	}
 
 	/**
+	 * Calls $callback with the CSS classes (`css_classes` / `_css_classes`) of
+	 * every element Elementor renders on the front end.
+	 *
+	 * @param callable $callback Receives a string of space-separated classes.
+	 */
+	public function on_element_classes( callable $callback ): void {
+		add_action(
+			'elementor/frontend/before_render',
+			static function ( $element ) use ( $callback ): void {
+				if ( ! is_object( $element ) || ! method_exists( $element, 'get_settings' ) ) {
+					return;
+				}
+				$classes = '';
+				foreach ( array( 'css_classes', '_css_classes' ) as $key ) {
+					$value = $element->get_settings( $key );
+					if ( is_string( $value ) && '' !== $value ) {
+						$classes .= ' ' . $value;
+					}
+				}
+				if ( '' !== $classes ) {
+					$callback( trim( $classes ) );
+				}
+			}
+		);
+	}
+
+	/**
+	 * Registers a callback enqueuing assets inside the editor preview iframe.
+	 *
+	 * @param callable $callback Callback.
+	 */
+	public function on_preview_enqueue( callable $callback ): void {
+		add_action( 'elementor/preview/enqueue_styles', $callback );
+	}
+
+	/**
+	 * Whether the Elementor data saved for a post contains a string.
+	 *
+	 * @param int    $post_id Post id.
+	 * @param string $needle  String to look for.
+	 */
+	public function post_data_contains( int $post_id, string $needle ): bool {
+		$data = get_post_meta( $post_id, '_elementor_data', true );
+		if ( is_array( $data ) ) {
+			$data = (string) wp_json_encode( $data );
+		}
+		return is_string( $data ) && false !== strpos( $data, $needle );
+	}
+
+	/**
 	 * Creates a draft WordPress page built with Elementor.
 	 *
 	 * @param string       $title    Page title.
