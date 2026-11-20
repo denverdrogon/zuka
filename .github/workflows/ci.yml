@@ -1,0 +1,49 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  php:
+    name: PHP ${{ matrix.php }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php: ['7.4', '8.1', '8.3', '8.4']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          tools: composer:v2
+          coverage: none
+      - run: composer install --no-interaction --no-progress
+      - name: PHPCS (WPCS + PHPCompatibility)
+        if: matrix.php == '8.3'
+        run: composer lint
+      - name: PHPStan
+        if: matrix.php == '8.3'
+        run: composer phpstan
+      - name: PHPUnit
+        run: composer test
+
+  plugin-check:
+    name: Plugin Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: plug-templates
+      - name: Install production dependencies
+        working-directory: plug-templates
+        run: composer install --no-dev --no-interaction --no-progress
+      - uses: wordpress/plugin-check-action@v1
+        with:
+          build-dir: plug-templates
+          exclude-directories: tests,.github,bin

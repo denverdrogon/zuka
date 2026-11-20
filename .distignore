@@ -1,0 +1,22 @@
+# Files excluded from the release zip.
+.git
+.github
+.gitignore
+.distignore
+.editorconfig
+.wp-env.json
+.wp-env.override.json
+node_modules
+tests
+bin
+assets/src
+composer.json
+composer.lock
+package.json
+package-lock.json
+phpcs.xml.dist
+phpstan.neon.dist
+phpunit.xml.dist
+.phpunit.result.cache
+CLAUDE.md
+contexte.md
