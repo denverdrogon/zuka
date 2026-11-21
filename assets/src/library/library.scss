@@ -1,0 +1,69 @@
+@import "@wordpress/dataviews/build-style/style.css";
+
+.plugt-library {
+	.plugt-thumb {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: top center;
+		aspect-ratio: 16 / 10;
+	}
+
+	.plugt-thumb--empty {
+		background: linear-gradient(135deg, #e0e7ff, #f1f5f9);
+	}
+
+	.plugt-code {
+		display: inline-block;
+		margin-inline-end: 6px;
+		padding: 0 6px;
+		border-radius: 2px;
+		background: #1e3a8a;
+		color: #fff;
+		font-size: 11px;
+		font-weight: 600;
+	}
+
+	.plugt-incompatible {
+		display: block;
+		margin-top: 4px;
+		color: #b32d2e;
+	}
+
+	.plugt-busy {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		margin: 8px 0;
+	}
+
+	.components-notice {
+		margin: 0 0 12px;
+	}
+}
+
+.plugt-library--admin {
+	margin-top: 16px;
+	background: #fff;
+	border: 1px solid #dcdcde;
+}
+
+.plugt-library-header {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+
+	img {
+		height: 32px;
+	}
+}
+
+.plugt-editor-modal {
+	width: min(1200px, 92vw);
+	max-height: 90vh;
+
+	.components-modal__content {
+		padding-top: 0;
+	}
+}

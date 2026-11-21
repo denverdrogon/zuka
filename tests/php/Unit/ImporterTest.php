@@ -35,6 +35,7 @@ final class ImporterTest extends TestCase {
 		Functions\stubTranslationFunctions();
 		$this->elementor = $this->createMock( Adapter::class );
 		$this->elementor->method( 'version' )->willReturn( '4.1.0' );
+		$this->elementor->method( 'is_container_active' )->willReturn( true );
 	}
 
 	private function importer( ?Repository $repository = null ): Importer {
@@ -86,6 +87,18 @@ final class ImporterTest extends TestCase {
 		$error = $this->importer()->incompatibility( array( 'variants' => array( 'v4' ) ) );
 		$this->assertInstanceOf( WP_Error::class, $error );
 		$this->assertSame( 'plugt_no_variant', $error->get_error_code() );
+	}
+
+	public function test_container_template_is_incompatible_without_flexbox_containers(): void {
+		$elementor = $this->createMock( Adapter::class );
+		$elementor->method( 'version' )->willReturn( '4.1.0' );
+		$elementor->method( 'is_container_active' )->willReturn( false );
+		$this->elementor = $elementor;
+
+		$result = $this->importer()->prepare( 'section-temoignages' );
+		$this->assertInstanceOf( WP_Error::class, $result );
+		$this->assertSame( 'plugt_containers_inactive', $result->get_error_code() );
+		$this->assertSame( array(), $this->media_calls, 'No media is imported when the template cannot be used.' );
 	}
 
 	public function test_old_elementor_is_incompatible(): void {

@@ -8,6 +8,7 @@
 namespace PlugTemplates;
 
 use PlugTemplates\Admin\LibraryPage;
+use PlugTemplates\Editor\EditorIntegration;
 use PlugTemplates\Elementor\Adapter;
 use PlugTemplates\Frontend\MotionAssets;
 use PlugTemplates\Library\ContentTransformer;
@@ -143,7 +144,9 @@ final class Plugin {
 		( new MotionAssets( $this->elementor, PLUGT_PATH . 'assets/build', PLUGT_URL . 'assets/build' ) )->register();
 
 		if ( is_admin() ) {
-			( new LibraryPage( $this->elementor, PLUGT_PATH . 'assets/build', PLUGT_URL . 'assets/build' ) )->register();
+			$library = new LibraryPage( $this->elementor, PLUGT_PATH . 'assets/build', PLUGT_URL . 'assets/build' );
+			$library->register();
+			( new EditorIntegration( $this->elementor, $library, PLUGT_PATH . 'assets/build', PLUGT_URL . 'assets/build' ) )->register();
 		}
 
 		/**

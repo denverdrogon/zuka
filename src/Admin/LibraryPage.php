@@ -77,7 +77,7 @@ final class LibraryPage {
 	 * Adds the top-level menu entry.
 	 */
 	public function add_menu(): void {
-		$hook = add_menu_page(
+		$hook              = add_menu_page(
 			__( 'Plug Templates', 'plug-templates' ),
 			__( 'Plug Templates', 'plug-templates' ),
 			self::CAPABILITY,
@@ -170,7 +170,7 @@ final class LibraryPage {
 			'testimonials'  => __( 'Témoignages', 'plug-templates' ),
 			'landing'       => __( 'Pages d\'accueil', 'plug-templates' ),
 		);
-		$out = array();
+		$out    = array();
 		foreach ( Schema::CATEGORIES as $key ) {
 			$out[ $key ] = $labels[ $key ] ?? $key;
 		}

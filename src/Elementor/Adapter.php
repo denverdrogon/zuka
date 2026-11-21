@@ -61,6 +61,21 @@ class Adapter {
 	}
 
 	/**
+	 * Whether Flexbox Containers are enabled. Without them, Elementor silently
+	 * drops every `container` element on save.
+	 */
+	public function is_container_active(): bool {
+		if ( ! $this->is_loaded() || ! class_exists( '\Elementor\Plugin' ) ) {
+			return false;
+		}
+		$plugin = \Elementor\Plugin::$instance;
+		if ( null === $plugin || ! isset( $plugin->experiments ) || ! is_object( $plugin->experiments ) || ! method_exists( $plugin->experiments, 'is_feature_active' ) ) {
+			return false;
+		}
+		return (bool) $plugin->experiments->is_feature_active( 'container' );
+	}
+
+	/**
 	 * Registers a callback fired once Elementor is fully initialised.
 	 *
 	 * @param callable $callback Callback.
@@ -103,6 +118,30 @@ class Adapter {
 	 */
 	public function on_preview_enqueue( callable $callback ): void {
 		add_action( 'elementor/preview/enqueue_styles', $callback );
+	}
+
+	/**
+	 * Registers a callback enqueuing scripts in the Elementor editor window.
+	 *
+	 * @param callable $callback Callback.
+	 */
+	public function on_editor_enqueue( callable $callback ): void {
+		add_action( 'elementor/editor/after_enqueue_scripts', $callback );
+	}
+
+	/**
+	 * JS integration points of the Elementor editor, passed to the editor script
+	 * so that it never hard-codes Elementor internals.
+	 *
+	 * @return array<string, string>
+	 */
+	public function editor_js_contract(): array {
+		return array(
+			'importCommand'     => 'document/elements/import',
+			'addSectionArea'    => '.elementor-add-new-section',
+			'addTemplateButton' => '.elementor-add-template-button',
+			'previewLoaded'     => 'preview:loaded',
+		);
 	}
 
 	/**

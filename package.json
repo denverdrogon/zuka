@@ -8,8 +8,8 @@
 		"node": ">=20"
 	},
 	"scripts": {
-		"build": "wp-scripts build motion=./assets/src/motion/index.js --output-path=assets/build",
-		"start": "wp-scripts start motion=./assets/src/motion/index.js --output-path=assets/build",
+		"build": "wp-scripts build motion=./assets/src/motion/index.js admin=./assets/src/admin/index.js editor=./assets/src/editor/index.js --output-path=assets/build",
+		"start": "wp-scripts start motion=./assets/src/motion/index.js admin=./assets/src/admin/index.js editor=./assets/src/editor/index.js --output-path=assets/build",
 		"lint:js": "wp-scripts lint-js assets/src",
 		"env:start": "wp-env start",
 		"env:stop": "wp-env stop"

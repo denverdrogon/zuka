@@ -95,14 +95,35 @@ class Importer {
 				array( 'status' => 409 )
 			);
 		}
-		if ( null === $this->pick_variant( $entry ) ) {
+		$variant = $this->pick_variant( $entry );
+		if ( null === $variant ) {
 			return new WP_Error(
 				'plugt_no_variant',
 				__( 'Ce template n\'existe qu\'en version Atomic (Elementor 4) : activez l\'éditeur Atomic pour l\'utiliser.', 'plug-templates' ),
 				array( 'status' => 409 )
 			);
 		}
+		if ( Schema::VARIANT_V3 === $variant && ! $this->elementor->is_container_active() && $this->uses_containers( (string) $entry['id'] ) ) {
+			return new WP_Error(
+				'plugt_containers_inactive',
+				__( 'Ce template utilise des conteneurs Flexbox : activez « Conteneurs » dans Elementor > Paramètres > Fonctionnalités.', 'plug-templates' ),
+				array( 'status' => 409 )
+			);
+		}
 		return null;
+	}
+
+	/**
+	 * Whether the v3 content of a template contains `container` elements.
+	 *
+	 * @param string $id Template id.
+	 */
+	private function uses_containers( string $id ): bool {
+		$data = $this->repository->content( $id, Schema::VARIANT_V3 );
+		if ( null === $data ) {
+			return false;
+		}
+		return false !== strpos( (string) wp_json_encode( $data['content'] ), '"elType":"container"' );
 	}
 
 	/**
