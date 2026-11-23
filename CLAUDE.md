@@ -8,7 +8,7 @@ Plugin WordPress privé fournissant des templates Elementor personnalisés, livr
 - Namespace PHP `PlugTemplates\` en PSR-4 dans `src/`.
 - Standard de code : WPCS.
 - PHP 7.4 minimum, testé jusqu'à 8.4 (pas de syntaxe PHP 8+ dans le code du plugin).
-- WordPress 6.6 minimum, « Tested up to » 7.0.
+- WordPress 7.0 minimum, « Tested up to » 7.0.
 
 ## Règle d'or
 Tout appel interne à Elementor (classes, hooks, documents, API v3/v4) passe par `src/Elementor/Adapter.php`. Aucun autre fichier ne référence directement Elementor.

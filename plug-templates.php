@@ -3,7 +3,7 @@
  * Plugin Name:       Zuka
  * Description:       Bibliothèque de templates personnalisés pour Elementor (v3 et v4 Atomic), compatibles Elementor Free.
  * Version:           0.1.0
- * Requires at least: 6.6
+ * Requires at least: 7.0
  * Tested up to:      7.0
  * Requires PHP:      7.4
  * Requires Plugins:  elementor
@@ -26,7 +26,7 @@ define( 'PLUGT_FILE', __FILE__ );
 define( 'PLUGT_PATH', plugin_dir_path( __FILE__ ) );
 define( 'PLUGT_URL', plugin_dir_url( __FILE__ ) );
 define( 'PLUGT_MIN_PHP', '7.4' );
-define( 'PLUGT_MIN_WP', '6.6' );
+define( 'PLUGT_MIN_WP', '7.0' );
 define( 'PLUGT_MIN_ELEMENTOR', '3.25.0' );
 
 if ( is_readable( PLUGT_PATH . 'vendor/autoload.php' ) ) {

@@ -8,15 +8,17 @@
 		"node": ">=20"
 	},
 	"scripts": {
-		"build": "wp-scripts build motion=./assets/src/motion/index.js admin=./assets/src/admin/index.js editor=./assets/src/editor/index.js --output-path=assets/build",
-		"start": "wp-scripts start motion=./assets/src/motion/index.js admin=./assets/src/admin/index.js editor=./assets/src/editor/index.js --output-path=assets/build",
+		"build": "wp-scripts build",
+		"thumbnails": "node bin/build-thumbnails.mjs",
+		"start": "wp-scripts start",
 		"lint:js": "wp-scripts lint-js assets/src",
 		"env:start": "wp-env start",
 		"env:stop": "wp-env stop"
 	},
 	"devDependencies": {
 		"@babel/runtime": "7.26.0",
-		"@wordpress/scripts": "30.7.0"
+		"@wordpress/scripts": "30.7.0",
+		"playwright-core": "1.61.1"
 	},
 	"dependencies": {
 		"@wordpress/api-fetch": "8.2.0",

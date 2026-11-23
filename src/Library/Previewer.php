@@ -5,7 +5,8 @@
  *
  * Each template is rendered from a private, hidden library post, created on
  * first preview and rebuilt when the template version changes. The preview
- * page (`/?plugt_preview=<id>`) is reserved to users who can edit posts.
+ * page (`/?plugt_preview=<id>&_wpnonce=…`) is reserved to users who can edit
+ * posts, and needs a nonce since opening it may create or delete posts.
  *
  * @package PlugTemplates
  */
@@ -24,6 +25,7 @@ class Previewer {
 	public const META         = '_plugt_preview';
 	public const VERSION_META = '_plugt_preview_version';
 	public const CAPABILITY   = 'edit_posts';
+	public const NONCE        = 'plugt_preview';
 
 	/**
 	 * Repository.
@@ -69,12 +71,18 @@ class Previewer {
 	}
 
 	/**
-	 * Preview URL of a template, with `__ID__` when no id is given (JS template).
+	 * Nonced preview URL of a template, with `__ID__` when no id is given (JS template).
 	 *
 	 * @param string $id Template id.
 	 */
 	public static function url( string $id = '__ID__' ): string {
-		return add_query_arg( self::QUERY_VAR, $id, home_url( '/' ) );
+		return add_query_arg(
+			array(
+				self::QUERY_VAR => $id,
+				'_wpnonce'      => wp_create_nonce( self::NONCE ),
+			),
+			home_url( '/' )
+		);
 	}
 
 	/**
@@ -134,7 +142,7 @@ class Previewer {
 	 * Renders the preview page when the query var is present.
 	 */
 	public function maybe_render(): void {
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only page, capability checked below.
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Nonce checked below, after login.
 		if ( ! isset( $_GET[ self::QUERY_VAR ] ) ) {
 			return;
 		}
@@ -149,6 +157,10 @@ class Previewer {
 		}
 		if ( ! current_user_can( self::CAPABILITY ) ) {
 			wp_die( esc_html__( 'Vous n\'avez pas l\'autorisation de prévisualiser les templates.', 'plug-templates' ), '', array( 'response' => 403 ) );
+		}
+		$nonce = isset( $_GET['_wpnonce'] ) ? sanitize_text_field( wp_unslash( (string) $_GET['_wpnonce'] ) ) : '';
+		if ( ! wp_verify_nonce( $nonce, self::NONCE ) ) {
+			wp_die( esc_html__( 'Lien d\'aperçu expiré : rouvrez l\'aperçu depuis la bibliothèque.', 'plug-templates' ), '', array( 'response' => 403 ) );
 		}
 
 		$post_id = $this->document( $id );

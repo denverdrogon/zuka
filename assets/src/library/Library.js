@@ -60,7 +60,15 @@ export default function Library( { context = 'admin', onInsert } ) {
 				label: __( 'Aperçu', 'plug-templates' ),
 				render: ( { item } ) =>
 					item.thumbnail ? (
-						<img className="plugt-thumb" src={ item.thumbnail } alt="" loading="lazy" />
+						<img
+							className="plugt-thumb"
+							src={ item.thumbnail }
+							alt=""
+							width="600"
+							height="400"
+							loading="lazy"
+							decoding="async"
+						/>
 					) : (
 						<div className="plugt-thumb plugt-thumb--empty" aria-hidden="true" />
 					),

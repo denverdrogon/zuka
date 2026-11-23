@@ -54,7 +54,19 @@ final class ManifestBuilderTest extends TestCase {
 		$this->copy_dir( '', $root, true );
 	}
 
-	private function copy_dir( string $from, string $to, bool $remove = false ): void {
+	public function test_duplicate_thumbnail_is_reported(): void {
+		$root = sys_get_temp_dir() . '/plugt-thumb-' . bin2hex( random_bytes( 4 ) );
+		foreach ( array( 'section-temoignages', 'header-simple' ) as $slug ) {
+			$this->copy_dir( $this->templates_dir() . '/' . $slug, $root . '/' . $slug );
+		}
+		copy( $root . '/header-simple/thumbnail.webp', $root . '/section-temoignages/thumbnail.webp' );
+		$result = ( new ManifestBuilder() )->build( $root );
+		$this->assertSame( array(), $result['reports']['header-simple']['errors'] );
+		$this->assertStringContainsString( 'header-simple', implode( ' ', $result['reports']['section-temoignages']['errors'] ) );
+		$this->copy_dir( '', $root, true );
+	}
+
+	private function copy_dir(string $from, string $to, bool $remove = false ): void {
 		if ( $remove ) {
 			$it = new \RecursiveIteratorIterator( new \RecursiveDirectoryIterator( $to, \FilesystemIterator::SKIP_DOTS ), \RecursiveIteratorIterator::CHILD_FIRST );
 			foreach ( $it as $file ) {

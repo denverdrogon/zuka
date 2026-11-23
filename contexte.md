@@ -83,4 +83,4 @@ Plugin WordPress privé fournissant des templates personnalisés importables dan
 - Tests E2E Playwright.
 - Test de mise à jour de N vers N+1.
 - Plugin Check sans erreur bloquante.
-- CI GitHub Actions : PHPCS, PHPStan, Plugin Check, PHPUnit sur wp-env ; matrice PHP 7.4/8.1/8.3/8.4 × WP 6.6/latest/7.0 × Elementor 3.x/4.x ; sur tag, build du zip et publication en release.
+- CI GitHub Actions : PHPCS, PHPStan, Plugin Check, PHPUnit sur wp-env ; matrice PHP 7.4/8.1/8.3/8.4 × WP 7.0/latest × Elementor 3.x/4.x ; sur tag, build du zip et publication en release.

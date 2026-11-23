@@ -17,6 +17,7 @@ package-lock.json
 phpcs.xml.dist
 phpstan.neon.dist
 phpunit.xml.dist
+webpack.config.js
 .phpunit.result.cache
 CLAUDE.md
 contexte.md

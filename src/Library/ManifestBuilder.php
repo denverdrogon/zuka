@@ -45,6 +45,7 @@ final class ManifestBuilder {
 		$entries       = array();
 		$reports       = array();
 		$codes         = array();
+		$thumbs        = array();
 
 		foreach ( $this->template_dirs( $templates_dir ) as $slug => $dir ) {
 			$result           = $this->validator->validate( $dir );
@@ -64,6 +65,14 @@ final class ManifestBuilder {
 			}
 			if ( null !== $code ) {
 				$codes[ $code ] = $slug;
+			}
+
+			// A copied thumbnail shows the wrong layout in the library.
+			$thumb = (string) hash_file( 'sha256', $dir . '/thumbnail.webp' );
+			if ( isset( $thumbs[ $thumb ] ) ) {
+				$reports[ $slug ]['errors'][] = sprintf( 'thumbnail.webp identique à celle de « %s » : chaque template doit avoir sa propre vignette.', $thumbs[ $thumb ] );
+			} else {
+				$thumbs[ $thumb ] = $slug;
 			}
 
 			$entries[] = array(
