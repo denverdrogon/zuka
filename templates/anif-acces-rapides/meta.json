@@ -1,0 +1,14 @@
+{
+    "id": "anif-acces-rapides",
+    "title": "ANIF — Accès rapides",
+    "description": "Intertitre et cinq liens en icon-box encadrés, en grille de trois colonnes (une sur mobile). Dérivé de TPL-07.",
+    "type": "section",
+    "category": "public-sector",
+    "code": "TPL-09",
+    "sector": "Institutions publiques",
+    "accent": "#14305F",
+    "tags": [ "anif", "institution", "liens" ],
+    "version": "1.0.0",
+    "elementor_min": "3.25.0",
+    "variants": [ "v3" ]
+}

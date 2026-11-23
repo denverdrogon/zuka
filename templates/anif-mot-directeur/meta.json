@@ -1,0 +1,21 @@
+{
+    "id": "anif-mot-directeur",
+    "title": "ANIF — Mot du Directeur",
+    "description": "Intertitre, extrait cité, mention et bouton vers le message complet. Dérivé du hero de TPL-05, sans image.",
+    "type": "section",
+    "category": "public-sector",
+    "code": "TPL-08",
+    "sector": "Institutions publiques",
+    "accent": "#14305F",
+    "tags": [
+        "anif",
+        "directeur",
+        "message",
+        "institution"
+    ],
+    "version": "1.0.0",
+    "elementor_min": "3.25.0",
+    "variants": [
+        "v3"
+    ]
+}

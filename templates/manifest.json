@@ -2,6 +2,149 @@
     "schema": 1,
     "templates": [
         {
+            "id": "anif-acces-rapides",
+            "title": "ANIF — Accès rapides",
+            "description": "Intertitre et cinq liens en icon-box encadrés, en grille de trois colonnes (une sur mobile). Dérivé de TPL-07.",
+            "type": "section",
+            "category": "public-sector",
+            "tags": [
+                "anif",
+                "institution",
+                "liens"
+            ],
+            "version": "1.0.0",
+            "elementor_min": "3.25.0",
+            "variants": [
+                "v3"
+            ],
+            "widgets": [
+                "heading",
+                "icon-box"
+            ],
+            "thumbnail": "anif-acces-rapides/thumbnail.webp",
+            "code": "TPL-09",
+            "sector": "Institutions publiques",
+            "motion": null,
+            "accent": "#14305f",
+            "preview": null,
+            "hash": "274b7eb63eb4cd61"
+        },
+        {
+            "id": "anif-actualites",
+            "title": "ANIF — Actualités",
+            "description": "Intertitre, trois dernières actualités (shortcode du thème) et bouton vers toutes les actualités.",
+            "type": "section",
+            "category": "public-sector",
+            "tags": [
+                "anif",
+                "institution",
+                "actualites"
+            ],
+            "version": "1.0.0",
+            "elementor_min": "3.25.0",
+            "variants": [
+                "v3"
+            ],
+            "widgets": [
+                "button",
+                "heading",
+                "shortcode"
+            ],
+            "thumbnail": "anif-actualites/thumbnail.webp",
+            "code": "TPL-10",
+            "sector": "Institutions publiques",
+            "motion": null,
+            "accent": "#14305f",
+            "preview": null,
+            "hash": "b820013a2a301bfe"
+        },
+        {
+            "id": "anif-maj-sanctions",
+            "title": "ANIF — Mises à jour des sanctions",
+            "description": "Cadre sur fond de surface pour le bloc des dernières mises à jour des sanctions (shortcode de la boîte à outils), renvoi à cncga.cm.",
+            "type": "section",
+            "category": "public-sector",
+            "tags": [
+                "anif",
+                "institution",
+                "sanctions"
+            ],
+            "version": "1.0.0",
+            "elementor_min": "3.25.0",
+            "variants": [
+                "v3"
+            ],
+            "widgets": [
+                "shortcode"
+            ],
+            "thumbnail": "anif-maj-sanctions/thumbnail.webp",
+            "code": "TPL-11",
+            "sector": "Institutions publiques",
+            "motion": null,
+            "accent": "#14305f",
+            "preview": null,
+            "hash": "d362b306a89a1af3"
+        },
+        {
+            "id": "anif-missions",
+            "title": "ANIF — Nos missions",
+            "description": "Intertitre, chapô et trois missions en icon-box (réceptionner, analyser, transmettre). Dérivé de la section « Nos services » de TPL-05.",
+            "type": "section",
+            "category": "public-sector",
+            "tags": [
+                "anif",
+                "missions",
+                "institution"
+            ],
+            "version": "1.0.0",
+            "elementor_min": "3.25.0",
+            "variants": [
+                "v3"
+            ],
+            "widgets": [
+                "heading",
+                "icon-box",
+                "text-editor"
+            ],
+            "thumbnail": "anif-missions/thumbnail.webp",
+            "code": "TPL-07",
+            "sector": "Institutions publiques",
+            "motion": null,
+            "accent": "#14305f",
+            "preview": null,
+            "hash": "6e934285bdb526c6"
+        },
+        {
+            "id": "anif-mot-directeur",
+            "title": "ANIF — Mot du Directeur",
+            "description": "Intertitre, extrait cité, mention et bouton vers le message complet. Dérivé du hero de TPL-05, sans image.",
+            "type": "section",
+            "category": "public-sector",
+            "tags": [
+                "anif",
+                "directeur",
+                "message",
+                "institution"
+            ],
+            "version": "1.0.0",
+            "elementor_min": "3.25.0",
+            "variants": [
+                "v3"
+            ],
+            "widgets": [
+                "button",
+                "heading",
+                "text-editor"
+            ],
+            "thumbnail": "anif-mot-directeur/thumbnail.webp",
+            "code": "TPL-08",
+            "sector": "Institutions publiques",
+            "motion": null,
+            "accent": "#14305f",
+            "preview": null,
+            "hash": "ebb2d017dbabb02a"
+        },
+        {
             "id": "budget-transparency",
             "title": "Transparence Budgétaire & Open Data",
             "description": "Répartition du budget par année : sélecteur d'année, total compté et barres animées.",

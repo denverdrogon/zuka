@@ -1,0 +1,78 @@
+{
+	"version": "0.4",
+	"title": "ANIF — Mot du Directeur",
+	"type": "section",
+	"content": [
+		{
+			"id": "amd0101",
+			"elType": "container",
+			"isInner": false,
+			"settings": {
+				"content_width": "boxed",
+				"flex_direction": "row",
+				"flex_direction_mobile": "column",
+				"flex_align_items": "center",
+				"padding": { "unit": "rem", "top": "2.5", "right": "1", "bottom": "2.5", "left": "1", "isLinked": false },
+				"background_background": "classic",
+				"__globals__": { "background_color": "globals/colors?id=anif_surface" }
+			},
+			"elements": [
+				{
+					"id": "amd0102",
+					"elType": "container",
+					"isInner": true,
+					"settings": {
+						"content_width": "full",
+						"width": { "unit": "%", "size": 100 },
+						"flex_gap": { "unit": "px", "size": 16, "column": "16", "row": "16" }
+					},
+					"elements": [
+						{
+							"id": "amd0103",
+							"elType": "widget",
+							"widgetType": "heading",
+							"settings": {
+								"title": "Mot du Directeur",
+								"header_size": "h2",
+								"__globals__": { "title_color": "globals/colors?id=primary" }
+							},
+							"elements": []
+						},
+						{
+							"id": "amd0104",
+							"elType": "widget",
+							"widgetType": "text-editor",
+							"settings": {
+								"editor": "<blockquote class=\"anif-mot__citation\"><p>En tant que Cellule de Renseignement Financier, dont la caractéristique essentielle est le respect de l’obligation de confidentialité et de secret de l’information, l’ANIF voudrait, à travers son site web, renseigner le public sur certains aspects non confidentiels de ses activités.</p></blockquote>",
+								"__globals__": { "text_color": "globals/colors?id=text" }
+							},
+							"elements": []
+						},
+						{
+							"id": "amd0105",
+							"elType": "widget",
+							"widgetType": "text-editor",
+							"settings": {
+								"editor": "<p class=\"anif-mot__mention\">Message repris du site précédent ; un message actualisé sera publié.</p>",
+								"__globals__": { "text_color": "globals/colors?id=anif_texte2" }
+							},
+							"elements": []
+						},
+						{
+							"id": "amd0106",
+							"elType": "widget",
+							"widgetType": "button",
+							"settings": {
+								"text": "Lire le message",
+								"link": { "url": "/l-anif/mot-du-directeur/", "is_external": "", "nofollow": "" },
+								"size": "md",
+								"__globals__": { "background_color": "globals/colors?id=primary" }
+							},
+							"elements": []
+						}
+					]
+				}
+			]
+		}
+	]
+}

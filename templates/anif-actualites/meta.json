@@ -1,0 +1,14 @@
+{
+    "id": "anif-actualites",
+    "title": "ANIF — Actualités",
+    "description": "Intertitre, trois dernières actualités (shortcode du thème) et bouton vers toutes les actualités.",
+    "type": "section",
+    "category": "public-sector",
+    "code": "TPL-10",
+    "sector": "Institutions publiques",
+    "accent": "#14305F",
+    "tags": [ "anif", "institution", "actualites" ],
+    "version": "1.0.0",
+    "elementor_min": "3.25.0",
+    "variants": [ "v3" ]
+}

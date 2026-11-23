@@ -1,0 +1,93 @@
+{
+	"version": "0.4",
+	"title": "ANIF — Nos missions",
+	"type": "section",
+	"content": [
+		{
+			"id": "anm0101",
+			"elType": "container",
+			"isInner": false,
+			"settings": {
+				"content_width": "boxed",
+				"flex_direction": "column",
+				"flex_gap": { "unit": "px", "size": 24, "column": "24", "row": "24" },
+				"padding": { "unit": "rem", "top": "3", "right": "1", "bottom": "3", "left": "1", "isLinked": false }
+			},
+			"elements": [
+				{
+					"id": "anm0102",
+					"elType": "widget",
+					"widgetType": "heading",
+					"settings": {
+						"title": "Nos missions",
+						"header_size": "h2",
+						"__globals__": { "title_color": "globals/colors?id=primary" }
+					},
+					"elements": []
+				},
+				{
+					"id": "anm0103",
+					"elType": "widget",
+					"widgetType": "text-editor",
+					"settings": {
+						"editor": "<p class=\"anif-chapo\">La Cellule de Renseignement Financier du Cameroun reçoit, analyse et transmet les déclarations de soupçon de blanchiment de capitaux et de financement du terrorisme et de la prolifération.</p>",
+						"__globals__": { "text_color": "globals/colors?id=text" }
+					},
+					"elements": []
+				},
+				{
+					"id": "anm0104",
+					"elType": "container",
+					"isInner": true,
+					"settings": {
+						"content_width": "full",
+						"flex_direction": "row",
+						"flex_direction_mobile": "column",
+						"flex_gap": { "unit": "px", "size": 32, "column": "32", "row": "32" }
+					},
+					"elements": [
+						{
+							"id": "anm0105",
+							"elType": "widget",
+							"widgetType": "icon-box",
+							"settings": {
+								"selected_icon": { "value": "fas fa-inbox", "library": "fa-solid" },
+								"title_text": "Réceptionner",
+								"description_text": "Recevoir les déclarations de soupçon et les informations des professions assujetties et des autorités.",
+								"title_size": "h3",
+								"__globals__": { "primary_color": "globals/colors?id=secondary", "title_color": "globals/colors?id=primary", "description_color": "globals/colors?id=text" }
+							},
+							"elements": []
+						},
+						{
+							"id": "anm0106",
+							"elType": "widget",
+							"widgetType": "icon-box",
+							"settings": {
+								"selected_icon": { "value": "fas fa-search", "library": "fa-solid" },
+								"title_text": "Analyser",
+								"description_text": "Analyser et enrichir ces informations pour établir l'origine ou la destination des fonds.",
+								"title_size": "h3",
+								"__globals__": { "primary_color": "globals/colors?id=secondary", "title_color": "globals/colors?id=primary", "description_color": "globals/colors?id=text" }
+							},
+							"elements": []
+						},
+						{
+							"id": "anm0107",
+							"elType": "widget",
+							"widgetType": "icon-box",
+							"settings": {
+								"selected_icon": { "value": "fas fa-paper-plane", "library": "fa-solid" },
+								"title_text": "Transmettre",
+								"description_text": "Transmettre ses conclusions au procureur de la République et coopérer avec les cellules de renseignement financier étrangères.",
+								"title_size": "h3",
+								"__globals__": { "primary_color": "globals/colors?id=secondary", "title_color": "globals/colors?id=primary", "description_color": "globals/colors?id=text" }
+							},
+							"elements": []
+						}
+					]
+				}
+			]
+		}
+	]
+}

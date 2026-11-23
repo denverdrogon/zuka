@@ -1,0 +1,20 @@
+{
+    "id": "anif-missions",
+    "title": "ANIF — Nos missions",
+    "description": "Intertitre, chapô et trois missions en icon-box (réceptionner, analyser, transmettre). Dérivé de la section « Nos services » de TPL-05.",
+    "type": "section",
+    "category": "public-sector",
+    "code": "TPL-07",
+    "sector": "Institutions publiques",
+    "accent": "#14305F",
+    "tags": [
+        "anif",
+        "missions",
+        "institution"
+    ],
+    "version": "1.0.0",
+    "elementor_min": "3.25.0",
+    "variants": [
+        "v3"
+    ]
+}

@@ -1,0 +1,14 @@
+{
+    "id": "anif-maj-sanctions",
+    "title": "ANIF — Mises à jour des sanctions",
+    "description": "Cadre sur fond de surface pour le bloc des dernières mises à jour des sanctions (shortcode de la boîte à outils), renvoi à cncga.cm.",
+    "type": "section",
+    "category": "public-sector",
+    "code": "TPL-11",
+    "sector": "Institutions publiques",
+    "accent": "#14305F",
+    "tags": [ "anif", "institution", "sanctions" ],
+    "version": "1.0.0",
+    "elementor_min": "3.25.0",
+    "variants": [ "v3" ]
+}
