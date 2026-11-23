@@ -1,5 +1,5 @@
 /**
- * Adds a « Plug Templates » button next to Elementor's « Add Template » button
+ * Adds a « Zuka » button next to Elementor's « Add Template » button
  * in every add-section area of the preview iframe.
  *
  * Elementor selectors and event names come from window.plugtLibrary.editor
@@ -7,13 +7,15 @@
  */
 const BUTTON_CLASS = 'plugt-add-template-button';
 
+// Doubled class: beats Elementor's own `.elementor-add-section-area-button` rules.
+const SEL = `.${ BUTTON_CLASS }.${ BUTTON_CLASS }`;
 const STYLE = `
-.${ BUTTON_CLASS } {
+${ SEL } {
 	display: inline-flex; align-items: center; justify-content: center;
-	background: #1e3a8a; color: #fff; border: 0; cursor: pointer;
+	background-color: #4a5e3a; color: #f3f2da; border: 0; cursor: pointer;
 }
-.${ BUTTON_CLASS }:hover, .${ BUTTON_CLASS }:focus-visible { background: #172554; }
-.${ BUTTON_CLASS } img { width: 18px; height: 18px; pointer-events: none; }
+${ SEL }:hover, ${ SEL }:focus-visible { background-color: #36452a; }
+${ SEL } img { width: 20px; height: 20px; pointer-events: none; }
 `;
 
 /**
@@ -54,8 +56,8 @@ function decorate( doc, contract, icon, onOpen ) {
 			const button = doc.createElement( 'button' );
 			button.type = 'button';
 			button.className = `elementor-add-section-area-button ${ BUTTON_CLASS }`;
-			button.setAttribute( 'aria-label', 'Plug Templates' );
-			button.setAttribute( 'data-tooltip', 'Plug Templates' );
+			button.setAttribute( 'aria-label', 'Zuka' );
+			button.setAttribute( 'data-tooltip', 'Zuka' );
 			const img = doc.createElement( 'img' );
 			img.src = icon;
 			img.alt = '';

@@ -59,6 +59,65 @@
 	}
 }
 
+.plugt-library .dataviews-view-grid__media {
+	cursor: zoom-in;
+}
+
+.plugt-preview-modal {
+	.components-modal__content {
+		display: flex;
+		flex-direction: column;
+		padding: 0;
+		margin-top: 0;
+	}
+
+	&__tools {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		margin-inline-end: 8px;
+	}
+
+	&__devices {
+		display: flex;
+		gap: 2px;
+		padding-inline-end: 8px;
+		margin-inline-end: 4px;
+		border-inline-end: 1px solid #dcdcde;
+	}
+
+	&__stage {
+		position: relative;
+		flex: 1;
+		display: flex;
+		justify-content: center;
+		min-height: 70vh;
+		padding: 16px;
+		background: #f0f0f1;
+		overflow: auto;
+
+		iframe {
+			height: 100%;
+			min-height: 70vh;
+			max-width: 100%;
+			border: 1px solid #dcdcde;
+			background: #fff;
+			box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+			transition: width 0.2s ease;
+		}
+	}
+
+	&__loading {
+		position: absolute;
+		top: 40px;
+		left: 50%;
+		transform: translateX(-50%);
+		display: flex;
+		align-items: center;
+		gap: 8px;
+	}
+}
+
 .plugt-editor-modal {
 	width: min(1200px, 92vw);
 	max-height: 90vh;

@@ -202,6 +202,97 @@ class Adapter {
 	}
 
 	/**
+	 * Creates a private library template used only for previews.
+	 *
+	 * @param string       $title    Template title.
+	 * @param string       $type     Library type: page or section.
+	 * @param array<mixed> $elements Elementor elements.
+	 * @param array<mixed> $settings Page settings.
+	 * @return int|WP_Error Post id.
+	 */
+	public function create_hidden_template( string $title, string $type, array $elements, array $settings ) {
+		return $this->create_document(
+			$type,
+			array(
+				'post_title'  => $title,
+				'post_status' => 'private',
+				'post_type'   => self::LIBRARY_POST_TYPE,
+			),
+			$elements,
+			$settings
+		);
+	}
+
+	/**
+	 * Keeps library posts carrying `$meta_key` out of every list of templates
+	 * (Elementor > Mes modèles, the editor's template library, exports).
+	 *
+	 * @param string $meta_key Meta key marking hidden posts.
+	 */
+	public function hide_library_posts( string $meta_key ): void {
+		add_action(
+			'pre_get_posts',
+			static function ( $query ) use ( $meta_key ): void {
+				if ( ! $query instanceof \WP_Query ) {
+					return;
+				}
+				$type = $query->get( 'post_type' );
+				if ( self::LIBRARY_POST_TYPE !== $type && array( self::LIBRARY_POST_TYPE ) !== $type ) {
+					return;
+				}
+				if ( $query->get( 'p' ) || $query->get( 'name' ) || $query->get( 'post__in' ) || $query->get( 'plugt_include_hidden' ) ) {
+					return;
+				}
+				$meta_query   = (array) $query->get( 'meta_query' );
+				$meta_query[] = array(
+					'key'     => $meta_key,
+					'compare' => 'NOT EXISTS',
+				);
+				$query->set( 'meta_query', $meta_query );
+			}
+		);
+	}
+
+	/**
+	 * Ids of library posts (any status, hidden ones included) whose meta matches.
+	 *
+	 * @param string $meta_key   Meta key.
+	 * @param string $meta_value Meta value.
+	 * @return list<int>
+	 */
+	public function find_library_posts( string $meta_key, string $meta_value ): array {
+		$ids = get_posts(
+			array(
+				'post_type'            => self::LIBRARY_POST_TYPE,
+				'post_status'          => 'any',
+				'posts_per_page'       => -1,
+				'fields'               => 'ids',
+				'meta_key'             => $meta_key, // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key -- Few posts, preview only.
+				'meta_value'           => $meta_value, // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_value -- Same.
+				'plugt_include_hidden' => true,
+				'suppress_filters'     => false,
+			)
+		);
+		return array_values( array_map( 'intval', $ids ) );
+	}
+
+	/**
+	 * Front-end HTML of an Elementor document, its CSS enqueued.
+	 *
+	 * @param int $post_id Post id.
+	 */
+	public function render_document( int $post_id ): string {
+		if ( ! $this->is_loaded() || ! class_exists( '\Elementor\Plugin' ) ) {
+			return '';
+		}
+		$plugin = \Elementor\Plugin::$instance;
+		if ( null === $plugin || ! isset( $plugin->frontend ) || ! method_exists( $plugin->frontend, 'get_builder_content_for_display' ) ) {
+			return '';
+		}
+		return (string) $plugin->frontend->get_builder_content_for_display( $post_id, true );
+	}
+
+	/**
 	 * Admin URL of Elementor > Templates (« Mes modèles »).
 	 */
 	public function library_admin_url(): string {

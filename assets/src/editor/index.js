@@ -21,7 +21,7 @@ function EditorModal() {
 	}
 	return (
 		<Modal
-			title={ __( 'Plug Templates', 'plug-templates' ) }
+			title={ __( 'Zuka', 'plug-templates' ) }
 			className="plugt-editor-modal"
 			onRequestClose={ () => setAt( null ) }
 		>

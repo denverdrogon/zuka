@@ -14,6 +14,7 @@ use PlugTemplates\Frontend\MotionAssets;
 use PlugTemplates\Library\ContentTransformer;
 use PlugTemplates\Library\Importer;
 use PlugTemplates\Library\MediaImporter;
+use PlugTemplates\Library\Previewer;
 use PlugTemplates\Library\Repository;
 use PlugTemplates\Rest\TemplatesController;
 
@@ -142,6 +143,7 @@ final class Plugin {
 
 		( new TemplatesController( $this->repository, $this->importer ) )->register();
 		( new MotionAssets( $this->elementor, PLUGT_PATH . 'assets/build', PLUGT_URL . 'assets/build' ) )->register();
+		( new Previewer( $this->repository, $this->importer, $this->elementor ) )->register();
 
 		if ( is_admin() ) {
 			$library = new LibraryPage( $this->elementor, PLUGT_PATH . 'assets/build', PLUGT_URL . 'assets/build' );
@@ -171,7 +173,7 @@ final class Plugin {
 			Requirements::ELEMENTOR => 'Elementor',
 		);
 
-		echo '<div class="notice notice-error"><p><strong>Plug Templates</strong> — ';
+		echo '<div class="notice notice-error"><p><strong>Zuka</strong> — ';
 		echo esc_html__( 'Le plugin est inactif car les prérequis ne sont pas remplis :', 'plug-templates' );
 		echo '</p><ul style="list-style:disc;padding-left:2em">';
 		foreach ( $this->unmet as $component => $info ) {

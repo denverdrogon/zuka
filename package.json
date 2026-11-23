@@ -19,11 +19,11 @@
 		"@wordpress/scripts": "30.7.0"
 	},
 	"dependencies": {
-		"@wordpress/api-fetch": "7.14.0",
-		"@wordpress/components": "29.0.0",
-		"@wordpress/dataviews": "4.10.0",
-		"@wordpress/element": "6.14.0",
-		"@wordpress/i18n": "5.14.0",
-		"@wordpress/icons": "10.14.0"
+		"@wordpress/api-fetch": "8.2.0",
+		"@wordpress/components": "45.0.0",
+		"@wordpress/dataviews": "22.1.0",
+		"@wordpress/element": "10.2.0",
+		"@wordpress/i18n": "7.2.0",
+		"@wordpress/icons": "21.0.0"
 	}
 }

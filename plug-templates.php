@@ -1,13 +1,13 @@
 <?php
 /**
- * Plugin Name:       Plug Templates
+ * Plugin Name:       Zuka
  * Description:       Bibliothèque de templates personnalisés pour Elementor (v3 et v4 Atomic), compatibles Elementor Free.
  * Version:           0.1.0
  * Requires at least: 6.6
  * Tested up to:      7.0
  * Requires PHP:      7.4
  * Requires Plugins:  elementor
- * Author:            Plug Templates
+ * Author:            Zuka
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       plug-templates

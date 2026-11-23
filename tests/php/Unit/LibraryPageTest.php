@@ -61,7 +61,7 @@ final class LibraryPageTest extends TestCase {
 	public function test_menu_uses_edit_posts_and_slug(): void {
 		Functions\expect( 'add_menu_page' )
 			->once()
-			->with( 'Plug Templates', 'Plug Templates', 'edit_posts', 'plug-templates', \Mockery::type( 'array' ), 'dashicons-layout', 58 )
+			->with( 'Zuka', 'Zuka', 'edit_posts', 'plug-templates', \Mockery::type( 'array' ), LibraryPage::menu_icon(), 58 )
 			->andReturn( 'toplevel_page_plug-templates' );
 		$this->page()->add_menu();
 	}
@@ -78,6 +78,8 @@ final class LibraryPageTest extends TestCase {
 		$page = $this->page_with_menu();
 		Functions\when( 'current_user_can' )->alias( static fn( $cap ) => 'edit_pages' !== $cap );
 		Functions\when( 'wp_json_encode' )->alias( 'json_encode' );
+		Functions\when( 'home_url' )->justReturn( 'https://site.test/' );
+		Functions\when( 'add_query_arg' )->alias( static fn( $key, $value, $url ) => $url . '?' . $key . '=' . $value );
 		Functions\expect( 'wp_enqueue_script' )
 			->once()
 			->with( LibraryPage::HANDLE, 'https://site.test/build/admin.js', array( 'react', 'wp-api-fetch' ), 'abc', true );
@@ -100,6 +102,7 @@ final class LibraryPageTest extends TestCase {
 		$this->assertFalse( $config['caps']['importPage'] );
 		$this->assertTrue( $config['caps']['importLibrary'] );
 		$this->assertSame( Schema::CATEGORIES, array_keys( $config['categories'] ) );
+		$this->assertSame( 'https://site.test/?plugt_preview=__ID__', $config['previewUrl'] );
 	}
 
 	public function test_render_root_or_notice(): void {

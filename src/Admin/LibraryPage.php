@@ -11,6 +11,7 @@
 namespace PlugTemplates\Admin;
 
 use PlugTemplates\Elementor\Adapter;
+use PlugTemplates\Library\Previewer;
 use PlugTemplates\Library\Schema;
 use PlugTemplates\Rest\TemplatesController;
 
@@ -78,15 +79,25 @@ final class LibraryPage {
 	 */
 	public function add_menu(): void {
 		$hook              = add_menu_page(
-			__( 'Plug Templates', 'plug-templates' ),
-			__( 'Plug Templates', 'plug-templates' ),
+			__( 'Zuka', 'plug-templates' ),
+			__( 'Zuka', 'plug-templates' ),
 			self::CAPABILITY,
 			self::SLUG,
 			array( $this, 'render' ),
-			'dashicons-layout',
+			self::menu_icon(),
 			58
 		);
 		$this->hook_suffix = is_string( $hook ) ? $hook : '';
+	}
+
+	/**
+	 * Zuka mark as a data URI, in the admin menu's default icon colour
+	 * (WordPress recolours `fill` on hover; the stroke keeps this grey).
+	 */
+	public static function menu_icon(): string {
+		$svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M4.5 5.5H15L5.5 14.5H12" fill="none" stroke="#a7aaad" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="15.3" cy="14.5" r="1.5" fill="#a7aaad"/></svg>';
+		// phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode -- Data URI of a static, plugin-owned SVG.
+		return 'data:image/svg+xml;base64,' . base64_encode( $svg );
 	}
 
 	/**
@@ -125,7 +136,7 @@ final class LibraryPage {
 	public function render(): void {
 		echo '<div class="wrap plugt-library-wrap">';
 		if ( null === $this->asset() ) {
-			echo '<h1>' . esc_html__( 'Plug Templates', 'plug-templates' ) . '</h1>';
+			echo '<h1>' . esc_html__( 'Zuka', 'plug-templates' ) . '</h1>';
 			echo '<div class="notice notice-warning"><p>' . esc_html__( 'Les fichiers de l\'interface sont absents : lancez « npm run build ».', 'plug-templates' ) . '</p></div>';
 		} else {
 			printf( '<div id="%s"></div>', esc_attr( self::ROOT_ID ) );
@@ -149,6 +160,8 @@ final class LibraryPage {
 			),
 			'libraryUrl' => $this->elementor->library_admin_url(),
 			'atomic'     => $this->elementor->is_atomic_active(),
+			'logo'       => PLUGT_URL . 'assets/brand/zuka-logo.svg',
+			'previewUrl' => Previewer::url(),
 		);
 	}
 

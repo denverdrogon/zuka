@@ -6,6 +6,7 @@ import { DataViews, filterSortAndPaginate } from '@wordpress/dataviews';
 import { Notice, Spinner } from '@wordpress/components';
 import { __, sprintf } from '@wordpress/i18n';
 import { fetchTemplates, importTemplate, getConfig } from './api';
+import PreviewModal from './PreviewModal';
 import './library.scss';
 
 const DEFAULT_VIEW = {
@@ -38,6 +39,7 @@ export default function Library( { context = 'admin', onInsert } ) {
 	const [ loading, setLoading ] = useState( true );
 	const [ busy, setBusy ] = useState( null );
 	const [ notice, setNotice ] = useState( null );
+	const [ previewItem, setPreviewItem ] = useState( null );
 	const [ view, setView ] = useState( DEFAULT_VIEW );
 
 	useEffect( () => {
@@ -146,8 +148,15 @@ export default function Library( { context = 'admin', onInsert } ) {
 	const caps = config.caps || {};
 	const actions = useMemo( () => {
 		const eligible = ( item ) => item.compatible && busy === null;
+		const previewAction = {
+			id: 'live-preview',
+			label: __( 'Aperçu', 'plug-templates' ),
+			isEligible: ( item ) => item.compatible && !! config.previewUrl,
+			callback: ( [ item ] ) => setPreviewItem( item ),
+		};
 		if ( 'editor' === context ) {
 			return [
+				previewAction,
 				{
 					id: 'insert',
 					label: __( 'Insérer', 'plug-templates' ),
@@ -157,7 +166,7 @@ export default function Library( { context = 'admin', onInsert } ) {
 				},
 			];
 		}
-		const list = [];
+		const list = [ previewAction ];
 		if ( caps.importPage ) {
 			list.push( {
 				id: 'page',
@@ -177,13 +186,32 @@ export default function Library( { context = 'admin', onInsert } ) {
 		}
 		list.push( {
 			id: 'preview',
-			label: __( 'Aperçu en ligne', 'plug-templates' ),
+			label: __( 'Démo externe', 'plug-templates' ),
 			isEligible: ( item ) => !! item.preview,
 			callback: ( [ item ] ) => window.open( item.preview, '_blank', 'noopener' ),
 		} );
 		return list;
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [ context, busy, caps.importPage, caps.importLibrary ] );
+
+	// Buttons of the preview modal: same import modes as the card actions.
+	const previewActions = ( item ) => {
+		const close = ( mode ) => () => {
+			setPreviewItem( null );
+			run( item, mode );
+		};
+		if ( 'editor' === context ) {
+			return [ { id: 'insert', label: __( 'Insérer', 'plug-templates' ), onClick: close( 'editor' ), disabled: busy !== null } ];
+		}
+		const list = [];
+		if ( caps.importPage ) {
+			list.push( { id: 'page', label: __( 'Créer une page', 'plug-templates' ), onClick: close( 'page' ), disabled: busy !== null } );
+		}
+		if ( caps.importLibrary ) {
+			list.push( { id: 'library', label: __( 'Ajouter à Mes modèles', 'plug-templates' ), onClick: close( 'library' ), disabled: busy !== null } );
+		}
+		return list;
+	};
 
 	const { data, paginationInfo } = useMemo(
 		() => filterSortAndPaginate( items, view, fields ),
@@ -197,7 +225,16 @@ export default function Library( { context = 'admin', onInsert } ) {
 					{ notice.message }{ ' ' }
 					{ notice.editUrl && (
 						<a href={ notice.editUrl }>{ __( 'Modifier avec Elementor', 'plug-templates' ) }</a>
-					) }				</Notice>
+					) }
+				</Notice>
+			) }
+			{ previewItem && (
+				<PreviewModal
+					item={ previewItem }
+					url={ config.previewUrl.replace( '__ID__', encodeURIComponent( previewItem.id ) ) }
+					onClose={ () => setPreviewItem( null ) }
+					actions={ previewActions( previewItem ) }
+				/>
 			) }
 			{ busy && (
 				<p className="plugt-busy">
@@ -214,6 +251,8 @@ export default function Library( { context = 'admin', onInsert } ) {
 				defaultLayouts={ { grid: {}, table: {} } }
 				isLoading={ loading }
 				getItemId={ ( item ) => item.id }
+				onClickItem={ ( item ) => item.compatible && config.previewUrl && setPreviewItem( item ) }
+				isItemClickable={ ( item ) => item.compatible && !! config.previewUrl }
 				searchLabel={ __( 'Rechercher un template', 'plug-templates' ) }
 			/>
 		</div>
