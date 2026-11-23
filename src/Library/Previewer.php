@@ -190,7 +190,7 @@ class Previewer {
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 		<?php wp_head(); ?>
-<style>html{margin-top:0!important}body.plugt-preview{margin:0}</style>
+<style>html{margin-top:0!important}body.plugt-preview{margin:0}#cmplz-manage-consent,.cmplz-cookiebanner{display:none!important}</style>
 </head>
 <body <?php body_class( 'plugt-preview elementor-page' ); ?>>
 		<?php
