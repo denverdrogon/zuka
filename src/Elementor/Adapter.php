@@ -293,6 +293,22 @@ class Adapter {
 	}
 
 	/**
+	 * Body class of the active kit (`elementor-kit-<id>`): global colours and
+	 * typography are scoped to it, so a page without it renders unstyled.
+	 */
+	public function kit_body_class(): string {
+		if ( ! $this->is_loaded() || ! class_exists( '\Elementor\Plugin' ) ) {
+			return '';
+		}
+		$plugin = \Elementor\Plugin::$instance;
+		if ( null === $plugin || ! isset( $plugin->kits_manager ) || ! method_exists( $plugin->kits_manager, 'get_active_id' ) ) {
+			return '';
+		}
+		$kit_id = (int) $plugin->kits_manager->get_active_id();
+		return $kit_id > 0 ? 'elementor-kit-' . $kit_id : '';
+	}
+
+	/**
 	 * Admin URL of Elementor > Templates (« Mes modèles »).
 	 */
 	public function library_admin_url(): string {

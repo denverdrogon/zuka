@@ -169,11 +169,22 @@ class Previewer {
 			wp_die( esc_html( $post_id->get_error_message() ), '', array( 'response' => is_array( $status ) && isset( $status['status'] ) ? (int) $status['status'] : 500 ) );
 		}
 
+		show_admin_bar( false );
+		echo $this->html( $post_id ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Full document built by html().
+		exit;
+	}
+
+	/**
+	 * Bare preview document of a preview post (also used by bin/export-previews.php).
+	 *
+	 * @param int $post_id Preview post id.
+	 */
+	public function html( int $post_id ): string {
 		// Render first so Elementor enqueues the document CSS before wp_head().
 		$content = $this->elementor->render_document( $post_id );
-		show_admin_bar( false );
+		ob_start();
 		$this->output( $content );
-		exit;
+		return (string) ob_get_clean();
 	}
 
 	/**
@@ -192,7 +203,7 @@ class Previewer {
 		<?php wp_head(); ?>
 <style>html{margin-top:0!important}body.plugt-preview{margin:0}#cmplz-manage-consent,.cmplz-cookiebanner{display:none!important}</style>
 </head>
-<body <?php body_class( 'plugt-preview elementor-page' ); ?>>
+<body <?php body_class( trim( 'plugt-preview elementor-page ' . $this->elementor->kit_body_class() ) ); ?>>
 		<?php
 		echo $content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Elementor output, escaped by Elementor.
 		wp_footer();

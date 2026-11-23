@@ -106,12 +106,16 @@ class Repository {
 	}
 
 	/**
-	 * Public URL of a template thumbnail.
+	 * Public URL of a template thumbnail, versioned by file date (a regenerated
+	 * thumbnail is not served from the browser cache).
 	 *
 	 * @param string $id Template id.
 	 */
 	public function thumbnail_url( string $id ): string {
-		return $this->url . '/' . rawurlencode( $id ) . '/thumbnail.webp';
+		$url  = $this->url . '/' . rawurlencode( $id ) . '/thumbnail.webp';
+		$file = $this->dir . '/' . $id . '/thumbnail.webp';
+		$time = is_file( $file ) ? (int) filemtime( $file ) : 0;
+		return $time > 0 ? $url . '?v=' . $time : $url;
 	}
 
 	/**

@@ -39,10 +39,12 @@ final class RepositoryTest extends TestCase {
 	}
 
 	public function test_thumbnail_url(): void {
-		$this->assertSame(
-			'https://site.test/wp-content/plugins/plug-templates/templates/header-simple/thumbnail.webp',
+		// Versioned by file date so a regenerated thumbnail bypasses the browser cache.
+		$this->assertMatchesRegularExpression(
+			'#^https://site\.test/wp-content/plugins/plug-templates/templates/header-simple/thumbnail\.webp\?v=\d+$#',
 			$this->repository()->thumbnail_url( 'header-simple' )
 		);
+		$this->assertStringEndsWith( '/inexistant/thumbnail.webp', $this->repository()->thumbnail_url( 'inexistant' ) );
 	}
 
 	public function test_preview_url_is_null_without_clip(): void {

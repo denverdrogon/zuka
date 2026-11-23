@@ -7,7 +7,7 @@
 		height: 100%;
 		object-fit: cover;
 		object-position: top center;
-		aspect-ratio: 16 / 10;
+		aspect-ratio: 3 / 2;
 	}
 
 	.plugt-thumb--empty {
@@ -60,6 +60,8 @@
 }
 
 .plugt-library .dataviews-view-grid__media {
+	// Thumbnails are 600 x 400: show them whole, not cropped to a square.
+	aspect-ratio: 3 / 2;
 	cursor: zoom-in;
 }
 

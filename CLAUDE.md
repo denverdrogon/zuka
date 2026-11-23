@@ -16,7 +16,7 @@ Tout appel interne à Elementor (classes, hooks, documents, API v3/v4) passe par
 ## Templates
 - Compatibles **Elementor Free uniquement** : aucun widget, condition ou fonction Pro.
 - Liste blanche de widgets, vérifiée par `bin/validate-templates.php` (aussi en CI).
-- Par template : `templates/<slug>/` avec `meta.json`, `content.v3.json` et/ou `content.v4.json` (optionnels), `media/`, `thumbnail.webp`. Index : `templates/manifest.json` (généré par `bin/build-manifest.php`).
+- Par template : `templates/<slug>/` avec `meta.json`, `content.v3.json` et/ou `content.v4.json` (optionnels), `media/`, `thumbnail.webp`. Index : `templates/manifest.json` (généré par `bin/build-manifest.php`). Vignettes : `npm run thumbnails -- --wp=<racine WP> --url=<URL du site>` capture le vrai rendu (aperçu Elementor avec le kit du site), jamais de maquette dessinée.
 - Utiliser les Global Colors/Fonts (`__globals__`) plutôt que des valeurs en dur.
 
 ## Couche motion
