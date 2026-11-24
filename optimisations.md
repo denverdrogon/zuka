@@ -41,7 +41,27 @@ npx wp-env start
 ```
 - wp-env sert le site sur http://localhost:8888, identifiants `admin` / `password`. WP 7.0, PHP 8.3, Elementor stable : voir `.wp-env.json`.
 - **Vignettes :** `npm run thumbnails` a besoin d'un WordPress local **avec le kit du site cible** et de Chrome installé (voir l'en-tête de `bin/build-thumbnails.mjs`).
-- **Prototype Gemini :** le zip `other sources/atelier-wp-templates (3).zip` cité dans `CLAUDE.md` **n'est pas versionné**. Il faut le demander au propriétaire du projet (nécessaire pour T11).
+- **Prototype Gemini :** le zip `other sources/atelier-wp-templates (3).zip` cité dans `CLAUDE.md` **n'est pas versionné**, et il est introuvable sur le portable du propriétaire (recherche du 24/11/2026). Il est nécessaire pour T11. Le localiser sur le poste du bureau : voir **T00**.
+
+### 0.5 T00 — Localiser le prototype Gemini (à faire en premier, sur le poste du bureau)
+1. Rechercher le fichier dans le profil utilisateur. La commande ci-dessous est à lancer dans PowerShell, ou à faire exécuter par Claude Code :
+   ```powershell
+   Get-ChildItem -Path $env:USERPROFILE -Recurse -Force -ErrorAction SilentlyContinue -Include "*atelier-wp-templates*","*atelier*.zip" | Select-Object FullName, Length, LastWriteTime
+   ```
+2. Si rien n'est trouvé, élargir la recherche à tous les disques :
+   ```powershell
+   Get-PSDrive -PSProvider FileSystem | ForEach-Object { Get-ChildItem -Path $_.Root -Recurse -Force -ErrorAction SilentlyContinue -Filter "*atelier-wp-templates*" } | Select-Object FullName, Length, LastWriteTime
+   ```
+3. Chercher aussi un dossier déjà décompressé : un dossier `other sources`, ou un fichier HTML contenant `atelier`.
+4. Si le zip est trouvé :
+   - le copier dans `other sources/` à la racine du dépôt **sans le commiter** ;
+   - ajouter `other sources/` au `.gitignore` ;
+   - noter ici son emplacement d'origine.
+5. Si le zip reste introuvable :
+   - prévenir le propriétaire ;
+   - T11 se fait alors sans lui, en partant des templates existants et de la proposition de catalogue.
+
+> Emplacement trouvé : _(à compléter)_
 
 ### 0.4 « Fait » global : à vérifier pour chaque PR
 ```powershell

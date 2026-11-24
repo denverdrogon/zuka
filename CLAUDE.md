@@ -41,7 +41,7 @@ Tout appel interne à Elementor (classes, hooks, documents, API v3/v4) passe par
   - respecter `prefers-reduced-motion`.
 - Le widget `html` reste statique : pas de script, pas de on*, pas d'URL externe.
 - Assets chargés uniquement sur les pages qui utilisent une classe `plugt-` (`src/Frontend/MotionAssets.php`).
-- Source d'inspiration : `other sources/atelier-wp-templates (3).zip` (prototype Gemini, 21 sections). Ce zip n'est pas versionné : le demander au propriétaire du projet.
+- Source d'inspiration : `other sources/atelier-wp-templates (3).zip` (prototype Gemini, 21 sections). Ce zip n'est pas versionné et son emplacement est inconnu : le localiser avec la tâche T00 de `optimisations.md`.
 
 ## Sécurité
 - Nonces sur toute action d'admin ; `permission_callback` explicite sur chaque route REST.
