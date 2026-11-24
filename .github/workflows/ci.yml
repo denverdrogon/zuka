@@ -107,3 +107,9 @@ jobs:
           echo "$active"
           echo "$active" | grep -qx elementor
           echo "$active" | grep -qx "$(basename "$PWD")"
+      - name: .pot à jour
+        run: |
+          npx wp-env run cli --env-cwd=wp-content/plugins/$(basename "$PWD") wp i18n make-pot . languages/plug-templates.tmp.pot --exclude=node_modules,vendor,assets/build,tests,bin,dist --domain=plug-templates
+          # Compare les msgid/msgctxt en ignorant l'en-tête, les dates et les références de lignes.
+          diff <(grep -E '^(msgctxt|msgid) ' languages/plug-templates.pot | sort) <(grep -E '^(msgctxt|msgid) ' languages/plug-templates.tmp.pot | sort)
+          rm languages/plug-templates.tmp.pot

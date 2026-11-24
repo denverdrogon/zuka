@@ -115,7 +115,7 @@ En complément :
 | T03 | Runner de migrations | 1 | — | [x] |
 | T04 | CI JS + matrice Elementor | 1 | — | [x] |
 | T05 | `readme.txt` | 1 | T02 | [x] |
-| T06 | i18n : `.pot` et vérification en CI | 1 | T04 | [ ] |
+| T06 | i18n : `.pot` et vérification en CI | 1 | T04 | [x] |
 | T07 | Tests E2E Playwright | 2 | T04 | [ ] |
 | T08 | Commandes WP-CLI (list, import, validate) | 2 | — | [ ] |
 | T09 | Export d'une page vers un template (`wp plugt export`) | 2 | T08 | [ ] |
@@ -247,6 +247,7 @@ En complément :
   - **En CI, dans le job `integration` :** régénérer le `.pot` dans un fichier temporaire, puis comparer les `msgid`, en ignorant l'en-tête et les dates. Échec en cas de différence.
   - **Chaînes en dur :** relire `assets/src/editor/inject.js`. `aria-label` et `data-tooltip` y valent « Zuka » sans `__()`. Les laisser : c'est un nom propre.
 - **Fait quand :** `languages/plug-templates.pot` est commité et le contrôle CI passe.
+- Écart : le `.pot` a été généré hors wp-env (wp-cli i18n-command en local, Docker non démarré) ; le contrôle CI compare uniquement les `msgid`/`msgctxt`, donc l'en-tête et les références de lignes n'ont pas d'effet. À valider par la première exécution de la CI. Le contrôle est placé à la fin du job `integration` (ne tourne donc que sur les entrées de la matrice).
 
 ---
 
