@@ -114,7 +114,7 @@ En complément :
 | T02 | Workflow de release + script de version | 1 | — | [x] |
 | T03 | Runner de migrations | 1 | — | [x] |
 | T04 | CI JS + matrice Elementor | 1 | — | [ ] |
-| T05 | `readme.txt` | 1 | T02 | [ ] |
+| T05 | `readme.txt` | 1 | T02 | [x] |
 | T06 | i18n : `.pot` et vérification en CI | 1 | T04 | [ ] |
 | T07 | Tests E2E Playwright | 2 | T04 | [ ] |
 | T08 | Commandes WP-CLI (list, import, validate) | 2 | — | [ ] |
