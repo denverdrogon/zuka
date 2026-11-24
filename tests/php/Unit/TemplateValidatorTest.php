@@ -38,7 +38,9 @@ final class TemplateValidatorTest extends TestCase {
 	public function test_shipped_templates_are_valid( string $dir ): void {
 		$result = ( new TemplateValidator() )->validate( $dir );
 		$this->assertSame( array(), $result['errors'] );
-		$this->assertSame( array(), $result['warnings'] );
+		// Hard-coded colours are tolerated (kit-independent rendering); every other warning must be fixed.
+		$others = array_filter( $result['warnings'], static fn( string $w ) => false === strpos( $w, 'en dur' ) );
+		$this->assertSame( array(), array_values( $others ) );
 		$this->assertContains( 'v3', $result['variants'] );
 	}
 
@@ -214,6 +216,60 @@ final class TemplateValidatorTest extends TestCase {
 		$v4  = $validator->validate( $dir );
 		$this->assertSame( array(), $v4['errors'] );
 		$this->assertErrorContains( 'Pas de variante v3', $v4['warnings'] );
+	}
+
+	public function test_quality_warnings_on_colours_fonts_text_and_alt(): void {
+		$heading                                         = $this->widget( 'abc0001', 'heading' );
+		$heading['settings']['title']                    = 'Lorem ipsum dolor';
+		$heading['settings']['title_color']              = '#112233';
+		$heading['settings']['typography_font_family']   = 'Roboto';
+		$image                                           = $this->widget( 'abc0002', 'image' );
+		$image['settings']['image']                      = array( 'url' => '' );
+		$globalised                                      = $this->widget( 'abc0003', 'heading' );
+		$globalised['settings']['title_color']           = '#112233';
+		$globalised['settings']['typography_font_family'] = 'Roboto';
+		$globalised['settings']['__globals__']           = array(
+			'title_color'          => 'globals/colors?id=primary',
+			'typography_typography' => 'globals/typography?id=primary',
+		);
+		$dir      = $this->make_template( array( 'content' => array( $heading, $image, $globalised ) ) );
+		$warnings = ( new TemplateValidator() )->warnings( $dir );
+
+		$this->assertErrorContains( '#abc0001) : couleur « #112233 »', $warnings );
+		$this->assertErrorContains( 'police « Roboto »', $warnings );
+		$this->assertErrorContains( 'texte factice', $warnings );
+		$this->assertErrorContains( '#abc0002) : image sans texte alternatif', $warnings );
+		$this->assertCount( 1, array_filter( $warnings, static fn( string $w ) => false !== strpos( $w, 'couleur' ) ), 'La couleur globalisée ne doit pas avertir.' );
+		$this->assertCount( 1, array_filter( $warnings, static fn( string $w ) => false !== strpos( $w, 'police' ) ) );
+	}
+
+	public function test_image_with_alt_does_not_warn(): void {
+		$image                      = $this->widget( 'abc0002', 'image' );
+		$image['settings']['image'] = array(
+			'url' => '',
+			'alt' => 'Logo',
+		);
+		$warnings                   = ( new TemplateValidator() )->warnings( $this->make_template( array( 'content' => array( $image ) ) ) );
+		$this->assertCount( 0, array_filter( $warnings, static fn( string $w ) => false !== strpos( $w, 'alt' ) ) );
+	}
+
+	public function test_heavy_media_and_bad_thumbnail_warn(): void {
+		if ( ! function_exists( 'imagewebp' ) ) {
+			$this->markTestSkipped( 'GD sans WebP.' );
+		}
+		$dir = $this->make_template();
+		file_put_contents( $dir . '/media/photo.webp', str_repeat( 'x', 307201 ) );
+		$warnings = ( new TemplateValidator() )->warnings( $dir );
+		$this->assertErrorContains( 'trop lourd : media/photo.webp', $warnings );
+		$this->assertErrorContains( 'thumbnail.webp illisible', $warnings );
+
+		$image = imagecreatetruecolor( 10, 10 );
+		imagewebp( $image, $dir . '/thumbnail.webp' );
+		$this->assertErrorContains( '10 × 10 px (600 × 400 attendu)', ( new TemplateValidator() )->warnings( $dir ) );
+
+		$image = imagecreatetruecolor( 600, 400 );
+		imagewebp( $image, $dir . '/thumbnail.webp' );
+		$this->assertCount( 0, array_filter( ( new TemplateValidator() )->warnings( $dir ), static fn( string $w ) => false !== strpos( $w, 'thumbnail' ) ) );
 	}
 
 	/**

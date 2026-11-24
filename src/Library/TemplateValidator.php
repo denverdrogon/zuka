@@ -20,6 +20,9 @@ final class TemplateValidator {
 	private const SEMVER_PATTERN     = '/^\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?$/';
 	private const ELEMENT_ID_PATTERN = '/^[a-z0-9]{7,8}$/';
 	private const MEDIA_EXTENSIONS   = 'jpe?g|png|gif|webp|avif|svg|mp4|webm|mp3';
+	private const MEDIA_MAX_BYTES    = 307200;
+	private const THUMBNAIL_WIDTH    = 600;
+	private const THUMBNAIL_HEIGHT   = 400;
 
 	/**
 	 * Errors found during the current run.
@@ -82,6 +85,8 @@ final class TemplateValidator {
 
 		if ( ! is_file( $dir . '/thumbnail.webp' ) ) {
 			$this->errors[] = 'thumbnail.webp manquant.';
+		} else {
+			$this->check_thumbnail_size( $dir . '/thumbnail.webp' );
 		}
 
 		$this->check_media_files( $dir );
@@ -97,6 +102,16 @@ final class TemplateValidator {
 			'widgets'  => $widgets,
 			'variants' => $variants,
 		);
+	}
+
+	/**
+	 * Non-blocking quality warnings of one template folder.
+	 *
+	 * @param string $dir Absolute path of templates/<slug>.
+	 * @return list<string>
+	 */
+	public function warnings( string $dir ): array {
+		return $this->validate( $dir )['warnings'];
 	}
 
 	/**
@@ -201,6 +216,7 @@ final class TemplateValidator {
 			$this->errors[] = sprintf( '%s : « page_settings » doit être un objet.', $file );
 		} elseif ( isset( $data['page_settings'] ) ) {
 			$this->check_settings( $data['page_settings'], $file . ' > page_settings' );
+			$this->check_quality( $data['page_settings'], $file . ' > page_settings', '' );
 		}
 
 		$this->ids = array();
@@ -242,6 +258,7 @@ final class TemplateValidator {
 			} else {
 				$this->check_settings( $element['settings'], $path );
 				$this->check_classes( $element['settings'], $path );
+				$this->check_quality( $element['settings'], $path, is_string( $widget_type ) ? $widget_type : '' );
 				$expected = 'widget' === $el_type ? '_css_classes' : 'css_classes';
 				$wrong    = 'widget' === $el_type ? 'css_classes' : '_css_classes';
 				if ( isset( $element['settings'][ $wrong ] ) ) {
@@ -345,6 +362,71 @@ final class TemplateValidator {
 	}
 
 	/**
+	 * Quality warnings on one settings object: hard-coded colours and fonts,
+	 * missing image alt, placeholder text.
+	 *
+	 * @param array<mixed> $settings    Element or page settings.
+	 * @param string       $path        Location used in messages.
+	 * @param string       $widget_type Widget type ('' for containers and page settings).
+	 */
+	private function check_quality( array $settings, string $path, string $widget_type ): void {
+		if ( 'image' === $widget_type ) {
+			$image = $settings['image'] ?? null;
+			if ( ! is_array( $image ) || '' === trim( (string) ( $image['alt'] ?? '' ) ) ) {
+				$this->warnings[] = sprintf( '%s : image sans texte alternatif (alt).', $path );
+			}
+		}
+		$this->check_quality_values( $settings, $path );
+	}
+
+	/**
+	 * Recursive part of check_quality().
+	 *
+	 * @param array<mixed> $settings Settings (possibly nested).
+	 * @param string       $path     Location used in messages.
+	 */
+	private function check_quality_values( array $settings, string $path ): void {
+		$globals = isset( $settings['__globals__'] ) && is_array( $settings['__globals__'] ) ? $settings['__globals__'] : array();
+
+		foreach ( $settings as $key => $value ) {
+			if ( '__globals__' === $key ) {
+				continue;
+			}
+			if ( is_array( $value ) ) {
+				$this->check_quality_values( $value, $path );
+				continue;
+			}
+			if ( ! is_string( $value ) ) {
+				continue;
+			}
+			if ( is_string( $key ) && preg_match( '/(?:^|_)color$/', $key ) && preg_match( '/^#[0-9a-f]{3,8}$/i', $value ) && empty( $globals[ $key ] ) ) {
+				$this->warnings[] = sprintf( '%s : couleur « %s » en dur dans « %s » (préférer une couleur globale).', $path, $value, $key );
+			}
+			if ( 'typography_font_family' === $key && '' !== $value && empty( $globals['typography_typography'] ) ) {
+				$this->warnings[] = sprintf( '%s : police « %s » en dur (préférer une typographie globale).', $path, $value );
+			}
+			$plain = strip_tags( $value ); // phpcs:ignore WordPress.WP.AlternativeFunctions.strip_tags_strip_tags -- Runs outside WordPress.
+			if ( in_array( $key, array( 'title', 'editor', 'description_text', 'text', 'html' ), true ) && preg_match( '/\b(?:lorem|ipsum|todo)\b/i', $plain ) ) {
+				$this->warnings[] = sprintf( '%s : texte factice (« lorem », « ipsum » ou « TODO ») dans « %s ».', $path, $key );
+			}
+		}
+	}
+
+	/**
+	 * Checks thumbnail.webp dimensions.
+	 *
+	 * @param string $file Absolute path.
+	 */
+	private function check_thumbnail_size( string $file ): void {
+		$size = @getimagesize( $file ); // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged,WordPress.WP.AlternativeFunctions.getimagesize_getimagesize -- Runs outside WordPress; unreadable files are reported below.
+		if ( ! is_array( $size ) ) {
+			$this->warnings[] = 'thumbnail.webp illisible : dimensions non vérifiées.';
+		} elseif ( self::THUMBNAIL_WIDTH !== $size[0] || self::THUMBNAIL_HEIGHT !== $size[1] ) {
+			$this->warnings[] = sprintf( 'thumbnail.webp fait %d × %d px (600 × 400 attendu).', $size[0], $size[1] );
+		}
+	}
+
+	/**
 	 * Checks `plugt-*` classes against the motion layer (modules and utilities).
 	 *
 	 * @param array<mixed> $settings Element settings.
@@ -418,6 +500,9 @@ final class TemplateValidator {
 			$relative = ltrim( substr( str_replace( '\\', '/', $file->getPathname() ), strlen( $dir . '/media' ) ), '/' );
 			if ( ! isset( $this->media_refs[ $relative ] ) ) {
 				$this->warnings[] = sprintf( 'Média inutilisé : media/%s.', $relative );
+			}
+			if ( $file->getSize() > self::MEDIA_MAX_BYTES ) {
+				$this->warnings[] = sprintf( 'Média trop lourd : media/%s (%d Ko, 300 Ko au plus conseillés).', $relative, (int) ceil( $file->getSize() / 1024 ) );
 			}
 		}
 	}

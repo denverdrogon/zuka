@@ -119,7 +119,7 @@ En complément :
 | T07 | Tests E2E Playwright | 2 | T04 | [ ] |
 | T08 | Commandes WP-CLI (list, import, validate) | 2 | — | [x] |
 | T09 | Export d'une page vers un template (`wp plugt export`) | 2 | T08 | [ ] |
-| T10 | Avertissements qualité du validateur + guide d'auteur | 2 | — | [ ] |
+| T10 | Avertissements qualité du validateur + guide d'auteur | 2 | — | [x] |
 | T11 | Catalogue v1 (≥ 40 templates) | 3 | T09, T10 | [ ] |
 | T12 | Champs `added` / `changelog` + nouvelles catégories | 3 | — | [ ] |
 | T13 | Suivi des imports (« Déjà importé », « Mise à jour dispo », « Mes imports ») | 3 | T12 | [ ] |
@@ -320,6 +320,7 @@ En complément :
     7. PR.
   - Le guide contient aussi la checklist de relecture : mobile, contraste, alt, aucun texte factice, rendu dans le kit par défaut d'Elementor **et** dans le kit cible.
 - **Fait quand :** `php bin/validate-templates.php` affiche les avertissements des 11 templates existants, et ceux qui sont pertinents sont corrigés dans la même PR.
+- **Écart :** `warnings()` est un simple accès aux avertissements de `validate()` (qui les calcule déjà). Les 61 avertissements restants sont des couleurs en dur (budget-transparency, institutional-tabs, page-accueil-agence) : non corrigés, car les remplacer par des globales changerait le rendu sans le kit cible.
 
 ### T11 — Catalogue v1 (≥ 40 templates)
 - **Constat :** il y a 11 templates, dont 6 ANIF. Les catégories `hero`, `bento`, `split` et `footer` sont vides.
