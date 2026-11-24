@@ -177,7 +177,7 @@ function mount( root, name ) {
 /**
  * Mounts every registered module found under scope.
  *
- * @param {ParentNode} scope Document or element.
+ * @param {Element|Document} scope Document or element.
  */
 export function scan( scope ) {
 	modules.forEach( ( _init, name ) => {
@@ -185,7 +185,9 @@ export function scan( scope ) {
 		if ( scope.nodeType === 1 && scope.matches( selector ) ) {
 			mount( scope, name );
 		}
-		scope.querySelectorAll( selector ).forEach( ( root ) => mount( root, name ) );
+		scope
+			.querySelectorAll( selector )
+			.forEach( ( root ) => mount( root, name ) );
 	} );
 }
 

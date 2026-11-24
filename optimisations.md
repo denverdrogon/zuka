@@ -113,7 +113,7 @@ En complément :
 | T01 | Updater GitHub Releases | 1 | — | [x] |
 | T02 | Workflow de release + script de version | 1 | — | [x] |
 | T03 | Runner de migrations | 1 | — | [x] |
-| T04 | CI JS + matrice Elementor | 1 | — | [ ] |
+| T04 | CI JS + matrice Elementor | 1 | — | [x] |
 | T05 | `readme.txt` | 1 | T02 | [x] |
 | T06 | i18n : `.pot` et vérification en CI | 1 | T04 | [ ] |
 | T07 | Tests E2E Playwright | 2 | T04 | [ ] |
@@ -227,6 +227,8 @@ En complément :
     - lancer `npx wp-env start`, puis un test de fumée : `npx wp-env run cli wp plugin list --status=active --field=name`, qui doit contenir `elementor` et le plugin.
   - **Version de la matrice :** prendre la **dernière 3.x réellement publiée** (vérifier sur wordpress.org/plugins/elementor/advanced) et la reporter dans `PLUGT_MIN_ELEMENTOR` si elle est plus haute que `3.25.0`.
 - **Fait quand :** la CI d'une PR affiche les jobs `php`, `js`, `plugin-check` et `integration` au vert.
+- Écart : `npm run lint:js` échouait déjà (wp-scripts 30.7 passe `--eslintrc`, refusé par ESLint 9). Ajout de `eslint.config.js` (config flat `@wordpress/eslint-plugin`), script remplacé par `eslint assets/src`, formatage Prettier appliqué (`--fix`) et 5 erreurs corrigées dans `assets/src`.
+- Écart : version Elementor 3.x de la matrice laissée à `3.32.0` (non vérifiée hors ligne) ; à confirmer sur wordpress.org/plugins/elementor/advanced et reporter dans `PLUGT_MIN_ELEMENTOR` si plus haute que `3.25.0`.
 
 ### T05 — `readme.txt`
 - **Fichier :** créer `readme.txt`, au format standard WP.

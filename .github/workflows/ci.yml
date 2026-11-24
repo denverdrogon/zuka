@@ -50,3 +50,60 @@ jobs:
         with:
           build-dir: plug-templates
           exclude-directories: tests,.github,bin
+
+  js:
+    name: JS (lint + build)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+      - run: npm ci
+      - run: npm run lint:js
+      - run: npm run build
+
+  integration:
+    name: WP ${{ matrix.wp }} / Elementor ${{ matrix.elementor }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        # À garder à jour : dernière 3.x publiée (voir PLUGT_MIN_ELEMENTOR).
+        elementor: ['3.32.0', 'latest-stable']
+        wp: ['7.0', 'latest']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          tools: composer:v2
+          coverage: none
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+      - run: composer install --no-dev --optimize-autoloader --no-interaction --no-progress
+      - run: npm ci
+      - run: npm run build
+      - name: Configurer wp-env (WP et Elementor de la matrice)
+        env:
+          WP_VERSION: ${{ matrix.wp }}
+          ELEMENTOR_VERSION: ${{ matrix.elementor }}
+        run: |
+          node -e '
+            const core = process.env.WP_VERSION === "latest" ? null : "WordPress/WordPress#" + process.env.WP_VERSION;
+            const config = {
+              core,
+              plugins: [ ".", "https://downloads.wordpress.org/plugin/elementor." + process.env.ELEMENTOR_VERSION + ".zip" ],
+            };
+            require("fs").writeFileSync(".wp-env.override.json", JSON.stringify(config, null, 2));
+          '
+      - run: npx wp-env start
+      - name: Test de fumée
+        run: |
+          active=$(npx wp-env run cli wp plugin list --status=active --field=name)
+          echo "$active"
+          echo "$active" | grep -qx elementor
+          echo "$active" | grep -qx "$(basename "$PWD")"

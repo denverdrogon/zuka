@@ -46,7 +46,12 @@ export default function Library( { context = 'admin', onInsert } ) {
 		fetchTemplates()
 			.then( setItems )
 			.catch( ( error ) =>
-				setNotice( { status: 'error', message: error.message || __( 'Chargement impossible.', 'plug-templates' ) } )
+				setNotice( {
+					status: 'error',
+					message:
+						error.message ||
+						__( 'Chargement impossible.', 'plug-templates' ),
+				} )
 			)
 			.finally( () => setLoading( false ) );
 	}, [] );
@@ -70,7 +75,10 @@ export default function Library( { context = 'admin', onInsert } ) {
 							decoding="async"
 						/>
 					) : (
-						<div className="plugt-thumb plugt-thumb--empty" aria-hidden="true" />
+						<div
+							className="plugt-thumb plugt-thumb--empty"
+							aria-hidden="true"
+						/>
 					),
 				enableSorting: false,
 				enableHiding: false,
@@ -82,7 +90,9 @@ export default function Library( { context = 'admin', onInsert } ) {
 				enableHiding: false,
 				render: ( { item } ) => (
 					<span className="plugt-title">
-						{ item.code && <span className="plugt-code">{ item.code }</span> }
+						{ item.code && (
+							<span className="plugt-code">{ item.code }</span>
+						) }
 						{ item.title }
 					</span>
 				),
@@ -96,7 +106,9 @@ export default function Library( { context = 'admin', onInsert } ) {
 					<>
 						{ item.description }
 						{ ! item.compatible && (
-							<span className="plugt-incompatible">{ item.compat_reason }</span>
+							<span className="plugt-incompatible">
+								{ item.compat_reason }
+							</span>
 						) }
 					</>
 				),
@@ -142,12 +154,31 @@ export default function Library( { context = 'admin', onInsert } ) {
 				status: 'success',
 				message:
 					'page' === mode
-						? sprintf( __( 'Page brouillon « %s » créée.', 'plug-templates' ), item.title )
-						: sprintf( __( '« %s » ajouté à Mes modèles.', 'plug-templates' ), item.title ),
+						? sprintf(
+								/* translators: %s: template title. */
+								__(
+									'Page brouillon « %s » créée.',
+									'plug-templates'
+								),
+								item.title
+						  )
+						: sprintf(
+								/* translators: %s: template title. */
+								__(
+									'« %s » ajouté à Mes modèles.',
+									'plug-templates'
+								),
+								item.title
+						  ),
 				editUrl: result.edit_url,
 			} );
 		} catch ( error ) {
-			setNotice( { status: 'error', message: error.message || __( 'Import impossible.', 'plug-templates' ) } );
+			setNotice( {
+				status: 'error',
+				message:
+					error.message ||
+					__( 'Import impossible.', 'plug-templates' ),
+			} );
 		} finally {
 			setBusy( null );
 		}
@@ -196,7 +227,8 @@ export default function Library( { context = 'admin', onInsert } ) {
 			id: 'preview',
 			label: __( 'Démo externe', 'plug-templates' ),
 			isEligible: ( item ) => !! item.preview,
-			callback: ( [ item ] ) => window.open( item.preview, '_blank', 'noopener' ),
+			callback: ( [ item ] ) =>
+				window.open( item.preview, '_blank', 'noopener' ),
 		} );
 		return list;
 		// eslint-disable-next-line react-hooks/exhaustive-deps
@@ -209,14 +241,31 @@ export default function Library( { context = 'admin', onInsert } ) {
 			run( item, mode );
 		};
 		if ( 'editor' === context ) {
-			return [ { id: 'insert', label: __( 'Insérer', 'plug-templates' ), onClick: close( 'editor' ), disabled: busy !== null } ];
+			return [
+				{
+					id: 'insert',
+					label: __( 'Insérer', 'plug-templates' ),
+					onClick: close( 'editor' ),
+					disabled: busy !== null,
+				},
+			];
 		}
 		const list = [];
 		if ( caps.importPage ) {
-			list.push( { id: 'page', label: __( 'Créer une page', 'plug-templates' ), onClick: close( 'page' ), disabled: busy !== null } );
+			list.push( {
+				id: 'page',
+				label: __( 'Créer une page', 'plug-templates' ),
+				onClick: close( 'page' ),
+				disabled: busy !== null,
+			} );
 		}
 		if ( caps.importLibrary ) {
-			list.push( { id: 'library', label: __( 'Ajouter à Mes modèles', 'plug-templates' ), onClick: close( 'library' ), disabled: busy !== null } );
+			list.push( {
+				id: 'library',
+				label: __( 'Ajouter à Mes modèles', 'plug-templates' ),
+				onClick: close( 'library' ),
+				disabled: busy !== null,
+			} );
 		}
 		return list;
 	};
@@ -229,24 +278,39 @@ export default function Library( { context = 'admin', onInsert } ) {
 	return (
 		<div className={ `plugt-library plugt-library--${ context }` }>
 			{ notice && (
-				<Notice status={ notice.status } onRemove={ () => setNotice( null ) }>
+				<Notice
+					status={ notice.status }
+					onRemove={ () => setNotice( null ) }
+				>
 					{ notice.message }{ ' ' }
 					{ notice.editUrl && (
-						<a href={ notice.editUrl }>{ __( 'Modifier avec Elementor', 'plug-templates' ) }</a>
+						<a href={ notice.editUrl }>
+							{ __(
+								'Modifier avec Elementor',
+								'plug-templates'
+							) }
+						</a>
 					) }
 				</Notice>
 			) }
 			{ previewItem && (
 				<PreviewModal
 					item={ previewItem }
-					url={ config.previewUrl.replace( '__ID__', encodeURIComponent( previewItem.id ) ) }
+					url={ config.previewUrl.replace(
+						'__ID__',
+						encodeURIComponent( previewItem.id )
+					) }
 					onClose={ () => setPreviewItem( null ) }
 					actions={ previewActions( previewItem ) }
 				/>
 			) }
 			{ busy && (
 				<p className="plugt-busy">
-					<Spinner /> { __( 'Import en cours (médias compris)…', 'plug-templates' ) }
+					<Spinner />{ ' ' }
+					{ __(
+						'Import en cours (médias compris)…',
+						'plug-templates'
+					) }
 				</p>
 			) }
 			<DataViews
@@ -259,8 +323,14 @@ export default function Library( { context = 'admin', onInsert } ) {
 				defaultLayouts={ { grid: {}, table: {} } }
 				isLoading={ loading }
 				getItemId={ ( item ) => item.id }
-				onClickItem={ ( item ) => item.compatible && config.previewUrl && setPreviewItem( item ) }
-				isItemClickable={ ( item ) => item.compatible && !! config.previewUrl }
+				onClickItem={ ( item ) =>
+					item.compatible &&
+					config.previewUrl &&
+					setPreviewItem( item )
+				}
+				isItemClickable={ ( item ) =>
+					item.compatible && !! config.previewUrl
+				}
 				searchLabel={ __( 'Rechercher un template', 'plug-templates' ) }
 			/>
 		</div>

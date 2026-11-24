@@ -20,7 +20,10 @@ registerModule( 'tabs', ( root, { parts, setActive, pressable } ) => {
 	}
 
 	const uid = 'plugt-tabs-' + Math.random().toString( 36 ).slice( 2, 8 );
-	let current = Math.max( 0, tabs.findIndex( ( t ) => t.classList.contains( 'is-active' ) ) );
+	let current = Math.max(
+		0,
+		tabs.findIndex( ( t ) => t.classList.contains( 'is-active' ) )
+	);
 
 	panels.forEach( ( panel, i ) => {
 		panel.id = panel.id || uid + '-p' + i;
@@ -48,7 +51,12 @@ registerModule( 'tabs', ( root, { parts, setActive, pressable } ) => {
 		if ( i < 0 ) {
 			return;
 		}
-		const delta = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[ e.key ];
+		const delta = {
+			ArrowRight: 1,
+			ArrowDown: 1,
+			ArrowLeft: -1,
+			ArrowUp: -1,
+		}[ e.key ];
 		if ( delta ) {
 			e.preventDefault();
 			show( i + delta, true );
@@ -64,7 +72,10 @@ registerModule( 'tabs', ( root, { parts, setActive, pressable } ) => {
 		window.clearInterval( timer );
 		timer = null;
 	};
-	if ( root.classList.contains( 'plugt-m-tabs--autoplay' ) && ! document.documentElement.classList.contains( 'plugt-reduced-motion' ) ) {
+	if (
+		root.classList.contains( 'plugt-m-tabs--autoplay' ) &&
+		! document.documentElement.classList.contains( 'plugt-reduced-motion' )
+	) {
 		timer = window.setInterval( () => show( current + 1 ), 6000 );
 		root.addEventListener( 'pointerdown', stop, { once: true } );
 		root.addEventListener( 'focusin', stop, { once: true } );

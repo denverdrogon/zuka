@@ -7,17 +7,32 @@ import { __ } from '@wordpress/i18n';
 import { desktop, tablet, mobile } from '@wordpress/icons';
 
 const DEVICES = [
-	{ id: 'desktop', label: __( 'Ordinateur', 'plug-templates' ), icon: desktop, width: '100%' },
-	{ id: 'tablet', label: __( 'Tablette', 'plug-templates' ), icon: tablet, width: '768px' },
-	{ id: 'mobile', label: __( 'Mobile', 'plug-templates' ), icon: mobile, width: '375px' },
+	{
+		id: 'desktop',
+		label: __( 'Ordinateur', 'plug-templates' ),
+		icon: desktop,
+		width: '100%',
+	},
+	{
+		id: 'tablet',
+		label: __( 'Tablette', 'plug-templates' ),
+		icon: tablet,
+		width: '768px',
+	},
+	{
+		id: 'mobile',
+		label: __( 'Mobile', 'plug-templates' ),
+		icon: mobile,
+		width: '375px',
+	},
 ];
 
 /**
  * @param {Object}   props
- * @param {Object}   props.item       Template.
- * @param {string}   props.url        Preview URL.
- * @param {Array}    props.actions    [{ id, label, onClick, disabled }] shown in the header.
- * @param {Function} props.onClose    Close handler.
+ * @param {Object}   props.item    Template.
+ * @param {string}   props.url     Preview URL.
+ * @param {Array}    props.actions [{ id, label, onClick, disabled }] shown in the header.
+ * @param {Function} props.onClose Close handler.
  */
 export default function PreviewModal( { item, url, actions = [], onClose } ) {
 	const [ device, setDevice ] = useState( 'desktop' );
@@ -26,13 +41,22 @@ export default function PreviewModal( { item, url, actions = [], onClose } ) {
 
 	return (
 		<Modal
-			title={ item.code ? `${ item.code } · ${ item.title }` : item.title }
+			title={
+				item.code ? `${ item.code } · ${ item.title }` : item.title
+			}
 			className="plugt-preview-modal"
 			isFullScreen
 			onRequestClose={ onClose }
 			headerActions={
 				<div className="plugt-preview-modal__tools">
-					<div className="plugt-preview-modal__devices" role="group" aria-label={ __( 'Largeur d\'affichage', 'plug-templates' ) }>
+					<div
+						className="plugt-preview-modal__devices"
+						role="group"
+						aria-label={ __(
+							"Largeur d'affichage",
+							'plug-templates'
+						) }
+					>
 						{ DEVICES.map( ( d ) => (
 							<Button
 								key={ d.id }
@@ -61,7 +85,11 @@ export default function PreviewModal( { item, url, actions = [], onClose } ) {
 			<div className="plugt-preview-modal__stage">
 				{ ! loaded && (
 					<p className="plugt-preview-modal__loading">
-						<Spinner /> { __( 'Rendu du template par Elementor…', 'plug-templates' ) }
+						<Spinner />{ ' ' }
+						{ __(
+							'Rendu du template par Elementor…',
+							'plug-templates'
+						) }
 					</p>
 				) }
 				<iframe

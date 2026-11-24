@@ -11,7 +11,7 @@
 		"build": "wp-scripts build",
 		"thumbnails": "node bin/build-thumbnails.mjs",
 		"start": "wp-scripts start",
-		"lint:js": "wp-scripts lint-js assets/src",
+		"lint:js": "eslint assets/src",
 		"env:start": "wp-env start",
 		"env:stop": "wp-env stop"
 	},

@@ -31,12 +31,16 @@ registerModule( 'accordion', ( root, { parts, setActive, pressable } ) => {
 		: null;
 	const pad = ( n ) => String( n ).padStart( 2, '0' );
 
-	let current = Math.max( 0, panels.findIndex( ( p ) => p.classList.contains( 'is-active' ) ) );
+	let current = Math.max(
+		0,
+		panels.findIndex( ( p ) => p.classList.contains( 'is-active' ) )
+	);
 
 	const show = ( index, focus ) => {
 		current = setActive( panels, index );
 		if ( counterText ) {
-			counterText.textContent = pad( current + 1 ) + ' / ' + pad( panels.length );
+			counterText.textContent =
+				pad( current + 1 ) + ' / ' + pad( panels.length );
 		}
 		if ( focus ) {
 			panels[ current ].focus();
@@ -58,12 +62,20 @@ registerModule( 'accordion', ( root, { parts, setActive, pressable } ) => {
 			return;
 		}
 		cleanups.push( pressable( el, () => show( current + delta ) ) );
-		( el.querySelector( 'a, button' ) || el ).setAttribute( 'aria-label', label );
+		( el.querySelector( 'a, button' ) || el ).setAttribute(
+			'aria-label',
+			label
+		);
 	} );
 
 	const onKey = ( e ) => {
 		const i = panels.indexOf( e.target );
-		const delta = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[ e.key ];
+		const delta = {
+			ArrowRight: 1,
+			ArrowDown: 1,
+			ArrowLeft: -1,
+			ArrowUp: -1,
+		}[ e.key ];
 		if ( i >= 0 && delta ) {
 			e.preventDefault();
 			show( i + delta, true );

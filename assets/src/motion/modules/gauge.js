@@ -13,11 +13,14 @@ const DURATION = 800;
 
 registerModule( 'gauge', ( root, { onVisible, prefersReducedMotion } ) => {
 	const svg = root.querySelector( 'svg' );
-	const value = root.querySelector( '.plugt-m-gauge__value' );
 	if ( ! svg ) {
 		return;
 	}
-	const target = Math.max( 0, Number( svg.getAttribute( 'data-value' ) ) || 0 );
+	const value = root.querySelector( '.plugt-m-gauge__value' );
+	const target = Math.max(
+		0,
+		Number( svg.getAttribute( 'data-value' ) ) || 0
+	);
 	svg.style.setProperty( '--plugt-gauge', String( Math.min( 100, target ) ) );
 
 	let frame = 0;
@@ -34,7 +37,9 @@ registerModule( 'gauge', ( root, { onVisible, prefersReducedMotion } ) => {
 		const start = performance.now();
 		const tick = ( now ) => {
 			const p = Math.min( ( now - start ) / DURATION, 1 );
-			value.textContent = String( Math.round( ( 1 - Math.pow( 1 - p, 3 ) ) * target ) );
+			value.textContent = String(
+				Math.round( ( 1 - Math.pow( 1 - p, 3 ) ) * target )
+			);
 			if ( p < 1 ) {
 				frame = window.requestAnimationFrame( tick );
 			}
@@ -54,7 +59,9 @@ registerModule( 'gauge', ( root, { onVisible, prefersReducedMotion } ) => {
 		);
 	};
 
-	const host = root.closest( '.plugt-m-accordion__panel, .plugt-m-tabs__panel' );
+	const host = root.closest(
+		'.plugt-m-accordion__panel, .plugt-m-tabs__panel'
+	);
 	if ( ! host || ! host.parentElement ) {
 		return onVisible( root, () => set( true ) );
 	}

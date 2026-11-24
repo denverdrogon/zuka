@@ -12,13 +12,17 @@ function App() {
 		<>
 			<div className="plugt-library-header">
 				{ config.logo && <img src={ config.logo } alt="" /> }
-				<h1 className={ config.logo ? 'screen-reader-text' : 'wp-heading-inline' }>
+				<h1
+					className={
+						config.logo ? 'screen-reader-text' : 'wp-heading-inline'
+					}
+				>
 					{ __( 'Zuka', 'plug-templates' ) }
 				</h1>
 			</div>
 			<p>
 				{ __(
-					'Importez un template comme page brouillon ou dans Elementor > Mes modèles. Dans l\'éditeur Elementor, le bouton Zuka insère un template directement dans la page.',
+					"Importez un template comme page brouillon ou dans Elementor > Mes modèles. Dans l'éditeur Elementor, le bouton Zuka insère un template directement dans la page.",
 					'plug-templates'
 				) }
 			</p>

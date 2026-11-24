@@ -33,18 +33,18 @@ function insertionIndex( area ) {
 	if ( ! next || ! next.classList.contains( 'elementor-element' ) ) {
 		return undefined;
 	}
-	const siblings = Array.from( section.parentElement.children ).filter( ( el ) =>
-		el.classList.contains( 'elementor-element' )
+	const siblings = Array.from( section.parentElement.children ).filter(
+		( el ) => el.classList.contains( 'elementor-element' )
 	);
 	const index = siblings.indexOf( next );
 	return index >= 0 ? index : undefined;
 }
 
 /**
- * @param {Document}                       doc     Preview document.
+ * @param {Document}                       doc      Preview document.
  * @param {Object}                         contract Selectors from the Adapter.
- * @param {string}                         icon    Icon URL.
- * @param {(at: number|undefined) => void} onOpen  Called with the insertion index.
+ * @param {string}                         icon     Icon URL.
+ * @param {(at: number|undefined) => void} onOpen   Called with the insertion index.
  */
 function decorate( doc, contract, icon, onOpen ) {
 	const add = ( root ) => {
@@ -78,13 +78,18 @@ function decorate( doc, contract, icon, onOpen ) {
 	}
 
 	add( doc );
-	new doc.defaultView.MutationObserver( () => add( doc ) ).observe( doc.body, {
-		childList: true,
-		subtree: true,
-	} );
+	new doc.defaultView.MutationObserver( () => add( doc ) ).observe(
+		doc.body,
+		{
+			childList: true,
+			subtree: true,
+		}
+	);
 
 	doc.addEventListener( 'click', ( event ) => {
-		const button = event.target.closest && event.target.closest( `.${ BUTTON_CLASS }` );
+		const button =
+			event.target.closest &&
+			event.target.closest( `.${ BUTTON_CLASS }` );
 		if ( ! button ) {
 			return;
 		}
@@ -103,7 +108,10 @@ function decorate( doc, contract, icon, onOpen ) {
  */
 export function watchPreview( contract, icon, onOpen ) {
 	const run = () => {
-		const frame = window.elementor && window.elementor.$preview && window.elementor.$preview[ 0 ];
+		const frame =
+			window.elementor &&
+			window.elementor.$preview &&
+			window.elementor.$preview[ 0 ];
 		const doc = frame && frame.contentDocument;
 		if ( doc && doc.body ) {
 			decorate( doc, contract, icon, onOpen );

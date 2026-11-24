@@ -8,7 +8,9 @@ import { watchPreview, insertContent } from './inject';
 import './editor.scss';
 
 // DataViews (~900 Ko) is only downloaded when the modal is first opened.
-const Library = lazy( () => import( /* webpackChunkName: "library" */ '../library/Library' ) );
+const Library = lazy( () =>
+	import( /* webpackChunkName: "library" */ '../library/Library' )
+);
 
 const config = window.plugtLibrary || {};
 const contract = config.editor || {};

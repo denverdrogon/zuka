@@ -6,7 +6,9 @@ import apiFetch from '@wordpress/api-fetch';
 const config = () => window.plugtLibrary || {};
 
 export function fetchTemplates() {
-	return apiFetch( { path: `${ config().restPath || '/plugt/v1' }/templates` } );
+	return apiFetch( {
+		path: `${ config().restPath || '/plugt/v1' }/templates`,
+	} );
 }
 
 /**
