@@ -118,7 +118,7 @@ En complément :
 | T06 | i18n : `.pot` et vérification en CI | 1 | T04 | [x] |
 | T07 | Tests E2E Playwright | 2 | T04 | [ ] |
 | T08 | Commandes WP-CLI (list, import, validate) | 2 | — | [x] |
-| T09 | Export d'une page vers un template (`wp plugt export`) | 2 | T08 | [ ] |
+| T09 | Export d'une page vers un template (`wp plugt export`) | 2 | T08 | [x] |
 | T10 | Avertissements qualité du validateur + guide d'auteur | 2 | — | [x] |
 | T11 | Catalogue v1 (≥ 40 templates) | 3 | T09, T10 | [ ] |
 | T12 | Champs `added` / `changelog` + nouvelles catégories | 3 | — | [ ] |
@@ -298,6 +298,7 @@ En complément :
 - **Sécurité :** refuser si `templates/<slug>/` existe déjà, sauf avec `--force`. Il n'y a pas de vignette : rappeler en sortie qu'il faut lancer `npm run thumbnails`.
 - **Tests :** sur une fixture `elements` contenant une image, une couleur globale et une couleur en dur, vérifier le JSON produit, la liste des médias et l'avertissement.
 - **Fait quand :** importer `page-accueil-agence`, l'exporter sous `test-roundtrip` puis lancer `composer templates:check` passe. Le contenu est équivalent à l'original, aux IDs près.
+- **Écart :** (1) le validateur exige `thumbnail.webp` : l'export ignore cette seule erreur et rappelle de lancer `npm run thumbnails`, donc `composer templates:check` ne passe qu'une fois la vignette ajoutée. (2) Le média est localisé par `src/Library/MediaExporter.php` (redimensionnement WebP 1920 px), appelé via un callable pour que `Exporter` reste pur. (3) Le round-trip complet sur `page-accueil-agence` n'a pas été exécuté (wp-env indisponible) : à valider à la main.
 
 ### T10 — Avertissements qualité + guide d'auteur
 - **Fichiers :** modifier `src/Library/TemplateValidator.php` et `bin/validate-templates.php` ; créer `docs/authoring.md`.

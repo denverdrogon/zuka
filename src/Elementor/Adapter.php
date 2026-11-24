@@ -309,6 +309,74 @@ class Adapter {
 	}
 
 	/**
+	 * Elements and page settings of a post built with Elementor.
+	 *
+	 * @param int $post_id Post id.
+	 * @return array{elements: list<array<string, mixed>>, page_settings: array<mixed>, title: string}|null Null when the post is not built with Elementor.
+	 */
+	public function get_document_data( int $post_id ): ?array {
+		$post = get_post( $post_id );
+		if ( ! $post instanceof \WP_Post || 'builder' !== get_post_meta( $post_id, '_elementor_edit_mode', true ) ) {
+			return null;
+		}
+
+		$elements = get_post_meta( $post_id, '_elementor_data', true );
+		if ( is_string( $elements ) ) {
+			$elements = json_decode( $elements, true );
+		}
+		$settings = get_post_meta( $post_id, '_elementor_page_settings', true );
+
+		return array(
+			'elements'      => is_array( $elements ) ? array_values( $elements ) : array(),
+			'page_settings' => is_array( $settings ) ? $settings : array(),
+			'title'         => $post->post_title,
+		);
+	}
+
+	/**
+	 * Global colours and typography of the active kit.
+	 *
+	 * @return array{colors: list<array{_id: string, color: string}>, typography: list<array<string, mixed>>}
+	 */
+	public function get_kit_globals(): array {
+		$globals = array(
+			'colors'     => array(),
+			'typography' => array(),
+		);
+		if ( ! $this->is_loaded() || ! class_exists( '\Elementor\Plugin' ) ) {
+			return $globals;
+		}
+		$plugin = \Elementor\Plugin::$instance;
+		if ( null === $plugin || ! isset( $plugin->kits_manager ) || ! method_exists( $plugin->kits_manager, 'get_active_id' ) ) {
+			return $globals;
+		}
+		$settings = get_post_meta( (int) $plugin->kits_manager->get_active_id(), '_elementor_page_settings', true );
+		if ( ! is_array( $settings ) ) {
+			return $globals;
+		}
+
+		foreach ( array( 'system_colors', 'custom_colors' ) as $key ) {
+			foreach ( (array) ( $settings[ $key ] ?? array() ) as $item ) {
+				if ( is_array( $item ) && isset( $item['_id'], $item['color'] ) && is_string( $item['color'] ) ) {
+					$globals['colors'][] = array(
+						'_id'   => (string) $item['_id'],
+						'color' => $item['color'],
+					);
+				}
+			}
+		}
+		foreach ( array( 'system_typography', 'custom_typography' ) as $key ) {
+			foreach ( (array) ( $settings[ $key ] ?? array() ) as $item ) {
+				if ( is_array( $item ) && isset( $item['_id'] ) ) {
+					$globals['typography'][] = $item;
+				}
+			}
+		}
+
+		return $globals;
+	}
+
+	/**
 	 * Admin URL of Elementor > Templates (« Mes modèles »).
 	 */
 	public function library_admin_url(): string {

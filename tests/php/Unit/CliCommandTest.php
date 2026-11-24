@@ -9,6 +9,7 @@ use Brain\Monkey\Functions;
 use PHPUnit\Framework\MockObject\MockObject;
 use PlugTemplates\Cli\Command;
 use PlugTemplates\Cli\Console;
+use PlugTemplates\Elementor\Adapter;
 use PlugTemplates\Library\Importer;
 use PlugTemplates\Library\Repository;
 use WP_Error;
@@ -26,6 +27,11 @@ final class CliCommandTest extends TestCase {
 	private $importer;
 
 	/**
+	 * @var Adapter&MockObject
+	 */
+	private $elementor;
+
+	/**
 	 * @var Console&MockObject
 	 */
 	private $console;
@@ -35,11 +41,12 @@ final class CliCommandTest extends TestCase {
 		Functions\stubTranslationFunctions();
 		$this->repository = $this->createMock( Repository::class );
 		$this->importer   = $this->createMock( Importer::class );
+		$this->elementor  = $this->createMock( Adapter::class );
 		$this->console    = $this->createMock( Console::class );
 	}
 
 	private function command( string $dir = '' ): Command {
-		return new Command( $this->repository, $this->importer, '' === $dir ? dirname( __DIR__, 3 ) . '/templates' : $dir, $this->console );
+		return new Command( $this->repository, $this->importer, $this->elementor, '' === $dir ? dirname( __DIR__, 3 ) . '/templates' : $dir, $this->console );
 	}
 
 	/**
@@ -126,6 +133,66 @@ final class CliCommandTest extends TestCase {
 		$this->console->expects( $this->once() )->method( 'error' )->with( 'Template introuvable.' );
 
 		$this->command()->import( array( 'nope' ), array() );
+	}
+
+	public function test_export_refuses_a_post_without_elementor(): void {
+		$this->elementor->method( 'get_document_data' )->willReturn( null );
+		$this->console->expects( $this->once() )->method( 'error' );
+
+		$this->command()->export( array( '5', 'mon-export' ), array( 'category' => 'hero' ) );
+	}
+
+	public function test_export_rejects_unknown_category(): void {
+		$this->elementor->expects( $this->never() )->method( 'get_document_data' );
+		$this->console->expects( $this->once() )->method( 'error' );
+
+		$this->command()->export( array( '5', 'mon-export' ), array( 'category' => 'nope' ) );
+	}
+
+	public function test_export_writes_a_template_and_refuses_to_overwrite(): void {
+		$dir = sys_get_temp_dir() . '/plugt-cli-export-' . uniqid();
+		mkdir( $dir ); // phpcs:ignore WordPress.WP.AlternativeFunctions
+		$this->elementor->method( 'get_kit_globals' )->willReturn(
+			array(
+				'colors'     => array(),
+				'typography' => array(),
+			)
+		);
+		$this->elementor->method( 'get_document_data' )->willReturn(
+			array(
+				'title'         => 'Ma page',
+				'page_settings' => array(),
+				'elements'      => array(
+					array(
+						'id'         => 'abc1234',
+						'elType'     => 'widget',
+						'widgetType' => 'heading',
+						'settings'   => array( 'title' => 'Bonjour' ),
+						'elements'   => array(),
+					),
+				),
+			)
+		);
+		$this->console->expects( $this->once() )->method( 'success' );
+		$this->console->expects( $this->once() )->method( 'error' );
+
+		try {
+			$command = $this->command( $dir );
+			$command->export( array( '5', 'mon-export' ), array( 'category' => 'hero' ) );
+			$meta = json_decode( (string) file_get_contents( $dir . '/mon-export/meta.json' ), true );
+			$this->assertSame( 'Ma page', $meta['title'] );
+			$this->assertSame( 'TPL-01', $meta['code'] );
+			$command->export( array( '5', 'mon-export' ), array( 'category' => 'hero' ) );
+		} finally {
+			foreach ( array( '/mon-export/meta.json', '/mon-export/content.v3.json' ) as $file ) {
+				if ( is_file( $dir . $file ) ) {
+					unlink( $dir . $file ); // phpcs:ignore WordPress.WP.AlternativeFunctions
+				}
+			}
+			rmdir( $dir . '/mon-export/media' ); // phpcs:ignore WordPress.WP.AlternativeFunctions
+			rmdir( $dir . '/mon-export' ); // phpcs:ignore WordPress.WP.AlternativeFunctions
+			rmdir( $dir ); // phpcs:ignore WordPress.WP.AlternativeFunctions
+		}
 	}
 
 	public function test_validate_succeeds_on_the_shipped_templates(): void {

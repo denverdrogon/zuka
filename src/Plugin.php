@@ -154,7 +154,7 @@ final class Plugin {
 		( new Previewer( $this->repository, $this->importer, $this->elementor ) )->register();
 
 		if ( defined( 'WP_CLI' ) && WP_CLI ) {
-			\WP_CLI::add_command( 'plugt', new Command( $this->repository, $this->importer, PLUGT_PATH . 'templates' ) );
+			\WP_CLI::add_command( 'plugt', new Command( $this->repository, $this->importer, $this->elementor, PLUGT_PATH . 'templates' ) );
 		}
 
 		if ( is_admin() ) {
