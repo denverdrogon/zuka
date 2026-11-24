@@ -3,6 +3,13 @@
 ## But
 Plugin WordPress privé fournissant des templates Elementor personnalisés, livrés dans le plugin (aucun serveur distant), importables depuis une modale dans l'éditeur ou une page d'admin. Cible Elementor v3 et v4 (Atomic), Elementor Free uniquement. Diffusion privée, mises à jour via GitHub Releases. Voir `contexte.md` pour le détail.
 
+## Travail en cours
+Le plan de travail vers la v1.0 est dans `optimisations.md` : décisions, tâches T01–T23 avec spécifications et critères « fait quand », tableau de suivi.
+- Lire sa section 0 (mode d'emploi) et sa section 1 (décisions) avant toute tâche.
+- Traiter une seule tâche à la fois, sur sa propre branche.
+- À la fin d'une tâche, cocher sa case dans le tableau de suivi.
+- En cas de conflit entre les deux documents, ce fichier (CLAUDE.md) prime.
+
 ## Conventions
 - Slug : `plug-templates` · text domain : `plug-templates` · préfixe : `plugt_` (options, hooks, fonctions, REST `plugt/v1`).
 - Namespace PHP `PlugTemplates\` en PSR-4 dans `src/`.
@@ -34,7 +41,7 @@ Tout appel interne à Elementor (classes, hooks, documents, API v3/v4) passe par
   - respecter `prefers-reduced-motion`.
 - Le widget `html` reste statique : pas de script, pas de on*, pas d'URL externe.
 - Assets chargés uniquement sur les pages qui utilisent une classe `plugt-` (`src/Frontend/MotionAssets.php`).
-- Source d'inspiration : `other sources/atelier-wp-templates (3).zip` (prototype Gemini, 21 sections).
+- Source d'inspiration : `other sources/atelier-wp-templates (3).zip` (prototype Gemini, 21 sections). Ce zip n'est pas versionné : le demander au propriétaire du projet.
 
 ## Sécurité
 - Nonces sur toute action d'admin ; `permission_callback` explicite sur chaque route REST.

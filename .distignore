@@ -21,3 +21,4 @@ webpack.config.js
 .phpunit.result.cache
 CLAUDE.md
 contexte.md
+optimisations.md
