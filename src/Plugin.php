@@ -16,7 +16,9 @@ use PlugTemplates\Library\Importer;
 use PlugTemplates\Library\MediaImporter;
 use PlugTemplates\Library\Previewer;
 use PlugTemplates\Library\Repository;
+use PlugTemplates\Migrations\Runner;
 use PlugTemplates\Rest\TemplatesController;
+use PlugTemplates\Updates\Updater;
 
 /**
  * Main plugin class: checks requirements then wires services.
@@ -109,6 +111,9 @@ final class Plugin {
 	 */
 	private function init(): void {
 		load_plugin_textdomain( 'plug-templates', false, dirname( plugin_basename( PLUGT_FILE ) ) . '/languages' );
+
+		// Before the requirements check: a release fixing a requirement must stay installable.
+		( new Updater( PLUGT_UPDATE_REPO, PLUGT_FILE, 'plug-templates' ) )->register();
 
 		$requirements = new Requirements(
 			array(

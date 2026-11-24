@@ -12,3 +12,4 @@ define( 'PLUGT_URL', 'https://example.test/wp-content/plugins/plug-templates/' )
 define( 'PLUGT_MIN_PHP', '7.4' );
 define( 'PLUGT_MIN_WP', '7.0' );
 define( 'PLUGT_MIN_ELEMENTOR', '3.25.0' );
+define( 'PLUGT_UPDATE_REPO', 'https://github.com/denverdrogon/zuka/' );

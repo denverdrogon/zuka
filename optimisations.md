@@ -110,7 +110,7 @@ En complément :
 
 | ID | Tâche | Lot | Dépend de | État |
 |---|---|---|---|---|
-| T01 | Updater GitHub Releases | 1 | — | [ ] |
+| T01 | Updater GitHub Releases | 1 | — | [x] |
 | T02 | Workflow de release + script de version | 1 | — | [ ] |
 | T03 | Runner de migrations | 1 | — | [ ] |
 | T04 | CI JS + matrice Elementor | 1 | — | [ ] |

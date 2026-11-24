@@ -29,6 +29,10 @@ define( 'PLUGT_MIN_PHP', '7.4' );
 define( 'PLUGT_MIN_WP', '7.0' );
 define( 'PLUGT_MIN_ELEMENTOR', '3.25.0' );
 
+if ( ! defined( 'PLUGT_UPDATE_REPO' ) ) {
+	define( 'PLUGT_UPDATE_REPO', 'https://github.com/denverdrogon/zuka/' );
+}
+
 if ( is_readable( PLUGT_PATH . 'vendor/autoload.php' ) ) {
 	require_once PLUGT_PATH . 'vendor/autoload.php';
 } else {
