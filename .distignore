@@ -22,3 +22,5 @@ webpack.config.js
 CLAUDE.md
 contexte.md
 optimisations.md
+docs
+dist

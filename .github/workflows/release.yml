@@ -1,0 +1,46 @@
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Release plug-templates.zip
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '7.4'
+          tools: composer:v2
+          coverage: none
+      - name: Vérifier la version
+        run: php bin/check-version.php "${GITHUB_REF_NAME#v}"
+      - name: Dépendances PHP de production
+        run: composer install --no-dev --optimize-autoloader --no-interaction --no-progress
+      - name: Templates (liste blanche + manifest)
+        run: php bin/validate-templates.php && php bin/build-manifest.php --check
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+      - name: Build des assets
+        run: npm ci && npm run build
+      - name: Assembler le plugin
+        run: |
+          mkdir -p dist/plug-templates
+          rsync -a --exclude-from=.distignore --exclude=dist ./ dist/plug-templates/
+      - name: Contrôler le contenu
+        run: |
+          test -f dist/plug-templates/assets/build/motion.js
+          test -f dist/plug-templates/vendor/autoload.php
+      - name: Créer le zip
+        run: cd dist && zip -r plug-templates.zip plug-templates
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: dist/plug-templates.zip
+          generate_release_notes: true

@@ -111,7 +111,7 @@ En complément :
 | ID | Tâche | Lot | Dépend de | État |
 |---|---|---|---|---|
 | T01 | Updater GitHub Releases | 1 | — | [x] |
-| T02 | Workflow de release + script de version | 1 | — | [ ] |
+| T02 | Workflow de release + script de version | 1 | — | [x] |
 | T03 | Runner de migrations | 1 | — | [x] |
 | T04 | CI JS + matrice Elementor | 1 | — | [ ] |
 | T05 | `readme.txt` | 1 | T02 | [ ] |
