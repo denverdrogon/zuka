@@ -87,7 +87,7 @@ final class LibraryPage {
 			self::menu_icon(),
 			58
 		);
-		$this->hook_suffix = is_string( $hook ) ? $hook : '';
+		$this->hook_suffix = (string) $hook; // add_menu_page() returns false without the capability.
 	}
 
 	/**
@@ -171,6 +171,11 @@ final class LibraryPage {
 	 * @return array<string, string>
 	 */
 	public function category_labels(): array {
+		/**
+		 * Keys may lag behind Schema::CATEGORIES: unknown keys fall back to the raw key.
+		 *
+		 * @var array<string, string> $labels
+		 */
 		$labels = array(
 			'hero'          => __( 'Heros', 'plug-templates' ),
 			'carousel'      => __( 'Carrousels & accordéons', 'plug-templates' ),
