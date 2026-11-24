@@ -8,6 +8,7 @@
 namespace PlugTemplates;
 
 use PlugTemplates\Admin\LibraryPage;
+use PlugTemplates\Cli\Command;
 use PlugTemplates\Editor\EditorIntegration;
 use PlugTemplates\Elementor\Adapter;
 use PlugTemplates\Frontend\MotionAssets;
@@ -151,6 +152,10 @@ final class Plugin {
 		( new TemplatesController( $this->repository, $this->importer ) )->register();
 		( new MotionAssets( $this->elementor, PLUGT_PATH . 'assets/build', PLUGT_URL . 'assets/build' ) )->register();
 		( new Previewer( $this->repository, $this->importer, $this->elementor ) )->register();
+
+		if ( defined( 'WP_CLI' ) && WP_CLI ) {
+			\WP_CLI::add_command( 'plugt', new Command( $this->repository, $this->importer, PLUGT_PATH . 'templates' ) );
+		}
 
 		if ( is_admin() ) {
 			$library = new LibraryPage( $this->elementor, PLUGT_PATH . 'assets/build', PLUGT_URL . 'assets/build' );

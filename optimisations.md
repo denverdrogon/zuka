@@ -117,7 +117,7 @@ En complément :
 | T05 | `readme.txt` | 1 | T02 | [x] |
 | T06 | i18n : `.pot` et vérification en CI | 1 | T04 | [x] |
 | T07 | Tests E2E Playwright | 2 | T04 | [ ] |
-| T08 | Commandes WP-CLI (list, import, validate) | 2 | — | [ ] |
+| T08 | Commandes WP-CLI (list, import, validate) | 2 | — | [x] |
 | T09 | Export d'une page vers un template (`wp plugt export`) | 2 | T08 | [ ] |
 | T10 | Avertissements qualité du validateur + guide d'auteur | 2 | — | [ ] |
 | T11 | Catalogue v1 (≥ 40 templates) | 3 | T09, T10 | [ ] |
