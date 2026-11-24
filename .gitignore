@@ -23,3 +23,8 @@ desktop.ini
 .vscode/
 *.swp
 *.swo
+
+# Playwright
+tests/e2e/.auth/
+tests/e2e/test-results/
+tests/e2e/playwright-report/

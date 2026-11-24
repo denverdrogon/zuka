@@ -116,7 +116,7 @@ En complément :
 | T04 | CI JS + matrice Elementor | 1 | — | [x] |
 | T05 | `readme.txt` | 1 | T02 | [x] |
 | T06 | i18n : `.pot` et vérification en CI | 1 | T04 | [x] |
-| T07 | Tests E2E Playwright | 2 | T04 | [ ] |
+| T07 | Tests E2E Playwright | 2 | T04 | [x] |
 | T08 | Commandes WP-CLI (list, import, validate) | 2 | — | [x] |
 | T09 | Export d'une page vers un template (`wp plugt export`) | 2 | T08 | [x] |
 | T10 | Avertissements qualité du validateur + guide d'auteur | 2 | — | [x] |
@@ -269,6 +269,7 @@ En complément :
   5. `preview.spec` : l'aperçu en direct s'ouvre et les boutons Ordinateur, Tablette et Mobile changent la largeur de l'iframe.
   6. `motion.spec` : sur une page créée depuis `institutional-tabs`, `plugt-motion` (le JS) est chargé et cliquer sur le deuxième onglet l'active (`aria-selected="true"`). Sur une page sans classe `plugt-`, le script **n'est pas** chargé.
 - **Fait quand :** `npm run test:e2e` passe en local et en CI sur toute la matrice.
+- **Écart :** specs et config écrites, chargées (`npx playwright test --list -c tests/e2e` : 9 tests, 6 fichiers) mais **jamais exécutées** : Docker n'était pas démarré. Les sélecteurs DataViews (cartes `.dataviews-view-grid__card`, menu de filtres) et le bouton `button[aria-label="Zuka"]` de l'éditeur sont à valider au premier run sous wp-env. `motion.spec` utilise `wp plugt import` (T08). Le filtre catégorie vérifie que la liste diminue, sans cibler un libellé précis. Étape CI ajoutée au job `integration`.
 
 ### T08 — Commandes WP-CLI
 - **Fichiers :**

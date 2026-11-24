@@ -107,6 +107,19 @@ jobs:
           echo "$active"
           echo "$active" | grep -qx elementor
           echo "$active" | grep -qx "$(basename "$PWD")"
+      - name: Tests E2E (Playwright)
+        run: |
+          npx playwright install --with-deps chromium
+          npm run test:e2e
+      - name: Rapport Playwright
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-${{ matrix.wp }}-${{ matrix.elementor }}
+          path: |
+            tests/e2e/playwright-report
+            tests/e2e/test-results
+          retention-days: 7
       - name: .pot à jour
         run: |
           npx wp-env run cli --env-cwd=wp-content/plugins/$(basename "$PWD") wp i18n make-pot . languages/plug-templates.tmp.pot --exclude=node_modules,vendor,assets/build,tests,bin,dist --domain=plug-templates
