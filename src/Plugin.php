@@ -143,6 +143,8 @@ final class Plugin {
 	 * Wires feature services. Filled in by later phases.
 	 */
 	private function register_services(): void {
+		( new Runner() )->run();
+
 		$this->repository = new Repository( PLUGT_PATH . 'templates', PLUGT_URL . 'templates' );
 		$this->importer   = new Importer( $this->repository, $this->elementor, new MediaImporter(), new ContentTransformer() );
 

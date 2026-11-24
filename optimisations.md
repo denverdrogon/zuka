@@ -112,7 +112,7 @@ En complément :
 |---|---|---|---|---|
 | T01 | Updater GitHub Releases | 1 | — | [x] |
 | T02 | Workflow de release + script de version | 1 | — | [ ] |
-| T03 | Runner de migrations | 1 | — | [ ] |
+| T03 | Runner de migrations | 1 | — | [x] |
 | T04 | CI JS + matrice Elementor | 1 | — | [ ] |
 | T05 | `readme.txt` | 1 | T02 | [ ] |
 | T06 | i18n : `.pot` et vérification en CI | 1 | T04 | [ ] |
